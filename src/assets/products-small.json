@@ -1,0 +1,124 @@
+{
+	"data": [
+		{
+			"fechaconexion": "2021/01/02 05H00",
+			"provincia": "f230fh0g3",
+			"ciudad": "Bamboo Watch",
+			"sitio": "Product Description",
+			"radiobase": "bamboo-watch.jpg",
+			"price": 65,
+			"tecnologia": "Accessories",
+			"quantity": 24,
+			"location": "INSTOCK",
+			"rating": 5
+		},
+		{
+			"fechaconexion": "2021/01/02 05H01",
+			"provincia": "nvklal433",
+			"ciudad": "Black Watch",
+			"sitio": "Product Description",
+			"radiobase": "black-watch.jpg",
+			"price": 72,
+			"tecnologia": "Accessories",
+			"quantity": 61,
+			"location": "INSTOCK",
+			"rating": 4
+		},
+		{
+			"fechaconexion": "2021/01/02 05H02",
+			"provincia": "zz21cz3c1",
+			"ciudad": "Blue Band",
+			"sitio": "Product Description",
+			"radiobase": "blue-band.jpg",
+			"price": 79,
+			"tecnologia": "Fitness",
+			"quantity": 2,
+			"location": "LOWSTOCK",
+			"rating": 3
+		},
+		{
+			"fechaconexion": "2021/01/02 05H03",
+			"provincia": "244wgerg2",
+			"ciudad": "Blue T-Shirt",
+			"sitio": "Product Description",
+			"radiobase": "blue-t-shirt.jpg",
+			"price": 29,
+			"tecnologia": "Clothing",
+			"quantity": 25,
+			"location": "INSTOCK",
+			"rating": 5
+		},
+		{
+			"fechaconexion": "2021/01/02 05H04",
+			"provincia": "h456wer53",
+			"ciudad": "Bracelet",
+			"sitio": "Product Description",
+			"radiobase": "bracelet.jpg",
+			"price": 15,
+			"tecnologia": "Accessories",
+			"quantity": 73,
+			"location": "INSTOCK",
+			"rating": 4
+		},
+		{
+			"fechaconexion": "2021/01/02 05H05",
+			"provincia": "av2231fwg",
+			"ciudad": "Brown Purse",
+			"sitio": "Product Description",
+			"radiobase": "brown-purse.jpg",
+			"price": 120,
+			"tecnologia": "Accessories",
+			"quantity": 0,
+			"location": "OUTOFSTOCK",
+			"rating": 4
+		},
+		{
+			"fechaconexion": "2021/01/02 05H06",
+			"provincia": "bib36pfvm",
+			"ciudad": "Chakra Bracelet",
+			"sitio": "Product Description",
+			"radiobase": "chakra-bracelet.jpg",
+			"price": 32,
+			"tecnologia": "Accessories",
+			"quantity": 5,
+			"location": "LOWSTOCK",
+			"rating": 3
+		},
+		{
+			"fechaconexion": "2021/01/02 05H07",
+			"provincia": "mbvjkgip5",
+			"ciudad": "Galaxy Earrings",
+			"sitio": "Product Description",
+			"radiobase": "galaxy-earrings.jpg",
+			"price": 34,
+			"tecnologia": "Accessories",
+			"quantity": 23,
+			"location": "INSTOCK",
+			"rating": 5
+		},
+		{
+			"fechaconexion": "2021/01/02 05H08",
+			"provincia": "vbb124btr",
+			"ciudad": "Game Controller",
+			"sitio": "Product Description",
+			"radiobase": "game-controller.jpg",
+			"price": 99,
+			"tecnologia": "Electronics",
+			"quantity": 2,
+			"location": "LOWSTOCK",
+			"rating": 4
+		},
+		{
+			"fechaconexion": "2021/01/02 05H09",
+			"provincia": "cm230f032",
+			"ciudad": "Gaming Set",
+			"sitio": "Product Description",
+			"radiobase": "gaming-set.jpg",
+			"price": 299,
+			"tecnologia": "Electronics",
+			"quantity": 63,
+			"location": "INSTOCK",
+			"rating": 3
+		}
+	]
+}

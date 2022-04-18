@@ -1,0 +1,200 @@
+<div class="container" style="margin-top:20px ;">
+    <div class="row" style="padding-left:25px ;">
+        <div class="col-12">
+            <div style="margin-top: 20px;">
+            <span class="title-page" style="color: gray; font-size: 28px;">
+                Esta es la mejor forma de pago para el servicio de tu cliente...
+            </span>
+            </div>
+            <app-btn-volver-vista style="position:absolute; right: 20px; top: 10px;"></app-btn-volver-vista>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+            <div class="col-8 my-auto mx-auto" style="padding-left: 2px;margin-top: 4px;">
+                <div class="ui-card-shadow ui-card ui-widget ui-widget-content ui-corner-all"
+                     style="width: 100%; border-radius: 0px 0px 28px 28px; cursor: pointer;border: hidden;">
+                    <div class="ui-card-header ng-star-inserted">
+                        <img src="assets/images/claroIpTv/ImagenIpTv.png"/>
+                    </div>
+                    <div class="ui-card-body"
+                         style="border: 1px solid #bdbdbd;border-radius: 0px 0px 28px 28px;border-top: hidden;">
+                        <div class="ui-card-content"></div>
+                        <div class="ui-card-footer ng-star-inserted" style="position: relative;text-align: center">
+                            <img src="assets/images/claroIpTv/LogoIptv.png" style="width: 60px; margin-left: -30px;" alt="">
+                            <span
+                                style="color:#757575;display: inline-block;margin-left: 1px;justify-items: center;padding-top: 9px; font-size: 18px;">{{name}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-8 my-auto mx-auto">
+                <div class="mx-auto" style="width: 100%;">
+                    <div class="mx-auto ">
+
+                        <div class="mx-auto" style="margin-top: 15px;">
+                            <table>
+                                <tr class="texto">
+                                    <td>
+                                        <span style="font-size: 40px; padding-right: 8px;">$ {{price}} </span>Mensual
+                                    </td>
+                                </tr>
+                                <tr class="texto">
+                                    <td style="margin-left: 1px;">
+                                        Incluido Impuestos
+                                    </td>
+                                </tr>
+                                <tr >
+                                    <td>
+                                        <button (click)="activarOverlay()" type="button" class="btn btn-link" style="text-decoration: underline">
+                                            Más información
+                                        </button>
+                                        <!-- <app-claro-ip-tv-alert [activarpopover]="activarpopover" [offer]="responseVariables" (btnEntendido)="btnEntendido($event)">
+                                         </app-claro-ip-tv-alert>
+
+
+                                     </td>-->
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8 payment" style="margin-top: 50px;">
+
+            <p-carousel [value]="paymentMethods" [numVisible]="4" [numScroll]="3" [circular]="false"
+                        [responsiveOptions]="responsiveOptions">
+                <ng-template let-paymentMethod pTemplate="item">
+                    <div>
+                        <div class="ui-g ">
+                            <div class="ui-g-10"></div>
+                            <div *ngIf="paymentMethod.id=== selectedValue " class="ui-g-2">
+                                <img class="check" src="assets/images/claroVideo/check.png">
+                            </div>
+                        </div>
+
+                        <ul>
+                            <li *ngFor="let line of paymentMethod.paymentRow">
+                                <!-- {{line.nombre}} Something -->
+                                <div class="ui-g mx-auto ">
+                                    <!-- style="padding-top: 0px; padding-bottom: 0px;" -->
+                                    <div class="ui-g-4 my-auto">
+                                        <!-- <img src="assets/images/claroVideo/Imagen4.png" alt=""> -->
+                                        <!-- <img [src]="line.icon"
+                                        style="display:block; margin:auto;" alt=""> -->
+                                        <img [src]="line.icon" style="
+                                        width: 30px;
+                                        height: auto; display:block; margin:auto;" alt="">
+                                    </div>
+                                    <div class="ui-g-8" style="line-height: 25px;">
+                                        <div class="ui-g-12" style="padding-top: 0px; padding-bottom: 0px;">
+                                            <strong>
+                                                {{line.nombre}}
+
+                                            </strong>
+                                        </div>
+
+                                        <!-- <div class="ui-g-12"  style="padding-top: 0px; padding-bottom: 0px;" > -->
+                                        <div class="ui-g-12" style="padding-top: 0px; padding-bottom: 0px;">
+                                            {{ line.detalle}}
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </li>
+                        </ul>
+                        <div style=" margin-bottom:  20px; margin-top: 20px; margin-left: 40px; margin-right: 40px;">
+
+                            <Button (click)="setSelectedValue(paymentMethod.id)"
+                                    [ngClass]="[paymentMethod.id=== selectedValue ? 'selected-color': 'unselected-color'] ">Seleccionar</Button>
+
+                        </div>
+                    </div>
+                </ng-template>
+            </p-carousel>
+        </div>
+    </div>
+    <div class="row" style="width: 100%;">
+        <Button class="btn-continuar" (click)="continue()">
+            <div class="d-flex justify-content-center">
+
+                <div style="  display: flex;
+                align-items: center; padding-left: 10px; padding-right: 10px;">
+                    Continuar proceso…
+
+                </div>
+                <div>
+                    <img src="assets/images/claroVideo/continuar.png" alt="">
+                </div>
+            </div>
+
+        </Button>
+    </div>
+</div>
+<div *ngIf="activarpopover===true" style="font-size: 14px;
+background-color: #181919c2;
+width: 431px;
+height: 257px;
+position: absolute;
+margin-left: 327px;
+margin-top: -302px;
+border-radius: 53px;
+font-style: initial;
+font-family: 'Roboto';">
+
+    <blockquote >
+        <!-- <p>{{offer.detalle2}}
+            </p> -->
+        <ul >
+            <li style="list-style: none;">
+
+                <div class="" style=" margin-top: -20px!important;
+                        margin-left: -28px!important; text-align: left;">
+
+                    <p  style="font-size: 15px!important;
+                            text-align: left;
+                            margin-left: 60px;
+                            color: #ffffff;
+                            margin-top: 42px;">{{desc}}
+                        <br>  Por sólo $ {{price}}
+                        <br>{{name}} <br><b>Incluye:</b> <br> &nbsp;&nbsp; {{deviceone}} - {{deviceoneCategory}}
+                        <br> &nbsp;&nbsp; {{devicetwo}} - {{devicetwoCategory}}
+                    </p>
+
+                    <div class="" style="display: block; margin: auto;"  >
+                        <button style="     margin-left: 97px;
+                                margin-top: 0px;
+                                background: #2f4050;
+                                border-color: black;
+                                color: #ffffff!important;
+                                width: 270px;
+                                height: 38px;
+                                border: 2px solid rgb(14, 14, 14);
+                                "
+                                (click)="ocultar()" type="button" class="" >Entendido</button>
+                    </div>
+                </div>
+
+
+            </li>
+
+        </ul>
+
+
+    </blockquote>
+
+</div>
+
+<app-claro-ip-tv-modal [message]="modal.message" (hideModal)="hideModal()" [modal]="modal.visible" [type]="modal.type"></app-claro-ip-tv-modal>
+<app-claro-ip-tv-modal [message]="modalWithAction.message" (hideModal)="continue()" [modal]="modalWithAction.visible" [type]="modalWithAction.type"></app-claro-ip-tv-modal>

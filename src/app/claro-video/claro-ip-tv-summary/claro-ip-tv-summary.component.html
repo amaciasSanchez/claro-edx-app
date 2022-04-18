@@ -1,0 +1,83 @@
+<div class="container my-auto">
+    <div class="row mt-3">
+        <div class="col-xs-8 col-lg-6 col-xl-6 ">
+            <div class="row">
+                <div class="col">
+                    <h4 class="title-page text-lg-left" style="color: gray; margin-top: 20px;margin-bottom: 13px;"> Confirma los datos de la orden de producto… </h4>
+                </div>
+            </div>
+
+            <div class="tamanoCards">
+                <div class="card">
+                <span style="color:#757575;display: inline-block;margin-left: 1px;justify-items: center;padding-top: 9px; font-size: 15px;">
+                    <img src="assets/images/claroIpTv/sum_1.PNG" style="width: 30px; float: left;margin-top: -8px;" alt="">{{name}}   {{lastname}}</span>
+
+                    <span style="color:#757575;display: inline-block;margin-left: 1px;justify-items: center;padding-top: 9px; font-size: 15px; margin-bottom: 6px;">
+                    <img src="assets/images/claroIpTv/sum_2.PNG" style="width: 31px;
+                    float: left;
+                    margin-top: -2px;" alt="">{{ci}}</span>
+
+                </div>
+            </div>
+            <div class="tamanoCards">
+                <div class="card">
+                    <span style="color:#757575;display: inline-block;margin-left: 1px;justify-items: center;padding-top: 9px; font-size: 15px;">
+                        <img src="assets/images/claroIpTv/sum_3.PNG" style="width: 30px; float: left;margin-top: -8px;" alt="">{{plan}}</span>
+                    <span style="color:#757575;display: inline-block;margin-left: 1px;justify-items: center;padding-top: 9px; font-size: 15px;">
+                        <img src="assets/images/claroIpTv/sum_4.PNG" style="width: 30px; float: left;margin-top: -4px;" alt="">{{plandescription}}</span>
+                    <span style="color:#757575;display: inline-block;margin-left: 1px;justify-items: center;padding-top: 9px; font-size: 15px;">
+                         <img src="assets/images/claroIpTv/sum_5.PNG" style="width: 30px; float: left;margin-top: -4px;" alt="">${{plancost}} </span>
+
+                </div>
+            </div>
+            <div class="tamanoCards">
+                <div class="card">
+                        <span style="color:#757575;display: inline-block;margin-left: 1px;justify-items: center;padding-top: 9px; font-size: 15px;">
+                            <img src="assets/images/claroIpTv/sum_6.PNG" style=" width: 31px;height: 54px; float: left;margin-top: -8px;" alt="">Contrato: {{contract}}
+                            <span > <br> {{contractDesc}} </span></span>
+
+                    <span style="color:#757575;display: inline-block;margin-left: 1px;justify-items: center;padding-top: 9px; font-size: 15px;">
+                            <img src="assets/images/claroIpTv/sum_7.PNG" style="width: 30px; float: left;margin-top: -4px;" alt="">{{pay}} </span>
+
+                </div>
+            </div>
+            <div class="tamanoCards">
+                <div class="card">
+                    <span style="color:#757575;display: inline-block;margin-left: 1px;justify-items: center;padding-top: 9px; font-size: 15px;">
+                        <img src="assets/images/claroIpTv/sum_8.PNG" style=" width: 31px;height: 45px; float: left;margin-top: -8px;" alt="">{{directionC}}
+                        <span > <br> {{direction}} </span></span>
+
+                    <span style="color:#757575;display: inline-block;margin-left: 1px;justify-items: center;padding-top: 9px; font-size: 15px;">
+                        <img src="assets/images/claroIpTv/sum_9.PNG" style="width: 30px; float: left;margin-top: -4px;" alt="">{{devices}}</span>
+
+                </div>
+            </div>
+            <app-btn-volver-vista style="position:absolute; left: -67px;
+            bottom: 9px;">
+            </app-btn-volver-vista>
+
+
+            <div class="row" style="    width: 80%;
+            position: absolute;
+            left: 90px;
+             bottom: 10px;
+            ">
+                <div class="col-8">
+                    <button (click)=" executeTaskConfirmProductOrder();" class="btn btn-danger btn-lg btn-block">Confirmar</button>
+                    <app-claro-ip-tv-alert-successful [activarpopover]="activarpopover" (btnEntendido)="btnEntendido($event)">
+                    </app-claro-ip-tv-alert-successful>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-lg-6 col-xl-6 p-0">
+            <div class="back-div">
+                <div class="float-right img-back">
+                    <img src="assets/images/claroIpTv/ResumenIpTv.png" style="width: 100%;
+                    height: 100%;
+                    float: right!important;
+                    margin-right: -25%;  " alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

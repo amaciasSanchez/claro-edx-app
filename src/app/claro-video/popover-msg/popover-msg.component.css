@@ -1,0 +1,113 @@
+.avi-close-desktop {
+    bottom: 0;
+    margin: 0 auto;
+    z-index: 12;
+    width: auto;
+    text-align: left;
+    position: relative;
+}
+.avi-open-desktop {
+    position: absolute;
+    bottom: 210px;
+    display: none;
+    width: 100%;
+    margin: 0 auto;
+    height: 0;
+    background: #fff;
+    padding: 0;
+    z-index: 15;
+    right: -70px;
+}
+
+.mensaje-open,
+.preguntas-desktop .mensaje-open {
+    position: absolute;
+}
+
+.mensaje-open {
+    background: 0 0/100% #fff;
+    padding: 15px 30px;
+    border-radius: 15px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: 0;
+    height: auto;
+    box-shadow: 0 5px 4px -5px rgba(0, 0, 0, 0.75);
+    vertical-align: bottom;
+    display: table-cell;
+    bottom: -173px;
+    border: 1px solid #b3b3b3;
+}
+
+.mensaje-open p,
+.preguntas-desktop .mensaje-open p {
+    color: #333 !important;
+}
+.avi-close-desktop p {
+    font-size: 19px;
+    line-height: 14px;
+    /* max-width: 240px; */
+    max-width: 432px;
+    margin: 5px auto;
+    font-weight: 300;
+    text-align: center;
+}
+
+.mensaje-open::after {
+    content: "";
+    position: absolute;
+    left: 47%;
+    top: 100%;
+    width: 0;
+    height: 0;
+    border-left: 0 solid transparent;
+    border-right: 30px solid transparent;
+    border-top: 35px solid #fff;
+    clear: both;
+}
+.mensaje-open::before {
+    content: "";
+    position: absolute;
+    left: 47%;
+    top: 100%;
+    width: 0;
+    height: 0;
+    border-left: 0 solid transparent;
+    border-right: 30px solid transparent;
+    border-top: 35px solid #c8c8c8;
+    clear: both;
+}
+.button-arrow-right {
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    border: 1px solid #b3b3b3;
+    outline: none;
+}
+
+.text {
+    font-size: 20px;
+}
+.icon-right {
+    color: #e74c3c;
+    font-weight: bold;
+    font-size: 28px;
+}
+.content-popover {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.content-popover button {
+    margin-right: 20px;
+}
+
+.color-botttom {
+    margin-bottom: 10px;
+    width: auto;
+    width: 50%;
+    margin: 0 auto;
+    background: #2f4050;
+    margin-top: 38px !important;
+}

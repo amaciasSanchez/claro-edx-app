@@ -1,0 +1,61 @@
+img {
+    width: 30px;
+    margin-right: 5px;
+}
+
+.producto-servicio .button-arrow-right {
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    border: 1px solid #b3b3b3;
+    outline: none;
+}
+.producto-servicio  ul {
+    list-style: none;
+}
+
+.producto-servicio li {
+    margin-top: 36px;
+}
+.producto-servicio .text {
+    font-size: 17px;
+}
+.producto-servicio .icon-right {
+    color: #e74c3c;
+    font-weight: bold;
+    font-size: 28px;
+}
+.producto-servicio .divider {
+    border-bottom: 1px solid #b3b3b3;
+    margin-top: 20px;
+}
+.producto-servicio .header-li {
+    margin-bottom: 10px;
+}
+
+.producto-servicio .inputText {
+    background-color: #fff;
+    border-radius: 3px;
+    border: 1px solid #ced4da;
+    padding: 0.375rem 0.75rem;
+}
+
+.modal-ul li{
+    margin-top: 10px;
+}
+
+body .ui-paginator {
+    background-color: #428d98f0;
+    padding: 0.714em 1em;
+}
+
+.logoClaro {
+    width: 134px;
+    margin-right: 16px;
+}
+.pageDescription {
+    font-size: 19px;
+    position: relative;
+    top: 17px; 
+    font-size: 2vw;
+}

@@ -1,0 +1,28 @@
+<p-dialog [(visible)]="modal"[style]="{width: '38vw'}" >
+
+<div style="background-color: black;">
+    <span style="display: block; text-align: center; margin-bottom: 16px;">
+        <i class="ui-icon-report" *ngIf="type=='ERROR'"
+            style="color: #e74c3c;font-size: 67px;"></i>
+        <i class="ui-icon-report-problem" *ngIf="type=='ALERT'"
+            style="color:#f1b606;font-size: 67px;"></i>
+        <i class="material-icons" *ngIf="type=='SUCCESS'"
+            style="color: #e30000;font-size: 67px;">check_circle</i>
+        <i class="ui-icon-mail" *ngIf="type=='MAIL'"
+            style="color: #e30000;font-size: 67px;"></i>
+    </span>
+
+    <div style="line-height: 24px; text-align: center; padding: 15px; color: white;">
+        <span>
+            {{message}}
+        </span>
+    </div>
+
+
+    <div style="width: 100%;">
+        <button type="button" class="mx-auto" style="width: 100%;     background: #2f4050;" pButton
+            (click)="close()" label="Entendido"></button>
+    </div>
+</div>
+
+</p-dialog>

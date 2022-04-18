@@ -1,0 +1,452 @@
+/* You can add global styles to this file, and also import other style files */
+body .ui-dialog .ui-dialog-footer {
+    text-align: center !important;
+}
+body .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon {
+    display: none;
+}
+.error-content {
+    // margin-top: 89px;
+    margin-top: 52px;
+}
+.error-message {
+    padding: 9px;
+    text-align: center;
+}
+.error-message p {
+    color: #c27e85;
+    font-size: 13px !important;
+    line-height: 15px !important;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: lighter;
+    margin-bottom: 0;
+}
+
+.title {
+    line-height: 33px;
+}
+.login-body {
+    height: 100vh !important;
+}
+
+.title-table {
+    background: #f9fafb;
+    // border-bottom: 1px solid #d3d8db;
+    border-left: none;
+    color: #6d6d6d;
+    font-size: 1rem;
+    font-weight: 400;
+    // max-width: 320px;
+    // padding: 20px 2% 20px 2%;
+    text-align: left;
+    text-transform: none;
+    vertical-align: inherit;
+}
+
+#compareBackLink {
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 5px 22px;
+    font-size: 15px;
+    display: inline-flex;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    width: initial;
+    text-align: center;
+    max-width: initial;
+    min-width: initial;
+    text-transform: lowercase;
+    color: #1f98af;
+    text-decoration: none;
+    padding-top: 6px !important;
+    padding-bottom: 1px !important;
+}
+#compareBackLink a i {
+    line-height: 19px !important ;
+    float: left !important;
+    margin-left: -8px !important;
+}
+
+.login-panel {
+    text-align: center;
+    width: 350px;
+    min-height: 440px;
+    padding: 44px 20px !important;
+    margin: 42px auto 0px 664px !important;
+}
+.login-body {
+    padding: 1px;
+    background-color: rgb(255, 255, 255);
+    background-size: auto;
+    background-color: #86443f;
+    background-size: 100% 100% !important;
+}
+
+.active-state {
+    background-color: #11c847;
+    padding: 8px;
+    border-radius: 6px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    color: #fff;
+}
+
+.ui-dropdown-item-empty {
+    text-indent: initial !important;
+}
+
+body .ui-steps::before {
+    border: none !important;
+}
+.login-body {
+    padding: 1px;
+    background: url("assets/images/claroUp/login-image.jpg") top left no-repeat;
+}
+
+.toolbar-precio-oferta {
+    background-color: #fff;
+    left: 0;
+    padding: 12px 12px 0;
+    position: fixed;
+    right: 0;
+    top: 168px;
+    z-index: 99;
+    border: 1px #ddd solid;
+    margin-top: -17px;
+}
+.toolbar-steps-for-price {
+    margin: 0px;
+    position: fixed;
+    z-index: 99;
+    margin-top: 0px;
+    padding-top: 0;
+    width: 100%;
+    margin-left: 0px;
+    background-color: #ffffff;
+}
+
+.carousel-demo
+    .ui-carousel
+    .ui-carousel-content
+    .ui-carousel-item
+    .car-details
+    > .p-grid {
+    border: 1px solid #b3c2ca;
+    border-radius: 3px;
+    margin: 0.3em;
+    text-align: center;
+    padding: 2em 0 2.25em 0;
+}
+.carousel-demo
+    .ui-carousel
+    .ui-carousel-content
+    .ui-carousel-item
+    .car-data
+    .car-title {
+    font-weight: 700;
+    font-size: 20px;
+    margin-top: 24px;
+}
+.carousel-demo
+    .ui-carousel
+    .ui-carousel-content
+    .ui-carousel-item
+    .car-data
+    .car-subtitle {
+    margin: 0.25em 0 2em 0;
+}
+.carousel-demo
+    .ui-carousel
+    .ui-carousel-content
+    .ui-carousel-item
+    .car-data
+    button {
+    margin-left: 0.5em;
+}
+.carousel-demo
+    .ui-carousel
+    .ui-carousel-content
+    .ui-carousel-item
+    .car-data
+    button:first-child {
+    margin-left: 0;
+}
+.carousel-demo .ui-carousel.custom-carousel .ui-carousel-dot-icon {
+    width: 16px !important;
+    height: 16px !important;
+    border-radius: 50%;
+}
+.carousel-demo
+    .ui-carousel.ui-carousel-horizontal
+    .ui-carousel-content
+    .ui-carousel-item.ui-carousel-item-start
+    .car-details
+    > .p-grid {
+    margin-left: 0.6em;
+}
+.carousel-demo
+    .ui-carousel.ui-carousel-horizontal
+    .ui-carousel-content
+    .ui-carousel-item.ui-carousel-item-end
+    .car-details
+    > .p-grid {
+    margin-right: 0.6em;
+}
+
+.content-Ca .ui-carousel-prev,
+.content-Ca .ui-carousel-next {
+    width: 45px !important;
+    border-radius: 50%;
+    padding: 5px !important;
+}
+.pagin button {
+    display: none;
+}
+.pi.pi-circle-on {
+}
+
+.ui-dialog-wrapper {
+    z-index: 11111111111 !important;
+}
+body .ui-widget-overlay {
+    background-color: #58575c;
+    opacity: 0.97 !important;
+}
+
+body {
+    font-family: "Poppins", Roboto !important;
+}
+
+.padding_resumen_bottom {
+    line-height: 24px;
+}
+.ui-scrollpanel-wrapper {
+    height: auto !important;
+}
+.icon-perfil {
+    font-size: 35px;
+    color: #ffffff;
+}
+.ui-carousel-item {
+    min-width: 172px !important;
+}
+
+.layout-breadcrumb-options a:hover {
+    background-color: #e8e8e8;
+}
+
+.layout-breadcrumb-options {
+    float: right;
+}
+.layout-breadcrumb-options a {
+    color: #757575;
+    display: inline-block;
+    // width: 42px;
+    height: 32px;
+    margin-right: 33px;
+    line-height: 42px;
+    text-align: center;
+    padding-right: 16px;
+    padding-left: 9px;
+    -moz-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
+    -webkit-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+}
+
+.layout-breadcrumb-options a:hover {
+    color: #428d98;
+    text-decoration: none !important;
+}
+.layout-breadcrumb-options a span {
+    position: relative;
+    top: -5px;
+    left: 5px;
+}
+.chatform {
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 30px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+body .ui-state-highlight {
+    background-color: #3f3a36 !important;
+    color: #ffffff;
+}
+
+@media screen and (max-width: 1024px) {
+    .noFloat {
+        float: none !important ;
+    }
+}
+
+.tooltip {
+    position: absolute;
+    z-index: 10700;
+    display: inline;
+    width: 200px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: left;
+    text-align: start;
+    text-shadow: none;
+    text-transform: none;
+    letter-spacing: normal;
+    word-break: normal;
+    word-spacing: normal;
+    word-wrap: normal;
+    white-space: normal;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    line-break: auto;
+    text-decoration: none;
+}
+.tooltip.in {
+    filter: alpha(opacity=90);
+    opacity: 0.9;
+}
+.tooltip.top {
+    padding: 5px 0;
+    margin-top: -3px;
+}
+.tooltip.right {
+    padding: 0 5px;
+    margin-left: 3px;
+}
+.tooltip.bottom {
+    padding: 5px 0;
+    margin-top: 3px;
+}
+.tooltip.left {
+    padding: 0 5px;
+    margin-left: -3px;
+}
+.tooltip-inner {
+    max-width: 200px;
+    padding: 3px 8px;
+    // color: #ffffff;
+    color: #706d6d !important;
+    text-align: left;
+    // margin-left: -25px;
+    text-indent: 0;
+    background-color: #ffffff !important;
+    border-radius: 4px;
+}
+.tooltip-arrow {
+    position: absolute;
+    width: 5px;
+    height: 2px;
+    border-color: transparent;
+    border-style: solid;
+}
+.tooltip.top .tooltip-arrow {
+    bottom: 0;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px 5px 0;
+    border-top-color: #000000;
+}
+.tooltip.top-left .tooltip-arrow {
+    right: 5px;
+    bottom: 0;
+    margin-bottom: -5px;
+    border-width: 5px 5px 0;
+    border-top-color: #000000;
+}
+.tooltip.top-right .tooltip-arrow {
+    bottom: 0;
+    left: 5px;
+    margin-bottom: -5px;
+    border-width: 5px 5px 0;
+    border-top-color: #000000;
+}
+.tooltip.right .tooltip-arrow {
+    top: 50%;
+    left: 0;
+    margin-top: -5px;
+    border-width: 5px 5px 5px 0;
+    border-right-color: #000000;
+}
+.tooltip.left .tooltip-arrow {
+    top: 50%;
+    right: 0;
+    margin-top: -5px;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #000000;
+}
+.tooltip.bottom .tooltip-arrow {
+    top: 0;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 0 5px 5px;
+    border-bottom-color: #000000;
+}
+.tooltip.bottom-left .tooltip-arrow {
+    top: 0;
+    right: 5px;
+    margin-top: -5px;
+    border-width: 0 5px 5px;
+    border-bottom-color: #000000;
+}
+.tooltip.bottom-right .tooltip-arrow {
+    top: 0;
+    left: 5px;
+    margin-top: -5px;
+    border-width: 0 5px 5px;
+    border-bottom-color: #000000;
+}
+.area-tooltip {
+    position: absolute;
+    visibility: hidden;
+}
+
+.custom-carousel-iptv{
+
+}
+.custom-carousel-iptv .ui-carousel-dots-container{
+    visibility: hidden !important;
+}
+
+.custom-carousel-iptv .ui-carousel-item {
+    min-width: 70px !important;
+}
+
+.custom-carousel-iptv .ui-carousel-dot-icon{
+    visibility: hidden !important;
+}
+
+.custom-carousel-iptv .ui-carousel-dots-container .ui-helper-reset .custom-carousel-iptv{
+    visibility: hidden !important;
+}
+
+
+.calendar-iptv .ui-state-highlight{
+    visibility: visible !important;
+}
+
+.calendar-iptv .ui-datepicker tbody td a.ui-state-active{
+    visibility: visible !important;
+    color: #212121 !important;
+}
+
+.label-iptv-select-address-dropdown-address .ui-dropdown-label-container{
+     width: 400px !important;
+}
+
+.label-iptv-select-address-dropdown-cities .ui-dropdown-label-container{
+    width: 200px !important;
+}
+
+.iptv-summary-div-card {
+    border: 1px solid #154577!important;
+    border-radius: 1.25rem!important;
+    margin-bottom: 5px;
+}
+
+.iptv-summary-div-card-size {
+    width: 85%;
+}

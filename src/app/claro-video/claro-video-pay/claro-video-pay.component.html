@@ -1,0 +1,219 @@
+<p-blockUI [blocked]="aProgressSpinner">
+    <div class="splash-screen">
+        <div class="splash-loader-container">
+            <svg class="splash-loader" width="65px" height="65px" viewBox="0 0 66 66"
+                xmlns="http://www.w3.org/2000/svg">
+                <circle class="splash-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30">
+                </circle>
+            </svg>
+        </div>
+    </div>
+</p-blockUI>
+<div class="container claro-video-pay" style="margin-top:20px ;">
+    <div class="row" style="padding-left:25px ;">
+        <div class="col-12">
+            <h2 *ngIf="option === 0" class="title-page">Debes seleccionar una forma de pago para este servicio…</h2>
+            <h2 *ngIf="option!= 0" class="title-page"> Esta es la mejor forma de pago para tu servicio…</h2>
+            <app-btn-volver-vista style="position:absolute; right: 30px; top: 35px;"></app-btn-volver-vista>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+            <div class="col-12 my-auto mx-auto">
+                <div class="card mx-auto" style="width: 100%;">
+                    <div class="card-block mx-auto view-offer">
+                        <div class="container-img mx-auto">
+                            <img src="assets/images/claroVideo/claroVideoBlack.png" class="w-100 img-responsive" style=" -webkit-clip-path: polygon(0 0, 77% 0, 100% 19%, 100% 100%, 80% 100%, 22% 100%, 0 84%, 0% 20%);
+                            clip-path: polygon(0 0, 77% 0, 100% 19%, 100% 100%, 80% 100%, 22% 100%, 0 84%, 0% 20%);"
+                                alt="">
+                        </div>
+
+                        <div class="row mx-auto border-claro">
+                            <div class="col-4 icon-imagen">
+                                <img src="assets/images/claroVideo/Imagen4.png" style="
+                                width: 40px;
+                                height: auto; display:block; margin:auto; " alt="">
+
+                            </div>
+                            <div class="col-8 my-auto desc">
+                                {{offer.offerName}}
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <ul class="mx-auto">
+                                <li>
+                                    <span style="font-size: 2.3vw; padding-right: 5px;">${{offer.priceTotal}}</span>Mensual
+                                </li>
+                                <li *ngIf="offer.priceTotal > 0" >
+                                    Incluido Impuestos
+                                </li>
+                                <li>
+                                    <button (click)="activarOverlay()" type="button" class="btn btn-link">
+                                        Mas informacion</button>
+
+                                    <app-claro-video-alert [activarpopover]="activarpopover" [offer]="offer"
+                                        (btnEntendido)="btnEntendido($event)">
+
+                                    </app-claro-video-alert>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8 payment">
+            <p-carousel [value]="metodos" [numVisible]="2" [numScroll]="1" [circular]="false"
+                [responsiveOptions]="responsiveOptions">
+                <ng-template let-metodo pTemplate="item">
+                    <div class="car-details">
+                        <div class="p-grid p-nogutter mx-auto">
+                            <div class="ui-g ">
+                                <div class="ui-g-10"></div>
+                                <div *ngIf="metodo== selected " class="ui-g-2">
+                                    <img class="check" src="assets/images/claroVideo/check.png">
+                                </div>
+                            </div>
+
+                            <ul>
+                                <li>
+                                    <div class="ui-g mx-auto ">
+                                        <div class="ui-g-4 my-auto">
+                                            <img [src]="metodo.subproductId | iconInterpreter: 'SUBSCRIPTION_TYPE'" style="
+                                            width: 30px;
+                                            height: auto; display:block; margin:auto;" alt="">
+
+                                        </div>
+                                        <div class="ui-g-8">
+                                            <div class="ui-g-12 pago-descripcion" >
+                                                <strong>
+                                                   Numero de Servicio
+                                                </strong>
+                                            </div>
+                                            <div class="ui-g-12 pago-descripcion" >
+                                                {{ metodo.serviceNumber }}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="ui-g mx-auto ">
+                                        <div class="ui-g-4 my-auto">
+                                            <img src="assets/images/icons/products/invoice.png" style="
+                                            width: 30px;
+                                            height: auto; display:block; margin:auto;" alt="">
+
+                                        </div>
+                                        <div class="ui-g-8">
+                                            <div class="ui-g-12 pago-descripcion" >
+                                                {{metodo.contractId}}
+                                            </div>
+                                            <div class="ui-g-12 pago-descripcion" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="ui-g mx-auto ">
+                                        <div class="ui-g-4 my-auto">
+                                            <img [src]="metodo.type | iconInterpreter: 'PAYMENT_METHOD'" style="
+                                            width: 30px;
+                                            height: auto; display:block; margin:auto;" alt="">
+
+                                        </div>
+                                        <div class="ui-g-8">
+                                            <div class="ui-g-12 pago-descripcion" [title]="metodo.bank.toUpperCase( )" >
+                                                {{metodo.bank.toUpperCase( )}}
+                                            </div>
+                                            <div class="ui-g-12 pago-descripcion" [title]="metodo.pan.toUpperCase() | labelMask" >
+                                                {{metodo.pan.toUpperCase( ) | labelMask }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="ui-g mx-auto ">
+                                        <div class="ui-g-4 my-auto">
+                                            <img src="assets/images/icons/products/calendar.png" style="
+                                                width: 30px;
+                                                height: auto; display:block; margin:auto;" alt="">
+
+                                        </div>
+                                        <div class="ui-g-8">
+                                            <div class="ui-g-12 pago-descripcion" >
+                                            
+                                            </div>
+                                            <div class="ui-g-12 pago-descripcion" >
+                                                {{metodo.activationDate}}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="ui-g mx-auto ">
+                                        <div class="ui-g-4 my-auto">
+                                            <img src="assets/images/icons/products/offer.png" style="
+                                                width: 30px;
+                                                height: auto; display:block; margin:auto;" alt="">
+
+                                        </div>
+                                        <div class="ui-g-8">
+                                            <div class="ui-g-12 pago-descripcion" [title]="metodo.serviceDescription" >
+                                                {{metodo.serviceDescription}}
+                                            </div>
+                                            <div class="ui-g-12 pago-descripcion" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div
+                                style=" margin-bottom:  20px; margin-top: 20px; margin-left: 40px; margin-right: 40px;">
+
+                                <Button (click)="setSelectedValue(metodo)"
+                                    [ngClass]="[metodo == selected ? 'selected-color': 'unselected-color'] ">Seleccionar</Button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </ng-template>
+            </p-carousel>
+        </div>
+
+    </div>
+
+    <div class="row" style="width: 100%;">
+        <Button class="btn-back" (click)="retroceder()">
+            <div class="d-flex justify-content-center">
+
+                <div>
+                    <img src="assets/images/claroVideo/retroceder.png" alt="">
+                </div>
+                <div style="  display: flex;
+                align-items: center; padding-left: 10px; padding-right: 10px;">
+                    Regresar
+
+                </div>
+            </div>
+
+        </Button>
+        <Button class="btn-continuar" (click)="crearProcesoStandAlone()">
+            <div class="d-flex justify-content-center">
+
+                <div style="  display: flex;
+                align-items: center; padding-left: 10px; padding-right: 10px;">
+                    Continuar proceso…
+
+                </div>
+                <div>
+                    <img src="assets/images/claroVideo/continuar.png" alt="">
+                </div>
+            </div>
+
+        </Button>
+    </div>
+</div>
+<app-claro-video-modal-validaciones [message]="modal.message"  (hideModal)="hideModal()" [modal]="showModal" [type]="modal.type" ></app-claro-video-modal-validaciones>

@@ -1,0 +1,124 @@
+<style>
+    .ui-carousel-dots-container{
+        visibility: hidden !important;
+    }
+    .ui-carousel-item {
+        min-width: 60px !important;
+    }
+    .ui-carousel-dots-container{
+        visibility: hidden !important;
+    }
+</style>
+
+<div class="container my-auto">
+    <div class="row mt-3">
+        <div class="col-xs-8 col-lg-6 col-xl-6 ">
+            <div class="row">
+                <div class="col-lg">
+                    <h3 class="title-page" style="color: gray; margin-top: 12px; margin-bottom: 14px; font-size: 20px!important;"> Estos dispositivos serán instalados a tu cliente…
+                    </h3>
+                </div>
+            </div>
+            <div class="row">
+
+
+                <div class="title-page" style="margin-left:18px" >
+                    <div style="float: left;">
+                        <p-checkbox [(ngModel)]="install" [binary]="true" ></p-checkbox>
+                    </div>
+                    <div ngif="install" style="float: left; margin-top: -7px; margin-left: -5px;">
+                        <span class="title-page" style="color: gray;margin-right: -5px;"> Instalar</span>
+                        <button [disabled]="!install" (click)="disminuir()" class="title-page btn btn-light rounded-0" style="padding-bottom: 5px;padding-top: 6px;"> - </button>
+                        <input type="text" [value]="selectedValue" [readOnly]="true" class="devices"  placeholder="0" >
+                        <button [disabled]="!install" (click)="aumentar()" class=" title-page btn btn-light rounded-0" style="padding-bottom: 5px;padding-top: 6px;">+</button>
+                        <span class="title-page" style="color: gray; margin-right: 5px;margin-left: -4px;"> dispositivo(s) adicional(es)</span>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="col-12 payment" style="margin-top: 20px;">
+                <p-carousel [value]="devices" [numVisible]="2" [numScroll]="2" [circular]="false"
+                            [responsiveOptions]="responsiveOptions">
+                    <ng-template let-device pTemplate="item">
+                        <div>
+                            <ul style="margin-right: 8px;">
+
+                                <div *ngIf="device.id === 2" style="margin-left: 50px;">
+                                    <img  src="assets/images/claroIpTv/remotecontrol.PNG" alt="">
+                                </div>
+                                <div *ngIf="device.id === 1" style="margin-left: 55px;">
+                                    <img  src="assets/images/claroIpTv/septupdevice.PNG" alt="">
+                                </div>
+                                <li *ngFor="let line of device.paymentRow" >
+                                    <div class="ui-g mx-auto ">
+
+                                        <div class="ui-g-3 my-auto">
+
+                                            <img [src]="line.icon" style="
+                                            width: 30px;
+                                            height: auto; display:block; margin:auto;" alt="">
+                                        </div>
+                                        <div class="ui-g-8" style="line-height: 15px;">
+
+                                            <div class="ui-g-12" style="padding-top: 0px; padding-bottom: 0px;">
+                                                {{ line.detalle}}
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </li>
+
+                            </ul>
+
+                            <li style="list-style:none;text-align: center; margin-left: 5px;">
+                                <button  type="button" class="btn btn-link">
+                                    Mas informacion</button>
+
+                                <!--<app-claro-video-alert [activarpopover]="activarpopover" [offer]="offer"
+                                   (btnEntendido)="btnEntendido($event)">
+
+                                </app-claro-video-alert>-->
+                            </li>
+
+                        </div>
+
+                    </ng-template>
+
+                </p-carousel>
+            </div>
+
+            <app-btn-volver-vista style="position:absolute; left: -43px;
+            bottom: -53px;"></app-btn-volver-vista>
+            <!-- Fin de carousel -->
+            <div class="row" style="width: 100%; position:absolute; left: 130px; bottom: 50px;">
+                <div class="col-8">
+                    <button class="btn-continuar btn-lg btn-block" (click)="continue()">
+                        <div class="d-flex justify-content-center">
+                            <div style="display: flex; align-items: center; padding-left: 10px; padding-right: 10px;">
+                                Continuar proceso…
+                            </div>
+                            <div>
+                                <img src="assets/images/claroVideo/continuar.png" alt="">
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-lg-6 col-xl-6 p-0">
+            <div class="back-div">
+                <div class="float-right img-back">
+                    <img src="assets/images/claroIpTv/DeviceIptv.png" style="width: 100%; height: 100%; margin-left: 115px;
+                    margin-top: -1px; " alt="" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<app-claro-video-modal-validaciones [message]="modal.message"  (hideModal)="hideModal()" [modal]="modal.visible" [type]="modal.type" ></app-claro-video-modal-validaciones>

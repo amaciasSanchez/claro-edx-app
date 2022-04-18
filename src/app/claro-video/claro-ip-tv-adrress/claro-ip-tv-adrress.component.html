@@ -1,0 +1,52 @@
+<div class="miclase" style="margin-left: 6%;">
+    <div class="float-right img-back">
+        <img src="assets/images/claroIpTv/DireccionIpTv.png" style="width: 114%;
+        height: 100%;
+        float: right!important;
+        margin-right: -25%;" alt="" />
+    </div>
+
+    <div> <br><br>
+        <h3 class="texxto">¿Dónde vive tu cliente?</h3>
+
+    </div>
+    <br>
+    <h6 class="texxto">Necesitamos la ciudad y dirección donde tu cliente usará el servicio para coordinar su instalación</h6>
+    <br>
+
+    <p-dropdown [options]="comboCities"
+                optionLabel="cityDescription"
+                placeholder="Seleccione Ciudad"
+                styleClass="label-iptv-select-address-dropdown-cities"
+                (onChange)="selectCity($event)"
+                [(ngModel)]="selectedCity"></p-dropdown>
+
+    <br><br>
+    <p-dropdown [options]="comboAddress"
+                styleClass="label-iptv-select-address-dropdown-address"
+                optionLabel="fullAddress"
+                placeholder="Direccion Completa"
+                [(ngModel)]="selectedAddress"></p-dropdown>
+    <br>
+    <div style="margin-top:1%;">
+        <img src="assets/images/claroIpTv/MapaIpTv.png" alt="mapa" style="width: 500px; margin-bottom: 40px;">
+    </div>
+
+</div>
+<app-btn-volver-vista style="position:absolute; bottom: 1   px;"></app-btn-volver-vista>
+
+<div class="btnfin" style="margin-left: 140px!important;">
+    <div class="col-4">
+        <button class=" btn-lg " (click)="continue()">
+            <div class="d-flex justify-content-center">
+                <div style="display: flex; align-items: center; padding-left: 10px; padding-right: 10px;">
+                    Continuar proceso…
+                </div>
+                <div>
+                    <img src="assets/images/claroVideo/continuar.png" alt="">
+                </div>
+            </div>
+        </button>
+    </div>
+
+</div>

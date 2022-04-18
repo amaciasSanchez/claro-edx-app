@@ -1,0 +1,65 @@
+.app-title {
+    font-size: 24px;
+  }
+  .title-page{
+
+    font-size: 35px;
+    text-align: start;
+    margin-left: 8%;
+    padding: 20px;
+    color: gray;
+ }
+
+  .carousel-all-offer .ui-carousel-dots-container{
+      display: none;
+  }
+
+  
+.border-claro {
+    border-radius: 20px;
+
+    border-bottom:1px solid #000;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-height: 85px;
+
+    padding-top: 15px;
+    padding-bottom: 15px;
+    
+}
+
+.icon-imagen {
+    max-width: 70px;
+	max-height: 70px;
+	overflow: hidden;
+}
+
+.btn-danger{
+    background-color: red;
+    border-color: #000;
+}
+
+.carousel-all-offer .ui-carousel .ui-carousel-content .ui-carousel-item .car-details > .p-grid {
+     border: 0px solid #b3c2ca;
+    /* padding-top: 10px;
+    padding-bottom: 10px; */
+    max-width: 265px;
+
+}
+
+
+.carousel-all-offer .ui-carousel-items-container{
+  /* justify-content: space-around!important;
+  display: flex!important; */
+}
+
+.carousel-all-offer .custom-carousel{
+  /* background-color: greenyellow; */
+}
+
+.carousel-all-offer .custom-carousel .ui-carousel-item{
+  /* background-color: red; */
+  border: 1px solid transparent !important;
+  border-radius: 45px;
+  /* max-width: 250px; */
+}

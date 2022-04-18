@@ -1,0 +1,102 @@
+<section class="section-content producto-servicio " style="width: 100%">
+    <div style="margin: 24px;">
+        <div class="row" style="justify-content: space-between;" >
+            <div class="ui-g-10 my-auto">
+                <img alt="" src="assets/images/bundle/Header/logoclaro.png" class="logoClaro">
+                <span class="pageDescription"> Estos son los productos y servicios de tu cliente…</span>
+            </div>
+    
+            <div style="display: flex; width: 140px; justify-content: space-between; padding: 10px;" >
+                <div style="height: 60px; ">
+                    <app-btn-volver-busqueda-cliente style="margin-right: 10%;"></app-btn-volver-busqueda-cliente>
+                </div>
+                <div style="height: 60px; ">
+                    <app-btn-volver-vista style="margin-right: 10%;"></app-btn-volver-vista>    
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <personal-information-process style="width: 100%;"></personal-information-process>
+        </div>
+
+
+        <p-table
+            #dt 
+            [value]="subscriptions"
+            [totalRecords]="subscriptions != null ? subscriptions.length : 0"
+            [rows]="5"
+            [paginator]="true"
+            [rowsPerPageOptions]="[5, 10, 20]" >
+            <ng-template pTemplate="body" let-subscription >
+                <tr style="border-bottom: 0px;" >
+                    <td colspan=5 style="padding: 15px;" >
+                        <strong class="text">
+                            <span title="Suscripción" >{{subscription.subscriptionInformation.properties.subproductDescription}}</span> 
+                            <span title="Código de Contrato"> ({{subscription.subscriptionInformation.properties.contractId}})</span>
+                        </strong>
+                    </td>
+                </tr>
+                <tr style="border-top: 0px;" >
+                    <td>  
+                        <img src="assets/images/icons/products/calendar.png" alt=""> 
+                        <span title="Fecha de Suscripción" >{{subscription.subscriptionInformation.activeDate | date: 'dd/MM/yyyy HH:mm'}}</span>
+                    </td>
+                    <td>
+                        <img [src]="(subscription.subscriptionInformation.properties.subproductId == 'AUT' || 
+                                    subscription.subscriptionInformation.properties.subproductId == 'PPA' || 
+                                    subscription.subscriptionInformation.properties.subproductId == 'TAR') ? 
+                                        'assets/images/icons/products/phone.png' 
+                                    : ((subscription.subscriptionInformation.properties.subproductId == 'INT.WTTX' || 
+                                    subscription.subscriptionInformation.properties.subproductId == 'INT.GPON') ? 
+                                        'assets/images/icons/products/wifi.png'
+                                        : 'assets/images/icons/products/phone.png') " alt="" > 
+                        <span title="Código de Suscripción">{{subscription.subscriptionInformation.serviceNumber}}</span>
+                    </td>
+                    <td>
+                        <img src="assets/images/icons/products/offer.png" alt="" > 
+                        <span title="Plan de Suscripción" >{{subscription.subscriptionInformation.properties.model}}</span>
+                    </td>
+                    <td>
+                        <img [src]="(subscription.subscriptionInformation.paymentType == 'Contrafactura') ? 
+                                        'assets/images/icons/products/invoice.png' 
+                                    : ((subscription.subscriptionInformation.paymentType == 'Tarjeta de Crédito') ? 
+                                            'assets/images/icons/products/card.png'
+                                        : ((subscription.subscriptionInformation.paymentType == 'Cuenta Bancaria') ? 
+                                                'assets/images/icons/products/bank.png'
+                                            : ((subscription.subscriptionInformation.paymentType == 'Cheque') ? 
+                                                    'assets/images/icons/products/check.png'
+                                                : 'assets/images/icons/products/cash.png'))) " alt=""> 
+                        <span title="Forma de Pago" style="display: inline-block; position: relative; vertical-align: middle;" >
+                                <span style="display: block;" >{{subscription.subscriptionInformation.paymentType}}</span>
+                                <span style="display: block;" >{{subscription.subscriptionInformation.paymentDescription}}</span>
+                        </span>
+                    </td>
+                    <td align="center" >
+                        <button (click)="verServicios(subscription)"
+                                class="button-arrow-right ng-star-inserted" placement="top" ngbTooltip="Ver ofertas"
+                                style="border: hidden;margin-left: 5px;padding: 0px; background: transparent;">
+                                <img src="assets/images/icons/products/show.png" alt="" style="width: 30px;" >    
+                        </button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table> 
+
+        <div class="row" style="margin-top: 10px;">
+            <app-mensaje-info-servicio></app-mensaje-info-servicio>
+        </div>
+
+        <div class="row" style="display: none;" >
+            <div class="mx-auto">
+                <div style="margin-left: -333px; margin-top: 20px;">
+                    <img src="assets/images/claroVideo/arrow_trash.png" alt=""
+                    style="width: auto;height:60px; background: transparent;">
+                    <img src="assets/images/claroVideo/trash.png" alt=""
+                    style="width: auto;height: 60px; background: transparent;">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

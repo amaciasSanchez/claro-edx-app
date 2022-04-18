@@ -1,0 +1,201 @@
+:host ::ng-deep .ui-button {
+    margin: .5em .5em .5em 0;
+    width: 140px;
+}
+
+@media screen and (max-width: 40em) {
+    :host ::ng-deep .ui-dialog {
+        width: 75vw !important;
+    }
+}
+
+:host ::ng-deep button {
+    margin-right: .25em;
+}
+
+:host ::ng-deep .custom-toast .ui-toast-message {
+    background: #FC466B;
+    background: -webkit-linear-gradient(to right, #3F5EFB, #FC466B);
+    background: linear-gradient(to right, #3F5EFB, #FC466B);
+}
+
+:host ::ng-deep .custom-toast .ui-toast-message div {
+    color: #ffffff;
+}
+
+:host ::ng-deep .custom-toast .ui-toast-message.ui-toast-message-info .ui-toast-close-icon {
+    color: #ffffff;
+}
+
+.global {
+    position: relative;
+}
+
+.global .bkg-img {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+
+    position: absolute;
+}
+
+.registro-container {
+    position: absolute;
+}
+
+.bienvenida-container {
+    position: absolute;
+    padding-top: 5%;
+}
+
+.bienvenida-container img {
+    margin: 1rem 0 1rem 0;
+}
+
+.bienvenida-container h4, h2 {
+    color: gray;
+
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+.bienvenida-container h4 {
+    line-height: 2.5rem;
+}
+
+.bienvenida-container h2 {
+    line-height: 3.5rem;
+}
+
+.bienvenida-container .btn {
+    width: 50%;
+    margin: 1rem 0 1rem 0;
+
+}
+
+.disabledInput {
+    color: #ffffff;
+}
+
+.form-group input {
+    width: 100%;
+}
+
+/*****************************************************/
+
+.datos-container {
+    position: absolute;
+}
+
+.datos-container img {
+    padding: 1rem 0 1rem 0;
+}
+
+.datos-container h3 {
+
+    line-height: 2.5rem;
+    color: gray;
+
+    margin: 0.5rem 0 0.5rem 0;
+
+}
+
+.datos-container h5 {
+    padding: 1rem 0 1rem 0;
+}
+
+.datos-container form {
+    padding: 0.5rem 0 0.5rem 0;
+}
+
+.form-control {
+    color: #ffffff;
+    background-color: transparent;
+    opacity: 1;
+}
+
+.form-control:disabled {
+    background-color: transparent;
+    color: #ffffff !important;
+    opacity: 1;
+}
+
+.mostrar-info {
+    padding-top: 5%;
+}
+
+.terminos-condiciones {
+    margin: 0px;
+    padding: 10% 10%;
+}
+
+.terminos-condiciones p {
+
+    line-height: 2.5rem;
+    color: white;
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+.terminos-condiciones h4 {
+
+    line-height: 2rem;
+    color: white;
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+.terminos-condiciones .form-control {
+    color: white;
+    background-color: transparent;
+    border: none;
+
+    padding-top: 6rem;
+    display: inline;
+
+}
+
+.tyc-container {
+    padding: 8rem 2rem 8rem 2rem;
+}
+
+.tyc-container .container {
+    margin: 2rem;
+}
+
+.terminos-condiciones .btn {
+
+    width: 50%;
+
+}
+
+label {
+    display: flex;
+    text-align: left;
+
+    margin-bottom: 0.3rem;
+
+}
+
+.qr-imagen img {
+    width: 350px;
+    height: 350px;
+}
+
+.btn {
+    background-color: transparent !important;
+    border: 0.5px !important;
+    border-color: white !important;
+
+    border-width: 1px !important;
+    border-style: solid !important;
+}
+
+.ui-dropdown {
+    display: -webkit-inline-box;
+    display: inline-flex;
+    position: relative;
+    cursor: pointer;
+    min-width: 100px;
+    padding: 0px;
+    margin-right: 10px;
+}
+

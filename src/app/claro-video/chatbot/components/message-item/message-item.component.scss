@@ -1,0 +1,49 @@
+.bot {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 20px;
+}
+
+.user {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 20px;
+}
+
+.timeform {
+    float: left;
+    width: 100%;
+
+    i {
+        margin-left: 20px;
+    }
+
+    .timestamp {
+        font-size: 12px;
+        color: #999;
+    }
+}
+
+.avatar {
+    width: 50px;
+    margin-right: 20px;
+}
+
+.list-group-item {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: .2rem 0.5rem;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0);
+}

@@ -1,0 +1,249 @@
+.global-container {
+    margin: 0;
+    padding: 0 0 3rem 0;
+
+    background-color: #E7E7E7;
+}
+
+.capture-data {
+    padding: 2rem;
+}
+
+.card-title {
+    text-align: justify;
+    
+}
+
+.text-responsive {
+    font-size: calc(100% + 1vw + 1vh);
+  }
+
+p, span {
+    text-align: justify;
+    font-size: 0.8rem;
+}
+
+.data-container {
+    margin: 5rem 0 5rem 0;
+    padding: 2rem;
+
+    justify-content: center;
+    align-items: center;
+    display: block;
+}
+
+.resume {
+    padding: 0 2rem;
+}
+
+.info {
+    padding: 0 2rem;
+}
+
+.info-table tr{
+    text-align: center;
+}
+
+.info-table th{
+    font-weight: bold;
+}
+
+.container {
+    margin-top: 5rem;
+
+    justify-content: center;
+    align-items: center;
+    display: block;
+}
+
+.resolv {
+    margin: 2rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.badgeFin {
+    color: black;
+    font-size: 13px;
+}
+.badgeFin h2{
+    font-weight: bold;
+}
+
+.alerta {
+    width: 25rem;
+    height: 3rem;
+    position: absolute;
+    
+    right: 2rem;
+    bottom: 20%;
+}
+
+
+.btn {
+    box-shadow: none;
+}
+
+.table {
+    overflow-x: scroll;
+    width: 100%; 
+}
+
+.table thead {
+    text-align: center;
+    background-color: #E7E7E7;
+
+}
+
+.table tr {
+    text-align: center;
+
+    transition-property: background-color;
+    transition-duration: 0.5s;
+}
+
+.table tr:hover {
+    background-color: #F6F6F6;
+}
+
+.modal-content{
+    text-align: center;
+    justify-content: center;
+    border-radius: 0.2rem;
+}
+
+.files-view {
+    margin: 0;
+    padding: 0;
+
+    justify-content: center;
+    display: flex;
+}
+
+.action-botn {
+    display: flex;
+}
+
+/***********CONTENEDOR CHECK IN***********/
+
+.check-in-container {
+    background-color: #424242;
+    color: white;
+}
+
+.check-in-container thead {
+    background-color: #424242;
+    color: white;
+
+    
+    transition-property: background-color;
+    transition-duration: 0.5s;
+
+}
+
+.check-in-container tbody {
+    background-color: #424242;
+    color: white;
+}
+
+.check-in-container tr {
+    transition-property: background-color;
+    transition-duration: 0.5s;
+}
+
+.check-in-container tr:hover {
+    background-color: #151515 !important;
+}
+
+
+
+.check-in-container button {
+    margin: 0.3rem;
+    border-color: #F6F6F6 !important;
+    color: white !important; 
+}
+
+.check-in-container .send-check-in-btn {
+    transition-property: background-color,border-color  !important;
+    transition-duration: 0.5s !important;
+}
+
+.check-in-container .send-check-in-btn:hover {
+    background-color: #81F781 !important;
+    border-color: #424242 !important;
+    color: #424242 !important;
+}
+
+.check-in-container .delete-check-in-btn {
+    transition-property: background-color,border-color  !important;
+    transition-duration: 0.5s !important;
+}
+
+.check-in-container .delete-check-in-btn:hover {
+    background-color: rgb(221, 39, 39) !important;
+    border-color: #424242 !important;
+    color: white !important;
+}
+
+.check-in-container .detail-check-in-btn {
+    transition-property: background-color,border-color  !important;
+    transition-duration: 0.5s !important;
+}
+
+.check-in-container .detail-check-in-btn:hover {
+    background-color: #F6F6F6 !important;
+    border-color: #424242 !important;
+    color: #424242 !important;
+}
+
+/**********************************************************/
+
+.resolv button {
+    margin: 0.3rem;
+    border-color: #424242 !important;
+    color: #424242 !important; 
+}
+
+.resolv .send-check-in-btn {
+    transition-property: background-color,border-color  !important;
+    transition-duration: 0.5s !important;
+}
+
+.resolv .send-check-in-btn:hover {
+    background-color: #424242 !important;
+    border-color: #E7E7E7 !important;
+    color: #E7E7E7 !important;
+}
+
+.resolv .delete-check-in-btn {
+    transition-property: background-color,border-color  !important;
+    transition-duration: 0.5s !important;
+}
+
+.resolv .delete-check-in-btn:hover {
+    background-color: #424242 !important;
+    border-color: #E7E7E7 !important;
+    color: #E7E7E7 !important;
+}
+
+.resolv .detail-check-in-btn {
+    transition-property: background-color,border-color  !important;
+    transition-duration: 0.5s !important;
+}
+
+.resolv .detail-check-in-btn:hover {
+    background-color: #424242 !important;
+    border-color: #E7E7E7 !important;
+    color: #E7E7E7 !important;
+}
+
+#bcid{
+    font-size: 12px !important;
+}
+
+
+.p-modal-body{
+    text-align: center;
+    font-size: 0.99rem;
+}

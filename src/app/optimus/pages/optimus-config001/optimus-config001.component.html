@@ -1,0 +1,68 @@
+<!--
+<app-navbar [miFinanciera]="someFinanciera"></app-navbar>
+-->
+
+<div class="config-card-body row">
+
+
+
+    <div class="card" style="width: 70rem;">
+
+
+        <div class="card-body">
+          <h5 class="card-title"><i class="fa fa-cogs"></i> Configuraciones Generales de Optimus</h5>
+          <p class="card-text">El sistema Optimus v1 permite ver y verificar los archivos de transacciones de cobro a ejecutarse por las entidades financieras.</p>
+          <hr>
+          <div class="select-financiera">
+            <p>Seleccionada: </p>
+            <p id="miFinanciera"><b>{{ someFinanciera.name }}</b></p>
+          </div>
+          <div class="selectable-options">
+
+            <div class="call-buttons"
+                  *ngFor="let financiera of financieras">
+
+                  <div class="row">
+
+                  <div class="col-md-9"    style="border:1px solid #fcfcfc;"  >
+                              <h5 style="font-weight:bold;">
+                                   <a (click)="mostrar(financiera)" class="linkonOVer">
+                                    {{financiera.name}}
+                                    </a>
+                              </h5>
+                              <p style="color:#ccc">{{financiera.description}} </p>
+
+                        </div>
+                        <div class="col-md-3">
+
+                              <button type="button" *ngIf="someFinanciera.cod === financiera.cod "
+                                          class="btn btn-labeled  btn-info"
+                                          style="border-bottom: 6px solid !important;"
+                                          (click)="mostrar(financiera)">
+                                    <i class="fa fa-check"></i>
+                                    <span> Seleccionado </span>
+                              </button>
+                              <button type="button" *ngIf="!(someFinanciera.cod === financiera.cod) "
+                                          class="btn btn-labeled btn-outline-info"   style="border-bottom: 2px solid black;"
+                                          (click)="mostrar(financiera)">
+                                    <i class="fa fa-filter-center-focus"></i>
+                                    <span> Usar</span>
+                  </button>
+                        </div>
+
+                  </div>
+          </div>
+          <hr>
+            <a [routerLink]="['/principal', someFinanciera.name]"
+                routerLinkActive="router-link-active"
+                class="btn btn-danger"
+                style="background-color:#da291c !important;" >
+                   Siguiente
+            </a>
+        </div>
+    </div>
+
+</div>
+
+
+<app-back-to-bottom></app-back-to-bottom>

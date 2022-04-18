@@ -1,0 +1,92 @@
+<div style="border-radius: 35px;border: 1px solid rgb(212, 208, 208);padding: 11px; margin: 10px; height: 150px;">
+    <div>
+        <div class="ui-g-2">
+            <img [src]="cliente.personalInformation.gender && cliente.personalInformation.gender === 'MASCULINO' ?
+                'assets/images/icons/personal-information/user-male.png' : 'assets/images/icons/personal-information/user-female.png' " 
+                style="width: 115px; display: block ; margin:  0 auto;" alt="">
+            <!-- style="position: relative; top: -26px; margin-right: 18px;"> -->
+
+        </div>
+        <div class="ui-g-10">
+            <div class="row">
+                <div style="width: 100%;">
+                    <span style="font-size: 22px;">
+                        {{cliente.personalInformation.fullName}}
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div style="width: 100%;">
+                    <div class="ui-g-4">
+                        <span style="margin-top: 11px;display: inline-block;">
+                            <img src="assets/images/icons/personal-information/customer-card.png" alt="">
+                            <span style="font-size: 16px;">
+                                {{cliente.personalInformation.identificationNumber}}
+                                <br>
+                                <img src="assets/images/icons/personal-information/mailbox.png" alt="">
+                                <span style="font-size: 16px;">{{cliente.contactInformation.email}}
+                                </span>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="ui-g-4">
+                        <span style="margin-top: 11px;display: inline-block;">
+                            <img src="assets/images/icons/personal-information/birthday-cake.png" alt="" >
+                            <span style="font-size: 16px;  margin-right: 27px;">
+                                {{cliente.personalInformation.birthday}}
+                                <br>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="ui-g-4">
+                        <div class="ui-g-2">
+                            <img src="assets/images/icons/personal-information/place-marker.png" alt="" >
+                        </div>
+                        <div class="ui-g-10">
+                          <span style="line-height: 24px; font-size: 16px;">
+                            {{cliente.contactInformation.district}} -
+                            {{cliente.contactInformation.province}}
+                        </span><br>
+                            <span>
+                             {{cliente.contactInformation.addressLine1}}
+                        </span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- <span style="display: inline-flex;margin-left: 50px;line-height: 22px;"> -->
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- <img src="assets/images/bundle/Imagen1.png" alt="" style="position: relative; top: -26px; margin-right: 18px;">
+    <span style=" display: inline-block; font-size: 16px;color: #838282;">
+        <span style="font-size: 16px;">
+            {{cliente.personalInformation.fullName}}
+        </span>
+        <br>
+        <span style="margin-top: 11px;display: inline-block;">
+            <img src="assets/images/bundle/Imagen2.png" alt=""> <span style="font-size: 16px;">
+                {{cliente.personalInformation.identificationNumber}} </span>
+            <br>
+            <img src="assets/images/bundle/Imagen3.png" alt=""><span style="font-size: 16px;">{{cliente.contactInformation.email}}
+            </span>
+        </span>
+    </span>
+
+    <span style="display: inline-flex;margin-left: 50px;line-height: 22px;">
+        <img src="assets/images/bundle/Imagen4.png" alt="" style="width: 45px;height: 45px; background: transparent;">
+        <span style="line-height: 40px;  font-size: 16px;  margin-right: 27px;">{{cliente.personalInformation.fechaNacimiento}}
+        </span>
+        <img src="assets/images/bundle/Imagen5.png" alt="" style="width: 45px;height: 45px;background: transparent;">
+        <span style="line-height: 24px; font-size: 16px;">
+            {{cliente.contactInformation.district}} - Ecuador <br>
+            {{cliente.contactInformation.province}} </span>
+    </span> -->
+
+</div>

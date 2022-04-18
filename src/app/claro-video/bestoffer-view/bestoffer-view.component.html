@@ -1,0 +1,247 @@
+<div class="swiper-slide">
+    <app-error-message [message]="errorInterface.message" [isError]="errorInterface.isError"></app-error-message>
+    <p-scrollPanel #sc [style]="{ height: '700px', border: 'none' }">
+        <div style="margin: 0 50px;margin-bottom: 64px;" *ngIf="page === 'GRID'">
+            <h1>La mejor oferta para tu cliente</h1>
+            <div class="espacioItem">&nbsp;</div>
+            <p-dataView #dv [value]="arrayOfertas" [paginator]="false" [rows]="5" paginatorPosition="bottom"
+                filterBy="brand" [sortField]="sortField" [sortOrder]="sortOrder" [layout]="'grid'">
+                <p-header>
+                    <div class="ui-helper-clearfix">
+                        <div class="ui-g" style="display: flex;justify-content: right; width: 100%;">
+
+
+                            <!-- <div class="ui-g-12 ui-md-4">
+                                                <p-dropdown
+                                                    [options]="sortOptions"
+                                                    [(ngModel)]="sortKey"
+                                                    placeholder="Ordenar Por"
+                                                    (onChange)="
+                                                        onSortChange($event)
+                                                    "
+                                                    [style]="{ width: '15em' }"
+                                                ></p-dropdown>
+                                            </div> -->
+                            <!-- <div
+                                                class="ui-g-6 ui-md-4 filter-container"
+                                            >
+                                                <div style="position:relative">
+                                                    <input
+                                                        type="text"
+                                                        pInputText
+                                                        placeholder="Buscar por Marca"
+                                                        (keyup)="
+                                                            dv.filter(
+                                                                $event.target
+                                                                    .value
+                                                            )
+                                                        "
+                                                    />
+                                                </div>
+                                            </div> -->
+                            <span _ngcontent-mtr-c7=""
+                                style="display: inline-block;float: left;line-height: 50px;font-size: 18px;font-weight: lighter;color: #428d98;">Seguros
+                                para equipos móviles</span>
+                            <div class="ui-g-6 ui-md-4" style="text-align:right;   ">
+                                <p-dataViewLayoutOptions>
+
+                                </p-dataViewLayoutOptions>
+                            </div>
+                        </div>
+                    </div>
+                </p-header>
+
+                <ng-template let-offer pTemplate="gridItem">
+                    <div style="padding:.5em" class="ui-g-12 ui-md-4">
+                        <p-panel [header]="offer.offerName" [style]="{ 'text-align': 'center' }">
+                            <img [src]="offer.routeImage+offer.nameImage"/>
+                            <div class="car-detail" style="margin-top: 12px;color: #428d98;font-size: 17px;">
+                                {{ offer.name}} <br>
+                                <Strong style="color: black!important;">Precio: </Strong><span
+                                    style="color:#da291c!important;">{{ offer.price | currency:'USD'  }}</span>
+                            </div>
+                            <div class="car-detail">
+                                <strong> Número: </strong> <span
+                                style="color: #428d98;">{{ '0'+offer.cellphoneNumber | titlecase}}</span>
+                                <br>
+                                <strong> Equipo: </strong> <span
+                                    style="color: #428d98;">{{ offer.product | titlecase}}</span>
+                                <br>
+                                <strong> IMEI: </strong> <span> {{ offer.imei }} </span>
+                                <hr class="ui-widget-content" style="border-top:0" />
+
+                                <button (click)="openDetail(offer)"
+                                    class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"
+                                    icon="ui-icon-refresh" label="Refresh" ng-reflect-icon="ui-icon-refresh"
+                                    ng-reflect-label="Refresh" pbutton="" type="button"
+                                    style="width: 100%;padding: 5px;">
+                                    <span class="ui-button-text ui-clickable"
+                                        style="width: 100%;margin: 0;padding: 0;">Ver
+                                        oferta</span><span class="ink ripple-animate"
+                                        style="height: 899px; width: 899px; top: -412.017px; left: -306.517px; pointer-events: none;"></span>
+                                </button>
+                            </div>
+
+
+
+                            <!-- <button
+                                                pButton
+                                                type="button"
+                                                icon="pi pi-search"
+                                                style="margin-top:0"
+                                            ></button> -->
+                        </p-panel>
+
+                    </div>
+
+                </ng-template>
+                <p-footer>
+                    <div class="">
+                        <div class="a-cardui-footer"
+                            style="display: flex;justify-content: center;width: 100%;line-height: 46px;">
+
+
+                            <span style="line-height: 16px;">Desea seleccionar manualmente la
+                                oferta de {{nombreCategoria}}<a class="a-link-normal see-more truncate-1line"
+                                    title="Proximamente..."
+                                    style="text-decoration: none;color: #0066c0;padding-left: 8px;">Personalizar
+                                    oferta</a></span>
+                        </div>
+                    </div>
+                </p-footer>
+
+                <ng-template let-offer pTemplate="listItem">
+                    <div class="ui-g" style="border-bottom: 1px solid #d9d9d9">
+                        <div class="ui-g-12 ui-md-3" style="text-align:center">
+                            <!-- <img
+                                                width="176px"
+                                                height="218px"
+                                                style="padding-top: 23px"
+                                                src="assets/demo/images/car/{{
+                                                    offer.vin
+                                                }}.jpg"
+                                            /> -->
+                            <img [src]="offer.routeImage+offer.nameImage"/>
+                        </div>
+                        <div class="ui-g-12 ui-md-9 car-details">
+                            <div class="ui-g">
+                                <div class="contenedorItem" style="width: 100%;">
+                                    <div class="tituloItem">
+
+
+                                        <h2>
+                                            <span><a class="offerTitle" [routerLink]=""
+                                                    style="margin-top: 12px;color: #428d98;font-size: 14px;"
+                                                    queryParamsHandling="preserve" (click)="
+                                                        bestOffer();
+                                                        usefulSwiper.swiper.slideTo(
+                                                            4,
+                                                            2000,
+                                                            true
+                                                        )
+                                                    ">{{ offer.name }}</a></span>
+                                        </h2>
+
+                                        <!-- <div class="car-detail" >
+                                            <span style="color: #428d98;">{{ offer.product}}</span>
+                                        </div> -->
+                                        <div class="car-detail">
+                                            <strong> IMEI: </strong> <span> {{ offer.imei }} </span>
+                                            <br>
+                                            <strong> Número: </strong> <span
+                                            style="color: #428d98;">{{ '0'+offer.cellphoneNumber | titlecase}}</span>
+                                            <br>
+                                            <strong> Equipo: </strong> <span
+                                            style="color: #428d98;">{{ offer.product | titlecase}}</span>
+                                            <br>
+                                            <!-- <br>
+                                            <Strong>Precio: </Strong><span>{{ offer.price  }}</span> -->
+                                        </div>
+                                    </div>
+
+                                    <div class="estrellasItem">
+                                        <p-rating [ngModel]="5" readonly="true" stars="5" [cancel]="false"></p-rating>
+                                    </div>
+                                    <div class="espacioItem">
+                                        &nbsp;
+                                    </div>
+                                    <div class="precioItem">
+                                        <span class="valorPrincipal">
+                                            <span class="dolar"></span>
+                                            <span class="entero">{{
+                                                offer.price | currency
+                                            }}</span>
+                                            <!-- <span
+                                                                class="decimal"
+                                                                >34</span
+                                                            > -->
+                                        </span>
+                                        <!-- <span
+                                                            class="valorSecundario"
+                                                            >US$ 30,40</span
+                                                        > -->
+                                    </div>
+
+                                    <div></div>
+                                    <div class="espacioItem">
+                                        &nbsp;
+                                    </div>
+                                    <div class="descripcioItem" style="color:#555">
+                                        <span>{{
+                                            offer.description
+                                        }}</span>
+                                    </div>
+                                    <!-- <div class="mensajeItem" style="color:#B12704">
+                                        <span>{{ offer.longDescription }}</span>
+                                    </div> -->
+                                    <button (click)="openDetail(offer)"
+                                        class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"
+                                        icon="ui-icon-refresh" label="Refresh" ng-reflect-icon="ui-icon-refresh"
+                                        ng-reflect-label="Refresh" pbutton="" type="button"
+                                        style="float: right;width: 40%;padding: 5px;">
+                                        <span class="ui-button-text ui-clickable"
+                                            style="width: 100%;margin: 0;padding: 0;">Ver oferta</span><span
+                                            class="ink ripple-animate"
+                                            style="height: 899px; width: 899px; top: -412.017px; left: -306.517px; pointer-events: none;"></span>
+                                    </button>
+
+                                    <!-- <button id="j_idt11" name="j_idt11" type="button"              style="float: right;width: 40%;padding: 5px;"
+                                                                class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only secondary"
+                                                                onclick="window.open('\/ultima\/dashboard.xhtml','_self')" role="button" aria-disabled="false"><span
+                                                                    class="ui-button-text ui-c">Sign Up Now</span><span class="ink animate"
+                                                                    style="height: 119.05px; width: 119.05px; top: -41.0917px; left: 30.475px; pointer-events: none;"></span></button> -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="a-cardui-footer" style="display: flex;justify-content: center;width: 100%;">
+                            <a class="a-link-normal see-more truncate-1line" href="javascript:void(0)"
+                                (click)="personalizar(offer)" style="text-decoration: none;color: #0066c0;">Personalizar
+                                oferta</a>
+                        </div> -->
+                    </div>
+                </ng-template>
+
+            </p-dataView>
+        </div>
+
+        <app-offer-detail *ngIf="page === 'DETAIL'" [item]="itemDetail" [service]="service"
+            (regresarClick)="regresarclick($event)">
+        </app-offer-detail>
+
+        <!-- <app-personalizar-oferta
+            [item]="itemDetail"
+            (regresarClick)="regresarPersozalizarClick($event)"
+            *ngIf="page === 'PERSONALIZAR'"
+        ></app-personalizar-oferta> -->
+
+        <app-personalizar-oferta [item]="itemDetail" [service]="service" [origen]="'MEJOR_OFERTA'" [topicId]="topicId"
+            style="width: 100%;
+                max-width: 1024px;
+                display: block;
+                margin: 0 auto;
+                    margin-bottom: 0px;
+                margin-bottom: 15px;" *ngIf="page === 'PERSONALIZAR'"
+            (regresarClick)="regresarPersozalizarClick($event)" (loadinpage)="loadinpageClick($event)">
+        </app-personalizar-oferta>
+    </p-scrollPanel>
+</div>

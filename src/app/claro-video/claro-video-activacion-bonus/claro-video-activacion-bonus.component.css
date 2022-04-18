@@ -1,0 +1,212 @@
+.title-page {
+    font-size: 35px;
+    text-align: start;
+    margin-left: 3vw;
+    padding: 20px;
+    color: gray;
+}
+.view-offer{
+    max-width: 300px;
+    
+}
+
+.border-claro {
+    border-radius: 20px;
+    border-bottom: 1px solid #000;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 15px;
+}
+
+.border-claro .desc {
+    text-align: center;
+    font-size: 20px;
+}
+
+.check {
+    position: absolute;
+    top: 0;
+    width: 60px;
+    height: 60px;
+}
+
+.selected-color {
+    background-color: red;
+    color: white;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.unselected-color {
+    background-color: white;
+    color: gray;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.btn-continuar {
+    background-color: white;
+    color: gray;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 20px;
+    position: absolute;
+    right: 0;
+    margin: 20px;
+}
+
+.btn-back {
+    background-color: white;
+    color: gray;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    position: absolute;
+    left: 0;
+    margin: 20px;
+}
+
+.col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+    padding: 0px;
+}
+
+ul {
+    margin-top: 20px;
+    list-style-type: none;
+}
+
+.card {
+    /* max-width: 100%; */
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.pago-descripcion{
+    font-size: 15px;
+    padding-top: 0px; 
+    padding-bottom: 0px;
+}
+
+.claro-video-bonus  li {
+    font-size: 20px;
+    padding: 5px;
+}
+.payment  .ui-carousel .ui-carousel-content .ui-carousel-item .car-details > .p-grid {
+    border: 1px solid; 
+    border-radius: 45px;
+   /* padding-top: 10px;
+   padding-bottom: 10px; */
+   max-width: 350px;
+
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 990px) {
+    .container {
+        max-width: 100%;
+    }
+    /* .ui-carousel-items-container{
+
+        justify-content: space-around!important;
+        display: flex!important;
+      
+      
+    }
+    .ui-carousel-item {
+        border-radius: 45px;
+        max-width: 350px;
+    } */
+}
+
+.claro-video-bonus ul {
+    padding-inline-start: 0px;
+}
+
+.ui-carousel-dots-container {
+    display: none;
+}
+
+.bonus {
+    /* background: lightcyan; */
+}
+
+.bonus .ui-carousel-item {
+    /* border: 1px solid; */
+    /* border-radius: 45px; */
+    /* max-width: 400px; */
+}
+
+.bonus .ui-carousel-items-content {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+@media (min-width: 990px) {
+    .bonus .ui-carousel-items-container {
+        /* justify-content: space-around!important;
+        display: flex!important; */
+    }
+    .bonus .ui-carousel-item {
+        /* border-radius: 45px; */
+        /* max-width: 350px; */
+    }
+}
+.container-img {
+    max-width: 250px;
+    max-height: 250px;
+}
+@media only screen and (min-width: 1250px) and (max-height: 900px) {
+    .title-page {
+        font-size: 20px;
+        text-align: start;
+        padding: 15px;
+        color: gray;
+    }
+    .container-img {
+        width: 180px;
+        height: 180px;
+    }
+    .bonus .ui-carousel-item {
+        /* max-width: 250px; */
+    }
+   .claro-video-pay  li {
+        font-size: 15px;
+        padding: 2px;
+    }
+    .ui-g-1, .ui-g-2, .ui-g-3, .ui-g-4, .ui-g-5, .ui-g-6, .ui-g-7, .ui-g-8, .ui-g-9, .ui-g-10, .ui-g-11, .ui-g-12 {
+        float: left;
+        box-sizing: border-box;
+        padding: .2em;
+        line-height: 25px;
+    }
+    .check {
+        position: absolute;
+        top: 0;
+        width: 40px;
+        height: 40px;
+    }
+    .border-claro {
+        width: 220px;
+    }
+    .border-claro .desc {
+        text-align: center;
+        font-size: 15px;
+    }
+}

@@ -1,0 +1,85 @@
+<p-dialog [(visible)]="showModalInfoBundle" [style]="{width: '38vw'}">
+    <div style="justify-content: center; display: flex;">
+        <span>
+            <img src="assets/images/bundle/Imagen10.png" alt=""
+                style="width: 90px;height: auto; background: transparent;">
+            <span style="line-height: 25px; font-size: 1vw;">
+                Información adicional que debes conocer…
+            </span>
+        </span>
+
+    </div>
+    <ul class="modal-ul">
+        
+        <li>
+            <div class="ui-g ">
+                <div class="ui-g-1 my-auto">
+                    <img src="assets/images/bundle/informacion.png" alt=""
+                        style="width: 40px;height: auto; background: transparent;">
+                </div>
+                <div class="ui-g-11" style="line-height: 25px; padding-left: 10px; font-size: 1vw;">
+                    El servicio de Claro Video es incluido
+                </div>
+            </div>
+        </li>
+
+        <li>
+            <div class="ui-g ">
+                <div class="ui-g-1 my-auto">
+                    <img src="assets/images/bundle/expiracion.png" alt=""
+                        style="width: 40px;height: auto; background: transparent;">
+                </div>
+                <div class="ui-g-11" style="line-height: 25px; padding-left: 10px; font-size: 1vw;">
+                    El servicio expira si el cliente inactiva el plan pospago
+                </div>
+            </div>
+
+        </li>
+
+        <li>
+
+            <div class="ui-g ">
+                <div class="ui-g-1 my-auto">
+                    <img src="assets/images/bundle/dolar.png" alt=""
+                        style="width: 40px;height: auto; background: transparent;">
+                </div>
+                <div class="ui-g-11" style="line-height: 25px; padding-left: 10px; font-size: 1vw;">
+                    Al ser un servicio incluido no tiene costo adicional.
+                </div>
+            </div>
+        </li>
+
+        <li>
+
+            <div class="ui-g ">
+                <div class="ui-g-1 my-auto">
+                    <img src="assets/images/bundle/advertencia.png" alt=""
+                        style="width: 40px;height: auto; background: transparent;">
+                </div>
+                <div class="ui-g-11" style="line-height: 25px; padding-left: 10px; font-size: 1vw;">
+                    Debes informar a tu cliente que ingrese a su correo de Claro Video para confirmar la activación de
+                    su suscripción.
+                </div>
+            </div>
+        </li>
+
+        <li>
+            <div class="ui-g ">
+                <div class="ui-g-1 my-auto">
+                    <img src="assets/images/bundle/www.png" alt=""
+                        style="width: 40px;height: auto; background: transparent;">
+                </div>
+                <div class="ui-g-11" style="line-height: 25px; padding-left: 10px; font-size: 1vw;">
+                    Informa a tu cliente que debe ingresar a www.clarovideo.com para disfrutar de su servicio
+                </div>
+            </div>
+        </li>
+
+    </ul>
+    <div style="width: 100%;">
+        <button type="button" class="mx-auto" style="width: 100%;" pButton (click)="dismiss()"
+            label="Entendido"></button>
+    </div>
+
+
+</p-dialog>

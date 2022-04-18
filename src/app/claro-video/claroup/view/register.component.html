@@ -1,0 +1,37 @@
+<p-blockUI [blocked]="aProgressSpinner">
+    <div class="splash-screen">
+        <div class="splash-loader-container">
+            <svg class="splash-loader" width="65px" height="65px" viewBox="0 0 66 66"
+                 xmlns="http://www.w3.org/2000/svg">
+                <circle class="splash-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33"
+                        r="30"></circle>
+            </svg>
+        </div>
+    </div>
+</p-blockUI>
+
+
+<div class="ui-g ui-fluid">
+    <div class="ui-g-12" style="margin: 0px">
+        <div style="margin: 0 50px;">
+            <h1>Claro UP</h1>
+            <p style="margin-bottom:10px;">Activacion de seguro de equipo. Ingresa tu numero Celular</p>
+            <div style="margin-bottom:20px;padding: 20px">
+                                  <span class="md-inputfield md-inputfield-fill">
+                                    <input type="text" pInputText>
+                                    <label>Numero Celular</label>
+                                </span>
+            </div>
+            <div style="margin-bottom:20px">
+                <button icon="ui-icon-refresh" label="Refresh" pbutton="" type="button"
+                        ng-reflect-label="Refresh"
+                        (click)="buscar();usefulSwiper.swiper.slideTo(1, 2000, true);"
+                        ng-reflect-icon="ui-icon-refresh"
+                        class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"><span
+                    aria-hidden="true"
+                    class="ui-button-icon-left ui-clickable ui-icon-refresh"></span><span
+                    class="ui-button-text ui-clickable">Obten su informacion</span></button>
+            </div>
+        </div>
+    </div>
+</div>

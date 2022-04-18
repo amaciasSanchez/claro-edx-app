@@ -1,0 +1,53 @@
+<ul>
+    <li *ngFor="let procesoStandAlone of procesosStandAlone">
+        <div>
+            <div class="contenedor d-flex justify-content-around">
+
+                <span>
+                    <img src="assets/images/bundle/Imagen6.png" alt=""
+                        style="width: 45px;height: 45px; background: transparent;margin-right: 10px;"> <span
+                        style="line-height: 40px;    margin-right: 27px;">{{procesoStandAlone.processInstanceVariables.transactionDate}}
+                    </span>
+                </span>
+                <span>
+                    <img src="assets/images/bundle/Imagen7.png" alt=""
+                        style="background: transparent;margin-right: 10px;"> <span
+                        style="line-height: 40px;    margin-right: 27px;">{{procesoStandAlone.processInstanceVariables.serviceNumber}}
+                    </span>
+                </span>
+                <span>
+                    <img src="assets/images/bundle/Imagen8.png" alt=""
+                        style="width: 45px;height: 45px; background: transparent;margin-right: 10px;"> <span
+                        style="line-height: 40px;    margin-right: 27px;">{{procesoStandAlone.processInstanceVariables.serviceDescription}}
+                    </span>
+                </span>
+                <span>
+                    <img src="assets/images/bundle/Imagen9.png" alt=""
+                        style="width: 45px;height: 45px; background: transparent; margin-right: 10px;"> <span
+                        style="line-height: 40px;    margin-right: 27px;">{{procesoStandAlone.processInstanceVariables.paymentMethod}}
+                    </span>
+                </span>
+
+                <span *ngIf="stepStandAlone > 0 ">
+                    <img src="assets/images/bundle/Imagen10.png" alt="">
+                    <input type="text" [(ngModel)]="correoCliente"
+                        class="inputText"
+                        placeholder="Correo electrónico" pInputText>                            
+                </span>
+
+                <button *ngIf="stepStandAlone > 1 " (click)="activarOverlay()"
+                    class="button-arrow-right ng-star-inserted" placement="top" ngbTooltip="Ver"
+                    style="border: hidden;margin-left: 5px;padding: 0px;"><i class="ui-icon-visibility"
+                        style="font-size: 33px;line-height: 43px;"></i></button>
+
+
+                <button *ngIf="stepStandAlone == 0 " class="button-arrow-right"
+                    (click)="activarCorreo(procesoStandAlone)">
+                    <i class="ui-icon-arrow-forward icon-right"></i>
+                </button>
+            </div>
+
+        </div>
+        <div class="divider"></div>
+    </li>
+</ul>

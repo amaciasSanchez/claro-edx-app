@@ -1,0 +1,21 @@
+.customSection {
+    margin: 5px 40px; 
+    font-family: 'Poppins';
+}
+.logoClaro {
+    width: 134px;
+    margin-right: 16px;
+}
+.pageDescription {
+    font-size: 19px;
+    position: relative;
+    top: 17px; 
+    font-size: 2vw;
+}
+.title-align {
+    margin-top: -10px !important;
+    margin-left: 45px;
+}
+.justify-content {
+    justify-content: space-between;
+}

@@ -1,0 +1,22 @@
+.card{
+    border: 1px solid #154577!important;
+    border-radius: 1.25rem!important;
+    margin-bottom: 5px;
+}
+
+.tamanoCards{
+    width: 85%;
+}
+
+
+#botonSeleccionar {
+    background-color: #da291c !important;
+    color: white !important;
+    border: 0.2px solid #da291c;
+}
+
+.childrenContainerLeft {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

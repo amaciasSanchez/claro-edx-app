@@ -1,0 +1,311 @@
+<section class="section-content app-p2-cli-movimientos" style="width: 100%">
+    <div style="margin: 24px">
+        <div class="row">
+            <div class="ui-g-10 my-auto">
+                <img
+                    alt=""
+                    src="assets/images/bundle/Header/logoclaro.png"
+                    style="width: 134px; margin-right: 16px"
+                />
+               
+
+                <div style="float: right; margin-right: -200px">
+                    <span
+                        style="
+                            margin-left: 60%;
+                            font-size: 25px;
+                            text-align: right;
+                        "
+                    >
+                        Documentos
+                    </span>
+                    <p style="font-size: 16">
+                        Aquí puedes encontrar los documentos generados en la cuenta de tu cliente
+                    </p>
+                </div>
+           
+            </div>
+        </div>
+        <div class="row">
+            <personal-information-process
+                style="width: 100%"
+            ></personal-information-process>
+        </div>
+
+        <table
+            class="ui-table"
+            style="width: 90%; min-width: 90%; border-bottom: 1px"
+        >
+            <tr style="border-bottom: 1px">
+                <td colspan="5" style="padding: 15px; font-size: 30px">
+                    <strong class="text">
+                        <span title="Suscripción">{{
+                            selectedCurrentDebt.subproduct
+                        }}</span>
+                        <span title="Código de Contrato">
+                            ({{ selectedCurrentDebt.contractId }})</span
+                        >
+                    </strong>
+                </td>
+            </tr>
+            <tr style="border-top: 0px;">
+                <td>
+                    <img [hidden]="month===3"
+                    (click)="verFecha3Meses()"
+                    src="assets/images/bundle/imagen21.png"
+                    alt=""
+                    style="background: transparent"
+                />
+                <img [hidden]="month!==3"
+                    (click)="verFecha3Meses()"
+                    src="assets/images/bundle/imagen21.png"
+                    alt=""
+                    style="background: transparent;border-bottom: 3px solid blue;"
+                />
+                <img [hidden]="month===6"
+                    (click)="verFecha6Meses()"
+                    src="assets/images/bundle/imagen20.png"
+                    alt=""
+                    style="background: transparent"
+                />
+                <img [hidden]="month!==6"
+                    (click)="verFecha6Meses()"
+                    src="assets/images/bundle/imagen20.png"
+                    alt=""
+                    style="background: transparent;border-bottom: 3px solid blue;"
+                />
+                <img [hidden]="month===12"
+                    (click)="verFecha1Year()"
+                    src="assets/images/bundle/imagen23.png"
+                    alt=""
+                    style="background: transparent"
+                />
+                <img [hidden]="month!==12"
+                (click)="verFecha1Year()"
+                src="assets/images/bundle/imagen23.png"
+                alt=""
+                style="background: transparent;border-bottom: 3px solid blue;"
+            />
+                    <img
+                        (click)="verAcuerdos()"
+                        src="assets/images/bundle/imagen18.png"
+                        alt=""
+                        style="background: transparent; margin-left: 35px ;"
+                    />
+                    <img
+                        (click)="verEstadoCuenta()"
+                        src="assets/images/bundle/estado.PNG"
+                        alt=""
+                        style="background: transparent; margin-left: 35px ;"
+                    />
+                </td>
+
+                <td >
+                    <span
+                        title="Total Amount"
+                        style="
+                            line-height: 40px;
+                            margin-right: 18px;
+                            font-size: 30px;
+                        "
+                    >
+                        ${{ selectedCurrentDebt.totalAmount }}</span
+                    >
+                    <br />
+                    <span style="line-height: 20px; margin-right: 17px"
+                        >Deuda Total</span
+                    >
+                </td>
+                <td>
+                    <span
+                        title="totalOpenAmount"
+                        style="
+                            line-height: 40px;
+                            margin-right: 18px;
+                            font-size: 30px;
+                        "
+                    >
+                        ${{ selectedCurrentDebt.totalOpenAmount }}</span
+                    >
+                    <br />
+                    <span style="line-height: 20px; margin-right: 7px"
+                        >Deuda Corriente</span
+                    >
+                </td>
+                <td>
+                    <span
+                        title="totalOpenAmount"
+                        style="
+                            line-height: 40px;
+                            margin-right: 18px;
+                            font-size: 30px;
+                        "
+                    >
+                        {{ selectedCurrentDebt.dueMaxTime }}</span
+                    >
+                    <br />
+                    <span style="line-height: 20px; margin-right: 5px"
+                        >Fecha max de pago
+                    </span>
+                </td>
+                <td align="center"></td>
+            </tr>
+        </table>
+        <br />
+        <br />
+        <p-table
+            #dt
+            [value]="selectedCurrentDebt.invoices"
+            [totalRecords]="
+                selectedCurrentDebt.invoices != null
+                    ? selectedCurrentDebt.invoices.lenght
+                    : 0
+            "
+            [rows]="5"
+            [paginator]="true"
+            [rowsPerPageOptions]="[5, 10, 20]"
+        >
+            <ng-template pTemplate="header">
+                <tr>
+                    <td style="font-weight: bold;">Documento</td>
+                    <td style="font-weight: bold;">Tipo</td>
+                    <td style="font-weight: bold;">Inicio del periodo</td>
+                    <td style="font-weight: bold;">Fin del periodo</td>
+                    <td style="font-weight: bold;">Monto</td>
+                    <td style="font-weight: bold;">Pendiente</td>
+                    <td style="font-weight: bold;">Pagar el</td>
+                    <td style="font-weight: bold;">Estado</td>
+                    <td style="font-weight: bold;">Pagos</td>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-detail>
+                <tr style="border-bottom: 0px">
+                    <td style="padding: 10px">
+                        <strong class="text">
+                            <span [hidden]="detail.type!=='BLL'" title="doc: {{ detail.document }}">{{
+                                detail.invoiceSn
+                            }}</span>
+                        </strong>
+                        <strong class="text">
+                            <span [hidden]="detail.type==='BLL'" title="doc: {{ detail.document }}">{{
+                                detail.document
+                            }}</span>
+                        </strong>
+                    </td>
+                    <td style="padding: 5px">
+                        <strong class="text">
+                            <span title="Tipo: {{ detail.type }}"
+                                >{{ detail.typeDescription }}
+                            </span>
+                        </strong>
+                    </td>
+                    <td style="padding: 10px">
+                        <strong class="text">
+                            <span title="">
+                                {{ detail.billCycleBeginTime }}</span
+                            >
+                        </strong>
+                    </td>
+                    <td style="padding: 10px">
+                        <strong class="text">
+                            <span title="">{{ detail.billCycleEndTime }}</span>
+                        </strong>
+                    </td>
+                    <td style="padding: 0px">
+                        <strong class="text">
+                            <span title="">$ {{ detail.amount }}</span>
+                        </strong>
+                    </td>
+                    <td style="padding: 10px">
+                        <strong class="text">
+                            <span title="">$ {{ detail.openAmount }}</span>
+                        </strong>
+                    </td>
+                    <td style="padding: 0px">
+                        <strong class="text">
+                            <span title="">{{ detail.dueTime }}</span>
+                        </strong>
+                    </td>
+                    <td style="padding: 0px">
+                        <strong class="text">
+                            <span
+                                title="Estado: {{ detail.status }}"
+                                >{{ detail.statusDescription}}</span
+                            >
+                        </strong>
+                    </td>
+                    <td style="padding: 10px">
+                        <button 
+                            [hidden]="detail.type !== 'BLL' &&  detail.type !== '2' &&  detail.type !== '4'"
+                            (click)="verPagos(detail)"
+                            class="button-arrow-right ng-star-inserted"
+                            placement="top"
+                            ngbTooltip="Ver Pagos del cliente"
+                            style="
+                                border: hidden;
+                                margin-left: 5px;
+                                padding: 0px;
+                            "
+                        >
+                            <i
+                                class="ui-icon-visibility"
+                                style="font-size: 33px; line-height: 43px"
+                            ></i>
+                        </button>
+
+                        <button
+                            (click)="verAcuerdos()"
+                            class="button-arrow-right ng-star-inserted"
+                            placement="top"
+                            [hidden]="true"
+                            ngbTooltip="Ver Acuerdos del cliente"
+                            style="
+                                border: hidden;
+                                margin-left: 5px;
+                                padding: 0px;
+                            "
+                        >
+                            <i
+                                class="ui-icon-account-box"
+                                style="font-size: 33px; line-height: 43px"
+                            ></i>
+                        </button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        <div class="ui-g-2">
+            <div style="height: 60px; margin-top: 0%">
+                <div style="float: left; margin-top: 20px">
+                    <button
+                        placement="center"
+                        [hidden]="false"
+                        (click)="volver()"
+                        ngbTooltip="Atrás"
+                        style="
+                            border-radius: 50%;
+                            background-color: white;
+                            border: 0px;
+                        "
+                    >
+                        <i
+                            class="ui-icon-arrow-back"
+                            style="
+                                font-size: 33px;
+                                line-height: 2px;
+                                color: red;
+                            "
+                        ></i>
+                    </button>
+                </div>
+                <div>
+                    <app-btn-volver-vista
+                        style="margin-right: 10%"
+                    ></app-btn-volver-vista>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,13 @@
+.container-checkbox {
+    display: inline-block;
+    white-space: nowrap;
+  }
+  
+.checkbox {
+    border: 1px solid transparent;
+    text-align: right;
+  }
+  
+  .checkbox input {
+    float: right;
+  }

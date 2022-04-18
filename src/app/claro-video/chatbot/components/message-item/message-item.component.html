@@ -1,0 +1,18 @@
+<li class="list-group-item">
+
+    <div class="container row">
+        <div class="container col-2">
+            <img [src]="message.avatar" class="avatar rounded"/>
+        </div>
+
+        <div class="container col-10">
+            <div [ngClass]="message.style" [innerHTML]="message.content">
+            </div>
+        </div>
+        
+        <div class="timeform">
+            <span class="timestamp">{{message.timestamp | date : 'dd/MM/yyyy hh:mm:ss' }}</span>
+        </div>
+
+    </div>
+</li>

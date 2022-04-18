@@ -1,0 +1,275 @@
+<section class="section-content app-p4-cli-acuerdos-pago" style="width: 100%">
+    <div style="margin: 24px;">
+        <div class="row">
+            <div class="ui-g-10 my-auto">
+                <img
+                alt=""
+                src="assets/images/bundle/Header/logoclaro.png"
+                style="width: 134px; margin-right: 16px"
+            />
+            <div style="float: right; margin-right: -200px">
+                <span
+                    style="
+                        margin-left: 60%;
+                        font-size: 15px;
+                        text-align: right;
+                    "
+                >
+                    Cuotas del acuerdo de pagos
+                </span>
+                <p style="font-size: 16">
+                   Aqui puedes encontrar las cuotas del acuerdo de pago para la cuenta del cliente
+                </p>
+            </div>
+            </div>
+        </div>
+        <div class="row">
+            <personal-information-process style="width: 100%;"></personal-information-process>
+        </div>
+
+   
+        <table
+        class="ui-table"
+        style="width: 100%; min-width: 100%; border-bottom: 1px"
+    >
+        <tr style="border-bottom: 1px">
+            <td colspan="5" style="padding: 15px; font-size: 30px">
+                <strong class="text">
+                    <span title="Suscripción">{{
+                        selectedCurrentDebt.subproduct
+                    }}</span>
+                    <span title="Código de Contrato">
+                        ({{ selectedCurrentDebt.contractId }})</span
+                    >
+                </strong>
+            </td>
+        </tr>
+        <tr style="border-top: 0px">
+            <td colspan="15">  
+                
+               
+                <img
+                    (click)="volver()"
+                    src="assets/images/bundle/imagen18.png"
+                    alt=""
+                    style="background: transparent; margin-left: 35px ;"
+                />
+            </td>
+
+            <td >
+                <span style="margin-left:70%"
+                    title="Total Amount"
+                    style="
+                        line-height: 40px;
+                        margin-right: 18px;
+                        font-size: 30px;
+                    "
+                >
+                    ${{ selectedCurrentDebt.totalAmount }}</span
+                >
+                <br />
+                <span style="line-height: 20px; margin-right: 17px"
+                    >Deuda Total</span
+                >
+            </td>
+            <td>
+                <span
+                    title="totalOpenAmount"
+                    style="
+                        line-height: 40px;
+                        margin-right: 18px;
+                        font-size: 30px;
+                    "
+                >
+                    ${{ selectedCurrentDebt.totalOpenAmount }}</span
+                >
+                <br />
+                <span style="line-height: 20px; margin-right: 7px"
+                    >Deuda Corriente</span
+                >
+            </td>
+            <td>
+                <span
+                    title="totalOpenAmount"
+                    style="
+                        line-height: 40px;
+                        margin-right: 18px;
+                        font-size: 30px;
+                    "
+                >
+                    {{ selectedCurrentDebt.dueMaxTime }}</span
+                >
+                <br />
+                <span style="line-height: 20px; margin-right: 5px"
+                    >Fecha máxima de pago
+                </span>
+            </td>
+            <td align="center"></td>
+        </tr>
+    </table>
+<br/>
+    
+<table style="" >
+    <tr>
+        <td style="widows: 55%;vertical-align:text-top;width:55%;" align="left">
+        <h2> <i class="ui-icon-folder-collapsed" style="font-size: 33px;line-height: 43px;"></i> &nbsp;Detalle </h2>
+<p-table #dt [value]="detail.paymentArrangementDetails" [totalRecords]="detail.paymentArrangementDetails != null ? detail.paymentArrangementDetails.lenght : 0" [rows]="5" [paginator]="true"
+    [rowsPerPageOptions]="[5, 15,30]">
+
+    <ng-template pTemplate="header">
+        <tr>
+            <td style="padding: 15px;">
+                Cuota
+            </td>
+            <td style="padding: 15px;">
+                Fecha maxima pago
+            </td>
+            <td style="padding: 15px;">
+                Valor
+            </td>
+            <td style="padding: 15px;">
+                Pagada el
+            </td>
+            <td style="padding: 15px;">
+                Valor pagado
+            </td>
+            <td style="padding: 15px;">
+                Estado
+            </td>
+        </tr>
+        
+    </ng-template>
+
+    <ng-template pTemplate="body" let-payment>
+
+
+        <tr style="border-bottom: 0px;">
+
+            <td style="padding:0px;">
+                <strong class="text" style="margin-left:25px;">
+                    <span title="">{{payment.quoteNo}} </span>
+                </strong>
+            </td>
+            <td >
+
+                <strong class="text" style="margin-left:10px;">
+                    <span title=""> {{payment.promisePaidDate}}</span>
+                </strong></td>
+            <td style="padding: 0px;">
+
+                <strong class="text" style="margin-left:10px;">
+                    <span title="">$ {{payment.promisePaidAmount}}</span>
+                </strong></td>
+                <td style="padding: 0px;">
+
+                    <strong class="text">
+                        <span  title=""> {{payment.lastPaidDate}}</span>
+                    </strong></td>
+                <td>
+    
+                    <strong class="text"  style="margin-left:25px;">
+                        <span title="">$ {{payment.lastPaidAmount}}</span>
+                    </strong></td>
+            <td style="padding: 0px;">
+                <strong class="text">
+                    <span title="">{{payment.statusDescription}}</span>
+                </strong>
+            </td>
+
+        </tr>
+
+    </ng-template>
+</p-table>
+
+        </td><td style="width:5%">&nbsp;</td>
+        <td style="width:50%;vertical-align:text-top;" >
+
+<h2> <i class="ui-icon-folder-open" style="font-size: 33px;line-height: 43px;"> </i>&nbsp;Documentos en acuerdos </h2>
+           
+
+
+            <p-table #dt [value]="detail.documentPaymentArrangementDetails" [totalRecords]="detail.documentPaymentArrangementDetails != null ? detail.documentPaymentArrangementDetails : 0" [rows]="5" [paginator]="true"
+                [rowsPerPageOptions]="[5, 10, 20]">
+            
+                <ng-template pTemplate="header">
+                    <tr>
+                        <td style="padding: 15px;">
+                            Numero <br />
+                            Documento
+                        </td>
+                        <td style="padding: 15px;">
+                            Fecha <br />
+                            Documento
+                        </td>
+                        <td style="padding: 15px;">
+                            Fecha Vencimiento <br />
+                            
+                        </td>
+                    </tr>
+                </ng-template>
+            
+                <ng-template pTemplate="body" let-acuerdo>
+            
+            
+                    <tr style="border-bottom: 0px;">
+            
+                        <td style="padding: 10px;">
+                            <strong class="text">
+                                <span title="">{{acuerdo.invoiceNo}} </span>
+                            </strong>
+                        </td>
+                        <td style="padding: 10px;">
+            
+                            <strong class="text">
+                                <span title="">{{acuerdo.invoiceDate}}</span>
+                            </strong></td>
+                        <td style="padding: 10px;">
+            
+                            <strong class="text">
+                                <span title=""> {{acuerdo.dueDate}}</span>
+                            </strong></td>
+                    </tr>
+            
+                </ng-template>
+            </p-table>
+
+
+
+        </td>
+
+    </tr>
+
+</table>
+<div class="ui-g-2">
+    <div style="height: 60px; margin-top: 0%">
+        <div style="float: left; margin-top: 20px">
+            <button
+                placement="center"
+                [hidden]="false"
+                (click)="volver()"
+                ngbTooltip="Atrás"
+                style="
+                    border-radius: 50%;
+                    background-color: white;
+                    border: 0px;
+                "
+            >
+                <i
+                    class="ui-icon-arrow-back"
+                    style="
+                        font-size: 33px;
+                        line-height: 2px;
+                        color: red;
+                    "
+                ></i>
+            </button>
+        </div>
+        <div>
+            <app-btn-volver-vista
+                style="margin-right: 10%"
+            ></app-btn-volver-vista>
+        </div>
+    </div>
+</div>
+    </div>
+</section>

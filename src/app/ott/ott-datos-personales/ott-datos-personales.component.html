@@ -1,0 +1,110 @@
+<p-blockUI [blocked]="aProgressSpinner">
+    <div class="splash-screen">
+        <div class="splash-loader-container">
+            <svg class="splash-loader" width="65px" height="65px" viewBox="0 0 66 66"
+                xmlns="http://www.w3.org/2000/svg">
+                <circle class="splash-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30">
+                </circle>
+            </svg>
+        </div>
+    </div>
+</p-blockUI>
+<div style="max-width: 100vw; display: flex; flex-direction: row;">
+    <div style="width: 50vw; padding: 0vw 5vw;" >
+        
+        <!-- Realiza el ingreso del formulario -->
+        
+        <div class="container my-auto">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="float-right img-back">
+                        <img src="assets/images/claroIpTv/ClaroIdHorPos.jpg" style="width: 40%; height: 40%; margin-left: -5px; " alt="" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Dibuja el formulario a dos columnas -->
+        <div class="container-fluid">
+            <div class="col-sm">
+                <label class="title-page register" style="color: gray;">
+                    {{profile.initMessage}}
+                </label>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-10 mb-3" style="margin-bottom: 0.3rem!important;" >
+                    <input class="form-control text-center" type="text" [(ngModel)]="profile.identificacion"
+                        [disabled]="profile.exist && !profile.inconsistentDataFlags.identification"
+                        id="identificacion" name="identificacion" required="required" placeholder="Identificación">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-10 mb-3" style="margin-bottom: 0.3rem!important;" >
+                    <input class="form-control text-center" type="text" [(ngModel)]="profile.nombres"
+                        [disabled]="profile.exist && !profile.inconsistentDataFlags.firstName"
+                        id="nombres" name="nombres" required="required" placeholder="Nombres">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-10 mb-3" style="margin-bottom: 0.3rem!important;" >
+                    <input class="form-control text-center" type="text" [(ngModel)]="profile.apellidos"
+                        [disabled]="profile.exist && !profile.inconsistentDataFlags.lastName"
+                        id="apellidos" name="apellidos" required="required" placeholder="Apellidos">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-10 mb-3" style="margin-bottom: 0.3rem!important;" >
+                    <input class="form-control text-center" type="date" [(ngModel)]="profile.fechaNacimiento"
+                        [disabled]="profile.exist && !profile.inconsistentDataFlags.birthday"
+                        id="fecha" name="fecha" required="required" placeholder="Fecha de Nacimiento  -  dd/mm/yyyy">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-10 mb-3" style="margin-bottom: 0.3rem!important;" >
+                    <input class="form-control text-center" type="text" [(ngModel)]="profile.telefono"
+                    disabled
+                    id="telefono" name="telefono" maxlength="10" required="required" placeholder="Teléfono móvil de contacto" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" >
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-10 mb-3" style="margin-bottom: 0.3rem!important;" >
+                    <input class="form-control text-center" type="email" [(ngModel)]="profile.mail"
+                        [disabled]="profile.exist"
+                        id="mail" name="mail" required="required" placeholder="nombre@ejemplo.com">
+                    <label [hidden]="profile.exist" class="form-label" style="color: gray; margin-top: 0.5rem;">Este será tu nuevo CLAROID</label>
+                </div>
+            </div>
+            <!-- Diseño de boton -->
+            <div class="row justify-content-center" style="width: 100%; margin-top: 20px;">
+                
+                <div class="col-8">
+                    <button class="btn-continuar btn-lg btn-block" (click)="continue();">
+                        <div class="d-flex justify-content-center">
+                            <div style="display: flex; align-items: center; padding-left: 10px; padding-right: 10px;">
+                                Continuar proceso…
+                            </div>
+                            <div>
+                                <img src="assets/images/claroVideo/continuar.png" alt="">
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Realiza el ingreso del dibujo lateral -->
+        <div class="col p-0">
+            <div class="float-right img-back-n">
+                <!--<img src="assets/images/claroIpTv/claroIdIpTv.jpg" style="width: 119%; height: 100%; " alt="" />-->
+            </div>
+        </div>
+    </div>
+    <div style="display: flex; flex-direction: row; justify-content: end; min-width: 50vw; max-height: 89vh">
+        <img src="assets/images/claroIpTv/claroIdIpTv.jpg" alt="" />
+    </div>
+</div>
+
+<app-claro-video-modal-validaciones [message]="modal.message" (hideModal)="hideModal()" [modal]="showModal"
+    [type]="modal.type">
+</app-claro-video-modal-validaciones>
+

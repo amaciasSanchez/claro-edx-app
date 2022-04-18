@@ -1,0 +1,188 @@
+<p-blockUI [blocked]="aProgressSpinner">
+    <div class="splash-screen">
+        <div class="splash-loader-container">
+            <svg class="splash-loader" width="65px" height="65px" viewBox="0 0 66 66"
+                xmlns="http://www.w3.org/2000/svg">
+                <circle class="splash-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30">
+                </circle>
+            </svg>
+        </div>
+    </div>
+</p-blockUI>
+<section class="section-content" style="width: 100%">
+    <div style="margin: 24px;">
+        <div class="row">
+            <header style="width: 100%;">
+                <div style="display: flex">
+                    <div class="ui-g-8" style="display: flex; flex-direction: column;" >
+                        <div style="display: flex;" >
+                            <img style="width: 8vw; height: auto; vertical-align: text-bottom;" src="assets/images/bundle/Header/logoclaro.png">
+                            <div style="margin-top: auto;" >
+                                <h2 style=" margin-left: 13px; margin-bottom: auto;">
+                                    iBPM – Intelligent Business Process Management
+                                </h2>
+                            </div>   
+                        </div>
+                        <div class="ng-star-inserted" style="display: flex; margin-top: 20px;">
+                            <img alt="" src="assets/images/bundle/Header/rama.png" style="width: 110px; object-fit: contain; align-self: start;">
+                            <div style="display: flex; flex-direction: column; margin-top: 25px;" >
+                                <span style="position: relative;left: -40px;color: #838282;font-weight: bold;font-size: 1.5vw;">
+                                    {{proceso.processInstanceDesc}}
+                                </span>
+                                <div 
+                                    *ngIf="stepStandAlone < 2"
+                                    style="display: flex; flex-direction: column; margin-top: 30px; margin-left: 10px;" >
+                                    <h3 style="color: #838282; font-weight: bold; font-size: 1.4vw;  width: fit-content;">
+                                        Creación de Claro ID para Claro Video
+                                    </h3>
+                                    <p style="font-weight: 300;font-size: 1.2vw;">
+                                        Ahora debes crear un usuario de acceo a cada suscripción de Claro Video para tu cliente...
+                                    </p>
+                                </div>
+                                <div 
+                                    *ngIf="stepStandAlone >= 2"
+                                    style="display: flex; flex-direction: column; margin-top: 30px; margin-left: 10px;" >
+                                    <h3 style="color: #838282; font-weight: bold; font-size: 1.4vw;  width: fit-content;">
+                                        Activación de Suscripción de Claro Video en AMCO (América Móvil Content Office)
+                                    </h3>
+                                    <p style="font-weight: 300;font-size: 1.2vw;">
+                                        Ahora debes activar las suscripciones de Claro Video en AMCO para que tu cliente pueda usar el servicio…
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-3">
+                        <img alt="" src="assets/images/bundle/Header/logobpm.jpg" style="width: 100%;">
+                    </div>
+                    <div class="ui-g-1" style="display: flex; margin: auto; flex-direction: column; " >
+                        <app-btn-volver-vista style="margin: auto;"  ></app-btn-volver-vista>
+                        <app-btn-ver-flujo style="margin: auto; margin-top: 25px;" [flujo]="standAlone"></app-btn-ver-flujo>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <div class="row">
+            <personal-information-process style="width: 100%;"> </personal-information-process>
+        </div>
+
+        <ul>
+            <li>
+                <div>
+                    <div class="contenedor d-flex justify-content-around">
+
+                        <span>
+                            <img src="assets/images/bundle/Imagen6.png" alt=""
+                                style="width: 30px; background: transparent;margin-right: 10px;"> <span
+                                style="line-height: 40px;    margin-right: 27px;">{{proceso.processInstanceVariables.activationDate | date: 'dd/MM/yyyy HH:mm' }}
+                            </span>
+                        </span>
+                        <span>
+                            <img [src]="proceso.processInstanceVariables.subproductId | iconInterpreter: 'SUBSCRIPTION_TYPE'"
+                                style="width: 30px; background: transparent;margin-right: 10px;"> <span
+                                style="line-height: 40px;    margin-right: 27px;">{{proceso.processInstanceVariables.serviceNumber}}
+                            </span>
+                        </span>
+                        <span>
+                            <img src="assets/images/icons/products/offer.png" alt=""
+                                style="width: 30px; background: transparent;margin-right: 10px;"> <span
+                                style="line-height: 40px;    margin-right: 27px;">{{proceso.processInstanceVariables.serviceDescription}}
+                            </span>
+                        </span>
+                        <span>
+                            <img [src]="proceso.processInstanceVariables.paymentType | iconInterpreter: 'PAYMENT_METHOD'"
+                                style="width: 30px; background: transparent; margin-right: 10px;"> <span
+                                style="line-height: 40px;    margin-right: 27px;">{{proceso.processInstanceVariables.paymentMethod}}
+                            </span>
+                        </span>
+
+                        <span *ngIf="stepStandAlone > 0 ">
+                            <img src="assets/images/bundle/Imagen10.png" alt="">
+                            <input type="text" [(ngModel)]="correoCliente" class="inputText"
+                                placeholder="Correo electrónico" pInputText  >
+                        </span>
+
+                        <button *ngIf="stepStandAlone > 1 && standAlone.offer != null" (click)="activarOverlay()"
+                            class="button-arrow-right ng-star-inserted" placement="top" ngbTooltip="Ver"
+                            style="border: hidden;margin-left: 5px;padding: 0px;"><i class="ui-icon-visibility"
+                                style="font-size: 33px;line-height: 43px;"></i></button>
+
+
+                        <button *ngIf="stepStandAlone == 0 " class="button-arrow-right"
+                            (click)="activarCorreo(proceso)">
+                            <i class="ui-icon-arrow-forward icon-right"></i>
+                        </button>
+                    </div>
+
+                </div>
+                <div class="divider"></div>
+            </li>
+        </ul>
+        <div class="content-popover" *ngIf="stepStandAlone != 0 ">
+            <button class="button-arrow-right" *ngIf="stepStandAlone == 1 " (click)="creacionClaroId()" title="Registrar Correo" >
+                <i class="ui-icon-arrow-forward icon-right"></i>
+            </button>
+            <button class="button-arrow-right" *ngIf="stepStandAlone > 1 " (click)="showAcceptTermsModal()" title="Terminar Proceso" >
+                <i class="ui-icon-arrow-forward icon-right"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+<p-dialog   [(visible)]="modalAdvertencia" 
+            [style]="{'width': '600px', 'border-radius': '0px', 'background': 'rgb(0 0 0 / 68%)', 'color': '#fff', 'border': '0px'}" 
+            [modal]="true" >
+    <span style="display: block;  text-align: center; margin-bottom: 16px;">
+        <i class="ui-icon-error-outline" style="color: #c8c2ab; font-size: 100px;" ></i>
+    </span>
+    <div style="line-height: 24px; text-align: center; padding: 15px;">
+        <p style="font-size: large; text-align: center; font-family: Roboto, 'Helvetica Neue', sans-serif; color: #fff; font-size: medium;" >
+            Este es el último paso del proceso.
+            Se procederá a activar {{offerName}} a tu cliente
+        </p>
+    </div>
+
+    <div style="width: 100%;text-align: center;">
+        <button type="button" class="mx-auto" style="background: #384c53; width:40%; right: 5px;" 
+            pButton label="Aceptar" (click)="activaClaroVideo()" ></button>
+        <button type="button" class="mx-auto" style="background: #e03232; width:40%; left: 5px;" 
+            pButton label="Cancelar" (click)="modalAdvertencia = false" ></button>
+    </div>
+
+</p-dialog>
+
+
+<p-dialog   [(visible)]="acceptTermsMessage" 
+            [style]="{'width': '600px', 'border-radius': '0px', 'background': 'rgb(0 0 0 / 68%)', 'color': '#fff', 'border': '0px'}" 
+            [modal]="true" >
+    <span style="display: block;  text-align: center; margin-bottom: 16px;">
+        <i class="ui-icon-error-outline" style="color: #c8c2ab; font-size: 100px;" ></i>
+    </span>
+    <div style="line-height: 24px; text-align: center; padding: 15px;">
+        <p style="font-size: large; text-align: center; font-family: Roboto, 'Helvetica Neue', sans-serif; color: #fff; font-size: medium;" >
+            En la siguiente etapa activarás la suscripción de Claro Video. 
+        </p>
+        <br>
+        <input type="checkbox" [(ngModel)]="termsAccepted" />&nbsp;&nbsp;<span style="font-size: smaller; text-align: center;" >Confirma con el cliente el correo electrónico.</span>
+    </div>
+    
+    <br>
+
+    <div style="width: 100%;text-align: center;">
+        <button type="button" class="mx-auto" style="background: #e03232; width:40%; right: 5px;" 
+            pButton label="Entendido" [disabled]="!termsAccepted"  (click)="acceptTerms()" ></button>
+        <button type="button" class="mx-auto" style="background: #e03232; width:40%; left: 5px;" 
+            pButton label="Cerrar" (click)="acceptTermsMessage = false" ></button>
+    </div>
+
+</p-dialog>
+
+
+<app-claro-video-modal-validaciones [message]="modal.message" (hideModal)="hideModal()" [modal]="showModal"
+    [type]="modal.type">
+</app-claro-video-modal-validaciones>
+
+<app-claro-video-modal-proceso *ngIf="standAlone.offer != null" [activaModal]="activarpopover"
+    (activarOverlay)="activarOverlay($event)" [proceso]="proceso" [offer]="standAlone.offer">
+</app-claro-video-modal-proceso>

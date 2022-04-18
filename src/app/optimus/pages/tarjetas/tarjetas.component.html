@@ -1,0 +1,177 @@
+<div class="global-container d-none d-sm-none d-md-block">
+
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+
+                <div class="row">
+
+                    <div class="wrapper col-4 d-block w-100" (click)="actionHandler('OPEN_REDIRECT_MENU')"
+                        [routerLink]="['/resumen-tarjetas', 'visa']">
+                        <div class="box-tarjetas">
+                            <img src="../../../../assets/ser-optimus/logo-visa.png" class="d-block w-100"
+                                alt="Pagos Digitales con tarjetas VISA">
+                            <div class="card-tittle">
+                                <h2 id="financiera">Tarjetas VISA</h2>
+                                <p class="card-text">Digital Payments para transacciones tarjetas VISA exclusivamente</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wrapper col-4 d-block w-100" (click)="actionHandler('OPEN_REDIRECT_MENU')"
+                        [routerLink]="['/resumen-tarjetas', 'mastercard']">
+                        <div class="box-tarjetas">
+                            <img src="../../../../assets/ser-optimus/mastercard_logo.png" class="d-block w-100"
+                                alt="Pagos Digitales con tarjetas MASTERCARD">
+                            <div class="card-tittle">
+                                <h2 id="financiera">Tarjetas MASTERCARD</h2>
+                                <p>Digital Payments para transacciones con Tarjetas MASTERCARD exclusivamente</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wrapper col-4 d-block w-100" (click)="actionHandler('OPEN_REDIRECT_MENU')"
+                        [routerLink]="['/resumen-tarjetas', 'amex']">
+                        <div class="box-tarjetas">
+                            <img src="../../../../assets/ser-optimus/amex_logo.png" class="d-block w-100"
+                                alt="Pagos Digitales con Tarjetas AMERICAN EXPRESS">
+                            <div class="card-tittle">
+                                <h2 id="financiera">AMERICAN EXPRESS</h2>
+                                <p class="card-text">Digital Payments para transacciones con Tarjetas AMERICAN EXPRESS exclusivamente</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--  -->
+            <div class="carousel-item">
+                <div class="row">
+                    <div class="wrapper col-4 d-block w-100" (click)="actionHandler('OPEN_REDIRECT_MENU')"
+                        [routerLink]="['/resumen-tarjetas', 'dinners']">
+                        <div class="box-tarjetas">
+                            <img src="../../../../assets/ser-optimus/dinners_logo.png" class="d-block w-100"
+                                alt="Pagos Digitales con tarjetas DINNERS">
+                            <div class="card-tittle">
+                                <h2 id="financiera">Tarjetas DINNERS</h2>
+                                <p class="card-text">Digital Payments para transacciones con tarjetas DINNERS exclusivamente</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wrapper col-4 d-block w-100" (click)="actionHandler('OPEN_REDIRECT_MENU')"
+                        [routerLink]="['/resumen-tarjetas', 'discover']">
+                        <div class="box-tarjetas">
+                            <img src="../../../../assets/ser-optimus/discover-logo.png" class="d-block w-100"
+                                alt="Pagos Digitales con Tarjetas DISCOVER">
+                            <div class="card-tittle">
+                                <h2 id="financiera">Tarjetas DISCOVER</h2>
+                                <p class="card-text">Digital Payments para transacciones con Tarjetas DISCOVER exclusivamente</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wrapper col-4 d-block w-100" (click)="actionHandler('OPEN_REDIRECT_MENU')"
+                        [routerLink]="['/resumen-tarjetas', 'alia']">
+                        <div class="box-tarjetas">
+                            <img src="../../../../assets/ser-optimus/logo_alia.png" class="d-block w-100"
+                                alt="Pagos Digitales con Tarjetas ALIA">
+                            <div class="card-tittle">
+                                <h2 id="financiera">Tarjetas ALIA</h2>
+                                <p>Digital Payment para transacciones con Tarjetas ALIA exclusivamente</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next"  href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<!--VISTA MOVIL-->
+
+<div class="global-container d-block d-sm-block d-md-none">
+
+    <div class="row">
+
+        <div class="wrapper">
+
+            <div class="menu-item">
+
+                <div class="container-item box" (click)="actionHandler('OPEN_REDIRECT_MENU')"
+                    [routerLink]="['/resumen-tarjetas', 'visa']">
+                    <img src="../../../../assets/ser-optimus/logo_visa.png" alt="tarjetas-de-credito"
+                        class="rounded mx-auto d-block img-fluid">
+                </div>
+
+            </div>
+
+            <div class="menu-item">
+
+                <div class="container-item box" (click)="actionHandler('OPEN_REDIRECT_MENU')"
+                    [routerLink]="['/resumen-tarjetas', 'mastercard']">
+                    <img src="../../../../assets/ser-optimus/mastercard_logo.png" alt="tarjetas-de-credito"
+                        class="rounded mx-auto d-block img-fluid">
+                </div>
+
+            </div>
+
+            <div class="menu-item">
+
+                <div class="container-item box" (click)="actionHandler('OPEN_REDIRECT_MENU')"
+                    [routerLink]="['/resumen-tarjetas', 'amex']">
+
+                    <img src="../../../../assets/ser-optimus/amex_logo.png.png" alt="tarjetas-de-credito"
+                        class="rounded mx-auto d-block img-fluid">
+                </div>
+
+            </div>
+
+            <div class="menu-item">
+
+                <div class="container-item box" (click)="actionHandler('OPEN_REDIRECT_MENU')"
+                    [routerLink]="['/resumen-tarjetas', 'dinners']">
+                    <img src="../../../../assets/ser-optimus/dinners_logo.png" alt="tarjetas-de-credito"
+                        class="rounded mx-auto d-block img-fluid">
+                </div>
+
+            </div> 
+            <div class="menu-item">
+
+                <div class="container-item box" (click)="actionHandler('OPEN_REDIRECT_MENU')"
+                    [routerLink]="['/resumen-tarjetas', 'discover']">
+                    <img src="../../../../assets/ser-optimus/discover-logo.png" alt="tarjetas-de-credito"
+                        class="rounded mx-auto d-block img-fluid">
+                </div>
+
+            </div>
+
+            <div class="menu-item">
+
+                <div class="container-item box" (click)="actionHandler('OPEN_REDIRECT_MENU')"
+                    [routerLink]="['/resumen-tarjetas', 'alia']">
+                    <img src="../../../../assets/ser-optimus/logo_alia.png" alt="tarjetas-de-credito"
+                        class="rounded mx-auto d-block img-fluid">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<app-back-to-bottom class="d-none d-sm-none d-md-block"></app-back-to-bottom>

@@ -1,0 +1,40 @@
+<style>
+    .mensaje-open{
+        bottom: 178px;
+    }
+</style>
+
+<div class="card-container ">
+    <div class="ui-card-shadow ui-card ui-widget ui-widget-content ui-corner-all"
+         style="width: 100%; border-radius: 0px 0px 28px 28px; cursor: pointer;border: hidden;">
+        <div class="ui-card-header ng-star-inserted">
+            <img src="assets/images/claroIpTv/ImagenIpTv.png"/>
+        </div>
+
+        <div class="ui-card-body"
+             style="border: 1px solid #bdbdbd;border-radius: 0px 0px 28px 28px;border-top: hidden;">
+            <div class="ui-card-content"></div>
+            <div class="ui-card-footer ng-star-inserted" style="position: relative;text-align: center; margin-left: -40px!important;">
+                <img src="assets/images/claroIpTv/LogoIptv.png" style="width: 44px!important;margin-left: 4px!important;" alt="">
+                <span
+                    (click)="activarOverlay()" style="color:#757575;display: inline-block;margin-left: -14px!important;justify-items: center;padding-top: 0px; font-weight: 500;font-size: 18px;"> &nbsp; {{offer.offerName}}</span>
+            </div>
+        </div>
+    </div>
+    <div style="margin-left: 10px; margin-right: 10px; margin-top: 10px;">
+        <button (click)="executeOfferAction()" class="btn btn-danger btn-lg btn-block">Activar</button>
+    </div>
+
+    <app-claro-ip-tv-pop-up [activarpopover]="activarpopover" [offer]="offer"
+                            (btnEntendido)="btnEntendido($event)" style="bottom: 178px;">
+
+    </app-claro-ip-tv-pop-up>
+
+
+
+
+</div>
+
+<ng-template #ShowEmployeeProfile>
+    <div [outerHTML]="offer.offerDescription"> </div>
+</ng-template>

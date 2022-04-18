@@ -1,0 +1,47 @@
+td {
+    text-align: center;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+.customSection {
+    margin: 5px 40px; 
+    font-family: 'Poppins';
+}
+.logoClaro {
+    width: 134px;
+    margin-right: 16px;
+}
+.pageDescription {
+    font-size: 19px;
+    position: relative;
+    top: 17px; 
+    font-size: 2vw;
+}
+.contentItemHeader {
+    background: #428d985e !important;
+    padding: 5px 15px;
+}
+.contentItemHeader div {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    width: 100%;
+}
+.contentItemHeader div img {
+    width: 30px;
+    margin: 0px 10px 10px;;
+}
+.contentItemHeader div div {
+    display: flex; 
+    flex-direction: row; 
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 600;
+}
+.contentItemHeader div div div {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-right: 5%;
+    width: 80%;
+}

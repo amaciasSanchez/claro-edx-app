@@ -1,0 +1,160 @@
+<p-dialog [(visible)]="activarpopover" [baseZIndex]="10000" styleClass="mydialog" modal="true" >
+    <div style="margin: auto; width: 540px;">
+        <img style="width: 25px; height: auto; vertical-align: text-bottom;"
+            src="assets/images/claroVideo/admiracion.png">
+        <span style=" margin-left: 13px;     font-size: 1.75rem; ">
+            Información adicional del dispositivo…
+        </span>
+    </div>
+    <div style="margin: 15px;">
+        <h4 style="font-size: 1rem; text-align: start;">Plan de Financiamiento</h4>
+        <hr>
+        <p-table
+            [columns]="colsFinanciamiento" 
+            [value]="financingPlan"
+            [totalRecords]="financingPlan ? financingPlan.length : 0"
+            [rows]="5"
+            [paginator]="true"
+            [rowsPerPageOptions]="[5, 10, 20]"
+        >
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns" style="background-color: #4472C4 !important; color: #fff;">
+                        {{col.header}}
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr>
+                    <td style="background-color: #CFD5EA;">
+                        {{rowData['cycleSequence']}}
+                    </td>
+                    <td style="background-color: #CFD5EA;">
+                        {{rowData['amount']}}
+                    </td>
+                    <td style="background-color: #CFD5EA;">
+                        {{rowData['realRepayDate']}}
+                    </td>
+                    <td style="background-color: #CFD5EA;">
+                        {{rowData['status']}}
+                    </td>
+                    <td style="background-color: #CFD5EA;">
+                        {{rowData['cycleDueDate']}}
+                    </td>
+                    <td style="background-color: #CFD5EA;">
+                        
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <div style="margin: 15px;">
+        <h4 style="font-size: 1rem; text-align: start;">Seguro de Equipo (Protección Móvil) </h4>
+        <hr>
+
+        <p-table [columns]="colsSeguro" [value]="claroUpServices">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns" style="background-color: #4472C4 !important; color: #fff;">
+                        {{col.header}}
+                    </th>
+                    <th style="background-color: #4472C4 !important; color: #fff;">
+                        Acción
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr>
+                    <td style="background-color: #CFD5EA;">
+                        {{rowData['status']}}
+                    </td>
+                    <td style="background-color: #CFD5EA;">
+                        {{ rowData['date']  | date: 'dd/MM/yyyy hh:mm' }}
+                    </td>
+                    <td style="background-color: #CFD5EA;">
+                        {{rowData['prima']}}
+                    </td>
+                    <td style="background-color: #CFD5EA;">
+                        {{rowData['provider']}}
+                    </td>
+                    <td style="background-color: #CFD5EA;">
+                        {{ rowData['lastSinisterDate'] | date: 'dd/MM/yyyy hh:mm'  }}
+                    </td>
+                    <td style="background-color: #CFD5EA;">
+                        <!-- <p-dropdown [options]="cities1" [(ngModel)]="selectedCity1"></p-dropdown> -->
+                        <button type="button" pButton style="height: 35px; background-color: #2F5597 !important;"  label="Inactivar"  (click)="unLinkServiceAction(rowData)"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <div style="margin: 15px;">
+        <h4 style="font-size: 1rem; text-align: start;">Otros servicios donde el cliente usa este
+            dispositivo</h4>
+        <hr>
+
+        <p-table [columns]="colsOtroServicios" [value]="otherServices">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns" style="background-color: #4472C4 !important; color: #fff;">
+                        {{col.header}}
+                    </th>
+                    <th style="background-color: #4472C4 !important; color: #fff;">
+                        Acción
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr>
+                    <td style="background-color: #CFD5EA;">
+                        {{rowData['product']}}
+                    </td>
+                    <td style="background-color: #CFD5EA;"> 
+                        {{ rowData['date']  | date: 'dd/MM/yyyy' }}
+                    </td>
+                    <td style="background-color: #CFD5EA;">
+                        {{rowData['status']}}    
+                    </td>
+                    <td style="background-color: #CFD5EA;">
+                        <!-- <p-dropdown [options]="cities1" [(ngModel)]="selectedCity1"></p-dropdown> -->
+                        <button type="button" pButton style="height: 35px; background-color: #2F5597 !important;"  
+                            label="Desvincular"  
+                            [disabled]="loading==true"
+                            (click)="unLinkServiceAction(rowData)"></button>
+                        <img src="assets/images/loading.gif" width="40px" *ngIf="loading==true" >
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+    <p-footer>
+        <button type="button" pButton style="height: 40px; background-color: #4472C4 !important;" (click)="actionClose()" label="Entendido"></button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="modalAdvertencia" [style]="{width: '600px'}" [modal]="true" >
+    <span style="display: block;  text-align: center; margin-bottom: 16px;">
+        <i [class]="(inactivateClaroUpResponse !== undefined && inactivateClaroUpResponse.status == 'WARNING') ? 
+            'ui-icon-report-problem modal-icon-warning' 
+            : (inactivateClaroUpResponse !== undefined && inactivateClaroUpResponse.status == 'ERROR') ?
+                'ui-icon-close modal-icon-error'
+                : 'ui-icon-check modal-icon-success'"></i>
+    </span>
+    <div style="line-height: 24px; text-align: center; padding: 15px;">
+        <span>
+            {{inactivateClaroUpResponse !== undefined ? inactivateClaroUpResponse.message : ''}}
+        </span>
+    </div>
+    
+    <br>
+    <div style="width: 100%;text-align: center;">
+        <button type="button" class="mx-auto" style="background: #e03232;width:40%" pButton
+            (click)="closeDialog()" label="Cerrar"></button>
+    </div>
+
+</p-dialog>
+
+<app-claro-video-modal-validaciones [message]="modal.message" (hideModal)="hideModal()" [modal]="showModal"
+    [type]="modal.type">
+</app-claro-video-modal-validaciones>

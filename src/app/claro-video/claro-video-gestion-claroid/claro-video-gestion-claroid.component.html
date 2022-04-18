@@ -1,0 +1,139 @@
+<section class="section-content producto-servicio " style="width: 100%">
+        <div style="margin: 24px;">
+        <div class="row">
+            <header-process style="width: 100%;" [titulo]="'Gestión de Claro ID  (1625374)'"
+                [subtitulo]="'Claro ID del cliente'"></header-process>
+        </div>
+
+        <div class="row">
+            <div class="ui-g-10 my-auto">
+
+                <h4 style=" margin-left: 122px;font-weight: 300;font-size: 18px;">
+                    En esta etapa puedes consultar el CLARO ID de tu cliente, puedes actualizar o crear nuevos…
+                </h4>
+            </div>
+
+            <div class="ui-g-2">
+                <div style="height: 60px; ">
+                    <app-btn-volver-vista style="margin-right: 10%;"></app-btn-volver-vista>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <personal-information-process style="width: 100%;"></personal-information-process>
+
+        </div>
+
+        <div class="row">
+            <div style="height: 20px; width: 100%;"></div>
+            <ul style="width: 100%;">
+                <li>
+                    <div>
+                        <div class="row">
+
+                            <div class="col-3">
+                                <span>
+                                    <img src="assets/images/bundle/Imagen6.png" al=""
+                                        style="width: 45px;height: 45px; background: transparent;"> <span
+                                        style="line-height: 40px;    margin-right: 27px;">15 Marzo 2020 13H15
+
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="col-5"> <span>
+                                    <img src="assets/images/bundle/mail.png" alt="" style="background: transparent;">
+                                    <span style="line-height: 40px;    margin-right: 27px;">jfpereira@Gmail.com
+
+
+                                    </span>
+                                </span>
+                            </div>
+
+                            <div class="col-2">
+
+                                <span>
+                                    <img src="assets/images/bundle/lupa.png" alt=""
+                                        style="width: 45px;height: 45px; background: transparent;"> <span
+                                        style="line-height: 40px;    margin-right: 27px;">Activo
+
+
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="col-1">
+
+                                <span>
+                                    <img src="assets/images/bundle/clave.png" alt=""
+                                        style="width: 45px;height: 45px; background: transparent;"> <span
+                                        style="line-height: 40px;    margin-right: 27px;">
+
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="col-1">
+
+                                <i class="ui-icon-visibility" (click)="mostrarClaroId()" style="font-size: 33px;line-height: 43px;"></i>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <div class="divider"></div>
+                </li>
+            </ul>
+        </div>
+        <div class="row  d-flex justify-content-around">
+            <div>
+                <Button (click)="clickAccion(2)" class="selected-color">Crear un nuevo Claro ID </Button>
+
+            </div>
+
+        </div>
+        <div class="row " style="margin-top: 20px;">
+
+            <div class="content-arrow-button">
+
+                <button class="button-arrow-right" (click)="atras()">
+                    <i class="ui-icon-arrow-back icon-right"></i>
+                </button>
+                <button class="button-arrow-right" (click)="siguiente()">
+                    <i class="ui-icon-arrow-forward icon-right"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</section>
+<app-claro-video-modal-claro-id [activarpopover]="modalEdit"  (dismiss)="ocultarClaroId()" ></app-claro-video-modal-claro-id>
+
+<!-- <p-dialog [(visible)]="modalAcepta" [style]="{width: '600px'}">
+    <span style="display: block;  text-align: center; margin-bottom: 16px;">
+        <i class="ui-icon-report-problem" style="color:#f1b606;font-size: 67px;"></i>
+
+    </span>
+    <div style="line-height: 24px; text-align: center; padding: 15px;">
+        <span>
+            En la siguiente etapa activarás la suscripción de Claro Video en AMCO (América Móvil Content Office).
+            Puede que el cliente no haya confirmado aún la creación de su cuenta en el
+            link adjunto al correo emitido por AMCO al cliente final.
+            Debes aceptar el riesgo de que el cliente no sea el dueño original del correo electrónico.
+        </span>
+    </div>
+
+    <div style="line-height: 24px; text-align: center; ">
+
+        <input type="checkbox"  [(ngModel)]="checked" >
+        <label for="acepta">Acepto el riesgo de que el cliente no sea el dueño original del correo
+            electrónico.</label><br>
+    </div>
+
+    <div style="width: 100%;">
+        <button type="button"   [disabled] = "!checked" class="mx-auto" style="width: 100%;height: 40px; color: white; background: #2f4050;" pButton
+            (click)="aceptaRiesgo()" label="Entendido"></button>
+    </div>
+
+</p-dialog> -->

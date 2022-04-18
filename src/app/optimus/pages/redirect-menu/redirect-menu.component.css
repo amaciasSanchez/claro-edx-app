@@ -1,0 +1,60 @@
+.global-container {
+    margin: 0;
+    padding: 0rem;
+}
+
+.row {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    margin-top: 0rem;
+    margin: 0;
+    padding: 0;
+
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.box img {
+    width: 100%;
+    height: auto;
+
+    padding: 0rem;
+
+    cursor: pointer;
+}
+
+.box img:hover {
+    /*filter: blur(.1rem);
+    transition: 2s;*/
+    filter: grayscale(80%);
+}
+
+.card-tittle {
+    background: rgba(255,255,255,0.5);
+    display: table;
+    padding: 1rem;
+    margin: 1rem;
+    position: absolute;
+    top: 20rem;
+    left: 8rem;
+    cursor: pointer;
+    color:white;
+}
+
+.card-tittle h2, p{
+    text-align: center;
+}
+
+.carousel-caption {
+    background: rgba(255,255,255,0.5);
+    color: black;
+}
+
+.carousel-caption h6 {
+    font-weight: bold;
+}

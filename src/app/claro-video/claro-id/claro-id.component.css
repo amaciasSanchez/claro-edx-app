@@ -1,0 +1,264 @@
+.si-container[data-theme="lite"],
+.si-container[data-theme="lite"] .apple-id-logo .icon,
+.si-container[data-theme="lite"] .lite-theme-override {
+    color: #fff;
+}
+.si-container {
+    text-align: center;
+    width: 100%;
+    padding: 0;
+}
+.si-body,
+body,
+html {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.widget-container.restrict-max-wh.restrict-min-content {
+    /* min-height: 100vh; */
+    height: min-content;
+}
+.widget-container.restrict-max-wh {
+    min-height: 420px;
+}
+.widget-container {
+    height: 100%;
+    min-width: 310px;
+    margin: 0 auto;
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    -webkit-flex-direction: vertical;
+    -moz-flex-direction: vertical;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
+}
+.fade-in {
+    -webkit-animation: fade-in 0.5s ease-in-out;
+    -moz-animation: fade-in 0.5s ease-in-out;
+    -ms-animation: fade-in 0.5s ease-in-out;
+    -o-animation: fade-in 0.5s ease-in-out;
+    animation: fade-in 0.5s ease-in-out;
+}
+*,
+::after,
+::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.si-container[data-theme="lite"],
+.si-container[data-theme="lite"] .apple-id-logo .icon,
+.si-container[data-theme="lite"] .lite-theme-override {
+    color: #fff;
+}
+.si-container {
+    text-align: center;
+}
+
+.logo.signin-label {
+    margin-bottom: 0;
+}
+.logo {
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.logo .cnsmr-app-image {
+    max-width: 350px;
+    max-height: 100px;
+}
+
+.widget-container .si-container-title {
+    max-width: 380px;
+    margin: 5px auto 13px;
+    word-break: break-word;
+}
+.widget-container .si-container-title {
+    margin: 14px 0;
+}
+.tk-intro {
+    font-size: 21px;
+    line-height: 1.38105;
+    font-weight: 400;
+    letter-spacing: 0.011em;
+    font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial,
+        sans-serif;
+}
+
+.widget-container .si-field-container {
+    max-width: 328px;
+    position: relative;
+    outline: none;
+}
+.container {
+    margin-right: auto;
+    margin-left: auto;
+}
+h1 + *,
+h2 + *,
+h3 + *,
+h4 + *,
+h5 + *,
+h6 + * {
+    margin-top: 0.8em;
+}
+
+.signin-form.fed-auth.hide-password .account-name .form-textbox {
+    padding-right: 43px;
+}
+.widget-container input[type="password"],
+.widget-container input[type="tel"],
+.widget-container input[type="text"] {
+    color: #494949;
+}
+.signin-form .form-textbox {
+    margin: 0;
+    box-shadow: none;
+    height: 42px;
+    /* border: 0;
+        border-top-color: currentcolor;
+        border-right-color: currentcolor;
+        border-bottom-color: currentcolor;
+        border-left-color: currentcolor; */
+    border-radius: 6px;
+    /* border-color: transparent; */
+}
+input[type="password"],
+input[type="tel"],
+input[type="text"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.form-textbox {
+    font-size: 17px;
+    line-height: 1.29412;
+    font-weight: 400;
+    letter-spacing: -0.021em;
+    font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial,
+        sans-serif;
+    display: inline-block;
+    box-sizing: border-box;
+    vertical-align: top;
+    width: 100%;
+    height: 34px;
+    margin-bottom: 14px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #333;
+    text-align: left;
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+    background: #fff;
+    background-clip: border-box;
+    background-clip: padding-box;
+}
+
+.form-textbox {
+    font-size: 17px;
+    line-height: 1.23543;
+    font-weight: 400;
+    letter-spacing: -0.022em;
+    font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial,
+        sans-serif;
+    display: inline-block;
+    box-sizing: border-box;
+    vertical-align: top;
+    width: 100%;
+    height: 3.3em;
+    margin-bottom: 14px;
+    padding-top: 18px;
+    padding-left: 16px;
+    padding-right: 16px;
+    color: #333;
+    text-align: left;
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+    background: hsla(0, 0%, 100%, 0.8);
+    background-color: rgba(255, 255, 255, 0.8);
+    background-clip: border-box;
+    background-clip: padding-box;
+}
+.form-textbox.form-textbox-entered ~ .form-label,
+.form-textbox:focus ~ .form-label,
+.form-textbox ~ .form-label {
+    z-index: 0;
+}
+.form-textbox ~ .form-label {
+    pointer-events: none;
+}
+.form-textbox ~ .form-label {
+    position: absolute;
+    top: 18px;
+    left: 17px;
+    color: #888;
+    padding: 0;
+    z-index: 1;
+    transition-timing-function: ease-in;
+    transition-duration: 0.125s;
+}
+.form-textbox.form-textbox-entered ~ .form-label,
+.form-textbox:focus ~ .form-label,
+.form-textbox ~ .form-label {
+    z-index: 0;
+}
+.form-textbox ~ .form-label {
+    pointer-events: none;
+}
+.form-textbox ~ .form-label {
+    position: absolute;
+    top: 18px;
+    left: 17px;
+    color: #888;
+    padding: 0;
+    z-index: 1;
+    transition-timing-function: ease-in;
+    transition-duration: 0.125s;
+}
+.form-block-label,
+.form-label {
+    font-size: 17px;
+    line-height: 1.23543;
+    font-weight: 400;
+    letter-spacing: -0.022em;
+    font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial,
+        sans-serif;
+    display: block;
+    position: relative;
+    vertical-align: top;
+    color: #333;
+}
+#password_text_field,
+#account_name_text_field {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.claro-id {
+    color: #000;
+    /* text-shadow: 0 0 30px rgba(0,0,0,.5); */
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    font-size: 40px;
+    line-height: 1.1;
+    font-weight: 600;
+    letter-spacing: 0;
+    font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial,
+        sans-serif;
+}

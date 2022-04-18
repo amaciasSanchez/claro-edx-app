@@ -1,0 +1,76 @@
+<!-- <div
+    class="ui-g ui-fluid"
+    style="height: 15%;  color: white; background-color: brown;"
+>
+    <div class="ui-grid-col-12" style="margin: 0px">
+        <div class="wrap">
+            <h2>Claro Digital Experience</h2>
+            <p>
+                Transformando las capacidades de nuestra empresa hacia una
+                experiencia digital unificada de clase mundial...
+            </p>
+        </div>
+    </div>
+</div> -->
+
+<style>
+    .wrap :hover {
+        filter: grayscale(80%);
+    }
+</style>
+
+<div class="ui-g ui-fluid">
+    <div class="ui-grid-col-4 home1" style="margin: 0;cursor: pointer;" (click)="accionHandler('OPEN_LOGIN_CUSTOMER')">
+        <div class="wrap">
+            <div class="labelWrapHome" style="max-width: 368px;margin-top: 80%;text-align: center;margin-left: 29px;">
+                <h2 style="background:rgba(255,255,255,0.5);display: table; padding: 10px;">
+                    Digital Customer Manager
+                </h2>
+                <p style="background:rgba(255,255,255,0.5);display: table; padding: 10px;">
+                    <span>Brindando a tus clientes un servicio</span>
+                    <span> digital de clase mundial…</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-grid-col-4 home2" style="margin: 0;cursor: pointer;" (click)="accionHandler('OPEN_ECS')">
+        <div class="wrap">
+            <div class="labelWrapHome" style="max-width: 368px;margin-top: 80%;text-align: center;margin-left: 29px;">
+                <h2 style="background:rgba(255,255,255,0.5);display: table; padding: 10px;">
+                    Enterprise Common Services
+                </h2>
+                <p style="background:rgba(255,255,255,0.5);display: table; padding: 10px;">
+                    <span>Los procesos de nuestra empresa</span>
+                    <span> con una sola experiencia digital innovadora…</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="ui-grid-col-4 home3" style="margin: 0;filter: grayscale(1);" (click)="accionHandler('OPEN_B2E_CUSTOMER')">
+        <div class="wrap">
+            <div class="labelWrapHome" style="max-width: 368px;margin-top: 80%;text-align: center;margin-left: 29px;">
+                <h2 style="background:rgba(255,255,255,0.5);display: table; padding: 10px;">
+                    Business To Employee
+                </h2>
+                <p style="background:rgba(255,255,255,0.5);display: table; padding: 10px;">
+                    <span>De la intranet corporativa al B2E</span>
+                    <span> porque nuestra empresa eres tú…</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--swiper [config]="config" style="height: 600px">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="../assets/images/1.png"/>
+            </div>
+            <div class="swiper-slide">
+                <img src="../assets/images/2.png"/>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </swiper-->
+</div>

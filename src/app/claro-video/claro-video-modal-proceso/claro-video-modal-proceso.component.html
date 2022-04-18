@@ -1,0 +1,57 @@
+<p-dialog [(visible)]="activaModal" [style]="{width: '38vw'}">
+    <div style="justify-content: center; display: flex;">
+        <span>
+            <img src="assets/images/bundle/Imagen10.png" alt=""
+                style="width: 90px;height: auto; background: transparent;">
+            <span style="line-height: 25px; font-size: 1vw;">
+                Información adicional que debes conocer…
+            </span>
+        </span>
+
+    </div>
+    <ul class="modal-ul">
+        <li>
+            <div class="ui-g ">
+                <div class="ui-g-1 my-auto">
+                    <img src="assets/images/bundle/informacion.png" alt=""
+                        style="width: 40px;height: auto; background: transparent;">
+                </div>
+                <div class="ui-g-11" style="line-height: 25px; padding-left: 10px; font-size: 1vw;">
+                    El servicio de {{offer.offerName}} tiene un costo de {{offer.priceTotal}}  incluido impuestos de ley
+                </div>
+            </div>
+        </li>
+
+        <li>
+            <div class="ui-g ">
+                <div class="ui-g-1 my-auto">
+                    <img src="assets/images/bundle/expiracion.png" alt=""
+                        style="width: 40px;height: auto; background: transparent;">
+                </div>
+                <div class="ui-g-11" style="line-height: 25px; padding-left: 10px; font-size: 1vw;">
+                    El servicio será cobrado mensualmente en la factura si es una línea pospago. Se debitará del saldo si es una línea prepago.
+                </div>
+            </div>
+
+        </li>
+
+        <li>
+            <div class="ui-g ">
+                <div class="ui-g-1 my-auto">
+                    <img src="assets/images/bundle/www.png" alt=""
+                        style="width: 40px;height: auto; background: transparent;">
+                </div>
+                <div class="ui-g-11" style="line-height: 25px; padding-left: 10px; font-size: 1vw;">
+                    Informa a tu cliente que debe ingresar a www.clarovideo.com para disfrutar de su servicio
+                </div>
+            </div>
+        </li>
+
+    </ul>
+    <div style="width: 100%;">
+        <button type="button" class="mx-auto" style="width: 100%;" pButton (click)="hideoverlay()"
+            label="Entendido"></button>
+    </div>
+
+
+</p-dialog>

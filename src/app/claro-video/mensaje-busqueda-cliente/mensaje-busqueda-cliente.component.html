@@ -1,0 +1,24 @@
+<div class="div_prima_mensual">
+    <div class="tabla_resumen uk-overflow-container" style="display: inline-flex;">
+        <div>
+            <img style="width: 40px;" alt="" src="assets/images/icons/general/info.png">
+        </div>
+
+        <div style="text-align: justify;margin-left: 5px;font-size: 12px;color: gray;">
+            <p>
+                {{mensaje1}}
+                <br>
+                {{mensaje2}}
+
+                <a placement="top" id = "some-container" data-toggle="tooltip"
+                    ngbTooltip='En Claro EDX el "Número de Servicio" representa una identificación única para el servicio que contrató el cliente o abonado. En el caso de servicios móviles el número de servicio corresponde al número celular en formato internacional (12 digitos). Pueden existir otros servicios comercializados por CLARO Ecuador en los cuales el número de servicio sea un código alfanumérico. Es importante conocer el número de servicio para poder navegar en el sistema. Si desconoces el número de servicio puedes consultar información en base a la identificación social del cliente, usualmente la cédula de identidad '
+                    style="cursor: pointer;text-decoration: underline;color: #3b9de8;"
+                    tooltipClass="my-custom-class">número de servicio</a>
+                {{mensaje3}}
+            </p>
+        </div>
+
+        <!-- [autoClose]="false" triggers="manual" #t="ngbTooltip" (click)="t.open()" -->
+
+    </div>
+</div> 

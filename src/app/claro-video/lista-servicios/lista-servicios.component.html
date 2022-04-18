@@ -1,0 +1,44 @@
+<div style="border-right: 1px solid #888282;margin-right: 19px; " class="claro-lista-servicios">
+    <ul style="list-style: none;">
+        <li>
+            <div>
+                <img [src]="(subscription.subscriptionInformation.properties.subproductId == 'AUT' || 
+                                    subscription.subscriptionInformation.properties.subproductId == 'PPA' || 
+                                    subscription.subscriptionInformation.properties.subproductId == 'TAR') ? 
+                                        'assets/images/icons/products/phone.png' 
+                                    : ((subscription.subscriptionInformation.properties.subproductId == 'INT.WTTX' || 
+                                    subscription.subscriptionInformation.properties.subproductId == 'INT.GPON') ? 
+                                        'assets/images/icons/products/wifi.png'
+                                        : 'assets/images/icons/products/phone.png') " alt="" > 
+                <span title="Código de Suscripción" >{{subscription.subscriptionInformation.serviceNumber}}</span>
+            </div>
+            <div>
+                <img src="assets/images/icons/products/offer.png" alt="" > 
+                <span title="Plan de Suscripción" >{{subscription.subscriptionInformation.properties.model}}</span><br>
+            </div>
+            <div>
+                <img [src]="(subscription.subscriptionInformation.paymentType == 'Contrafactura') ? 
+                                        'assets/images/icons/products/invoice.png' 
+                                    : ((subscription.subscriptionInformation.paymentType == 'Tarjeta de Crédito') ? 
+                                            'assets/images/icons/products/card.png'
+                                        : ((subscription.subscriptionInformation.paymentType == 'Cuenta Bancaria') ? 
+                                                'assets/images/icons/products/bank.png'
+                                            : ((subscription.subscriptionInformation.paymentType == 'Cheque') ? 
+                                                    'assets/images/icons/products/check.png'
+                                                : 'assets/images/icons/products/cash.png'))) " alt=""> 
+                <span title="Forma de Pago" style="display: inline-block; position: relative; vertical-align: middle;" >
+                        <span style="display: block;" >{{subscription.subscriptionInformation.paymentType}}</span>
+                        <span style="display: block;" >{{subscription.subscriptionInformation.paymentDescription}}</span>
+                </span>
+            </div>
+            <div>
+                <img src="assets/images/icons/products/calendar.png" alt="">
+                <span title="Fecha de Suscripción" >Activado el {{subscription.subscriptionInformation.activeDate  | date: 'dd/MM/yyyy HH:mm' }}</span><br>
+            </div>
+            <div>
+                <img src="assets/images/icons/products/status.png" alt="">
+                <span title="Estado de la Suscripción" >{{subscription.subscriptionInformation.status}}</span>
+            </div>
+        </li>
+    </ul>
+</div>

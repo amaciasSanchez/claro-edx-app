@@ -1,0 +1,158 @@
+<!--
+<app-navbar [miFinanciera]="someFinanciera"></app-navbar>
+-->
+<div class="jumbotron">
+
+    <div>
+
+      <h2>Mostrando el contenido</h2>
+
+    </div>
+
+    <div class="info-actions row">
+
+      <h5 id="fname"
+          class="col-sm-5">
+          <i class="fa fa-file-alt"></i>
+          {{ nameFile }}
+      </h5>
+
+    <div class="col-sm-7">
+
+        <button type="button"
+                placement="bottom"
+                ngbTooltip="Archivo previo"
+                jumbotron class="btn btn-outline-info btn-rounded waves-effect">
+                <i class="fa fa-angle-double-left"
+                    aria-hidden="true">
+                </i>
+        </button>
+
+        <button type="button"
+                placement="bottom"
+                ngbTooltip="Archivo revisado"
+                class="btn btn-outline-success btn-rounded waves-effect">
+                <i class="fa fa-check-circle"
+                    aria-hidden="true">
+                </i>
+        </button>
+
+        <button type="button"
+                placement="bottom"
+                ngbTooltip="Elimine el archivo"
+                class="btn btn-outline-danger btn-rounded waves-effect"
+                (click)="open(content)"
+                >
+                <i class="fa fa-ban"
+                    aria-hidden="true">
+                </i>
+        </button>
+
+        <button type="button"
+                placement="bottom"
+                ngbTooltip="Archivo siguiente"
+                jumbotron class="btn btn-outline-info btn-rounded waves-effect">
+                <i class="fa fa-angle-double-right"
+                    aria-hidden="true">
+                </i>
+        </button>
+    </div>
+
+    </div>
+
+    <hr class="my-4">
+
+</div>
+<div class="container-fluid">
+  <div class="table-container row" style="padding: 1rem;">
+    <table class="table table-hover"
+            style="margin: 0 auto; padding: 1rem;">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">ROW Data</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let dato of datos.lines">
+            <th scope="row">*</th>
+            <td>{{ dato.lines }}</td>
+
+          </tr>
+        </tbody>
+      </table>
+
+</div>
+</div>
+<!--
+<app-footer></app-footer>
+-->
+
+<!---------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------->
+
+<ng-template #content  let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      <i class="fa fa-trash-alt"></i>
+      Aprobando Archivo(s)
+    </h4>
+  </div>
+  <div class="modal-body">
+    <p class="modal-textpredet">Usted esta enviado el archivo</p>
+  </div>
+  <div class="modal-footer">
+
+    <button type="button"
+            class="btn btn-outline-dark"
+            (click)="c()">
+            <i class="fa fa-minus-square"></i>
+             Cancelar
+    </button>
+
+    <button type="button"
+            class="btn btn-outline-dark"
+            (click)="procesarFilePayment()">
+            <i class="fa fa-check-square"></i>
+             Confirmar
+    </button>
+
+  </div>
+</ng-template>
+
+<!---------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------->
+
+<ng-template #content2  let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      <i class="fa fa-trash-alt"></i>
+      Eliminando Archivo(s)
+    </h4>
+  </div>
+  <div class="modal-body">
+    <p class="modal-textpredet">Usted esta eliminando el archivo</p>
+  </div>
+  <div class="modal-footer">
+
+    <button type="button"
+            class="btn btn-outline-dark"
+            (click)="c()">
+            <i class="fa fa-minus-square"></i>
+             Cancelar
+    </button>
+
+    <button type="button"
+            class="btn btn-outline-dark"
+            (click)="deleteFile()">
+            <i class="fa fa-check-square"></i>
+             Confirmar
+    </button>
+
+  </div>
+</ng-template>
+
+<!---------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------->
+
+<app-back-to-bottom></app-back-to-bottom>

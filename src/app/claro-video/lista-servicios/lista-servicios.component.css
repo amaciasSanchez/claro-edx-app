@@ -1,0 +1,12 @@
+.claro-lista-servicios{
+
+}
+
+.claro-lista-servicios li div {
+    padding: 12px;
+    font-size: 15px;
+}
+.claro-lista-servicios li img {
+    width: 25px;
+    margin-right: 13px;
+}

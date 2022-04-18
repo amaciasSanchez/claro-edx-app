@@ -1,0 +1,60 @@
+td {
+    text-align: center;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+.claro-grid-ordenes{
+
+}
+.claro-grid-ordenes th {
+    width: 200px;
+}
+.claro-grid-ordenes th img {
+    display: block;
+    width: 36px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+.claro-grid-ordenes th {
+    text-align: center;
+    font-weight: 400;
+}
+.customSection {
+    margin: 5px 40px; 
+    font-family: 'Poppins';
+}
+.logoClaro {
+    width: 134px;
+    margin-right: 16px;
+}
+.pageDescription {
+    font-size: 19px;
+    position: relative;
+    top: 17px; 
+    font-size: 2vw;
+}
+.contentItemHeader {
+    background: #428d985e !important;
+}
+.contentItemHeader div {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+}
+.contentItemHeader div img {
+    width: 30px;
+    margin: 0px 10px 10px;;
+}
+.contentItemHeader div div {
+    display: flex; 
+    flex-direction: row; 
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 600;
+}
+.contentItemHeader div div div {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-right: 10px;
+}

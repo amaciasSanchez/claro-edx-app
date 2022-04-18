@@ -1,0 +1,9 @@
+.card{
+    border: 1px solid #154577!important;
+    border-radius: 1.25rem!important;
+    margin-bottom: 5px;
+}
+
+.tamanoCards{
+    width: 85%;
+}

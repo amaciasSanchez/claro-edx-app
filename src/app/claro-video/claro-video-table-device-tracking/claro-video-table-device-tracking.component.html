@@ -1,0 +1,127 @@
+<p-dialog  [(visible)]="displayModalTracking" [modal]="false" 
+    [style]="{ width: '82vw' }"  id="modal-table-tracking">
+
+    <div class="ui-g ">
+        <p-header class="ui-g-12">
+            <div >
+                <button pButton pRipple (click)="actionCloseTrackingTable()"  type="button" icon="pi pi-times" 
+                class="ui-button-rounded ui-button-danger ui-button-outlined close-modal-button" >
+                </button>
+            </div>
+        </p-header>
+    </div>
+
+    <div class="ui-g ">
+        <div class="ui-g" style="margin-bottom: 0.5%;" *ngIf="subscription != undefined &&  subscription.subscriptionInformation != null">
+            <div class="p-datatable-gridlines ui-table ui-widget" style="border-bottom: 1px solid #bdbdbd;">
+                <div class="ui-table-wrapper ng-star-inserted" style="margin-bottom: 0.5%;">
+                    <table id="data-subscription" class="grid">
+                        <thead class="ui-table-thead">
+                            <tr class="ng-star-inserted">
+                                <th class="ui-sortable-column">Producto</th>
+                                <th class="ui-sortable-column">Fecha Activación</th>
+                                <th class="ui-sortable-column">Código</th>
+                                <th class="ui-sortable-column">Servicio</th>
+                                <th class="ui-sortable-column">Oferta Principal</th>
+                                <th class="ui-sortable-column">Forma Pago</th>
+                                <!--<th class="ui-sortable-column">Dirección Instalación</th>-->
+                            </tr>
+                        </thead>
+                        <tbody class="ui-table-tbody">
+                            <tr class="ng-star-inserted">
+                                <td class="ng-star-inserted"><b>{{subscription === undefined ? '' : subscription.subscriptionInformation.properties.subproductDescription}}</b></td>
+                                <td class="ng-star-inserted">{{subscription === undefined ? '' : subscription.subscriptionInformation.activeDate | date: 'dd/MM/yyyy HH:mm'}}</td>
+                                <td class="ng-star-inserted">{{subscription === undefined ? '' : subscription.subscriptionInformation.properties.contractId}}</td>
+                                <td class="ng-star-inserted">{{ subscription === undefined ? '' : subscription.subscriptionInformation.serviceNumber}}</td>
+                                <td class="ng-star-inserted">{{subscription === undefined ? '' : subscription.subscriptionInformation.properties.model}}</td>
+                                <td class="ng-star-inserted">{{subscription === undefined ? '' : subscription.subscriptionInformation.paymentType}} 
+                                    <br/>{{ subscription === undefined ? '' : subscription.subscriptionInformation.paymentDescription}}</td>
+                                <!--<td class="ng-star-inserted"></td>-->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui-g ">
+            <p-table #dt
+            id="table-tracking-device"
+                [value]="trackingData" 
+                [paginator]="true" 
+                [rows]="rows" 
+                [showCurrentPageReport]="true" 
+                [(first)]="first" 
+                currentPageReportTemplate="" 
+                [rowsPerPageOptions]="[10, 25, 50]" 
+                [loading]="loading"  
+                [filterDelay]="0" 
+                [globalFilterFields]="['connectionDate','province','city','site','radioBase','technology','locationId']" 
+                [columns]="selectedColumns"
+                responsiveLayout="scroll">
+                <ng-template pTemplate="caption">
+                    <div class="table-header" >
+                        <div class="flex" id="table-tracking-header">
+                            Tracking 
+                            <span class="p-input-icon-left ml-auto">
+                                <i class="pi pi-search"></i>
+                                <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Buscar" />
+                            </span>
+                        </div>
+                        <div class="ui-g " if="content-items-input"> 
+                            <div class="flex" id="content-items-exports">
+                                <button type="button" pButton pRipple icon="pi pi-file" (click)="dt.exportCSV()" class="mr-2" pTooltip="CSV" tooltipPosition="bottom" tooltipZIndex="9999999" tooltipStyleClass="custom-tooltip"></button>
+                                <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success mr-2"  pTooltip="XLS" tooltipPosition="bottom"></button>
+                                <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()" class="p-button-warning mr-2" pTooltip="PDF" tooltipPosition="bottom"></button>
+                            </div>
+                            <div class="flex">
+                                <div class="field col-12 md:col-4">
+                                    <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
+                                        selectedItemsLabel="{0} columnas seleccionadas" [style]="{minWidth: '200px'}" placeholder="Elija columnas" id="custom-style-multiselector"></p-multiSelect>
+                                </div>
+                            </div>
+                            <div class="flex" id="content-selector-rangos">
+                                <div class="field col-12 md:col-4">
+                                    <p-dropdown [options]="groupTypesFilter" [(ngModel)]="selectedTypeFilter" optionLabel="name"  optionValue="code"></p-dropdown>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="field col-12 md:col-4" *ngIf="selectedTypeFilter!= null && selectedTypeFilter.code=='month'">
+                                    <p-calendar [(ngModel)]="dateValue" [minDate]="minDateValue" view="month" dateFormat="mm/yy" [readonlyInput]="true" inputId="monthpicker"></p-calendar>
+                                </div>
+                                <div class="field col-12 md:col-4" *ngIf="selectedTypeFilter!= null && selectedTypeFilter.code=='range'">
+                                    <p-calendar [(ngModel)]="rangeDates" [minDate]="minDateValue" selectionMode="range" [readonlyInput]="true" inputId="range"></p-calendar>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="field col-12 md:col-4" >
+                                    <button id="button-search-tracking-data" (click)="searchTracking()" pButton pRipple type="button" label="Buscar" class="p-button-raised p-button-danger"></button>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="field col-12 md:col-4" >
+                                    <i class="pi pi-spin pi-spinner" style="font-size: 2rem; color :black" *ngIf="showSpinnerIcon" ></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns" pSortableColumn="{{col.field}}" >
+                            {{col.header}}<p-sortIcon field="{{col.field}}"></p-sortIcon>
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-tracking let-columns="columns">
+                    <tr>
+                        <td *ngFor="let col of columns">
+                            {{tracking[col.field]}}
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</p-dialog>
+

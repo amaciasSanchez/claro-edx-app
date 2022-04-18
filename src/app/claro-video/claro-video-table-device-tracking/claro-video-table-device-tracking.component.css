@@ -1,0 +1,368 @@
+#modal-table-tracking div.ui-dialog-content.ui-widget-content {
+  min-height: 35em;
+}
+
+#modal-table-tracking div.ui-dialog-footer {
+  margin-top: 0.5%;
+  margin-bottom: 0.5%;
+}
+
+#modal-table-tracking div.ui-dialog-footer button {
+  background-color: #6366F1;
+}
+
+#modal-table-tracking .ui-dialog-wrapper .ui-dialog{
+  border-radius: 0;
+  border: 0;
+
+}
+
+.close-modal-button {
+  float: right;
+}
+
+#table-tracking-device .ui-table-wrapper {
+  overflow-y: auto;
+  max-height: 28em;
+}
+
+#table-tracking-device .ui-widget {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+#table-tracking-device .p-component, .p-component * {
+  box-sizing: border-box;
+  font-weight: normal;
+}
+
+#table-tracking-device .flex {
+  display: flex!important;
+}
+
+#table-tracking-device .ui-table .ui-table-tbody > tr > td {
+  text-align: left;
+  border: 1px solid #dee2e6;
+  border-width: 0 0 1px 0;
+  padding: 1rem 1rem;
+}
+
+#table-tracking-device .ui-table .ui-table-tbody > tr {
+  background: #ffffff;
+  color: #495057;
+  transition: box-shadow 0.2s;
+}
+
+#table-tracking-device .ui-table-caption.ui-widget-header.ng-star-inserted {
+  padding: 1rem !important;
+  text-align: left;
+  font-size: 1.5rem;
+  background: #efefef;
+  color: #212529;
+  border: solid #dee2e6;
+  border-width: 1px 0 0 0;
+  padding: 1rem 1rem;
+  font-weight: 600;
+}
+
+/* Estilos del paginador */
+#table-tracking-device .ui-paginator-bottom{
+  background-color: #ffffff;
+  border: 1px solid #bdbdbd;
+  border-left: 0;
+  border-right: 0;
+  margin-top: 1%;
+}
+
+#table-tracking-device .ui-paginator > a {
+box-sizing: border-box;
+color: #000000;
+}
+
+#table-tracking-device .ui-paginator .ui-paginator-pages a {
+  color: #000000;
+}
+
+#table-tracking-device .ui-paginator .ui-paginator-pages a.ui-state-active {
+  background-color: #3f3a36;
+  color: #ffffff;
+}
+
+#table-tracking-device .ui-paginator-bottom .ui-paginator {
+  border-width: 0 0 1px 0;
+  border-radius: 0;
+}
+
+#table-tracking-device .ui-dropdown {
+    display: inline-flex;
+    cursor: pointer;
+    -webkit-user-select: none;
+    border-radius: 4px;
+    padding: 0;
+    display: -webkit-inline-box;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background: #ffffff;
+    border: 1px solid #ced4da;
+    -webkit-transition: background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
+    transition: background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
+
+}
+
+#content-items-input .ui-dropdown {
+  width: 14rem;
+}
+
+#table-tracking-device .ui-helper-hidden-accessible {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 1rem 2rem;
+  position: absolute;
+  width: 1px;
+  
+}
+
+#table-tracking-device .ui-dropdown .ui-dropdown-label.p-placeholder {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+#table-tracking-device .ui-dropdown.ui-dropdown-clearable .ui-dropdown-label {
+  padding-right: 2rem;
+}
+
+#table-tracking-device .ui-dropdown .ui-inputtext {
+  border: 0 none;
+}
+
+#table-tracking-device .ui-dropdown-label {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  flex: 1 1 auto;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+#table-tracking-device .ui-inputtext {
+  font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.87);
+  background: #ffffff;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.38);
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s, background-size 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+  appearance: none;
+  border-radius: 4px;
+  margin: 0;
+}
+
+#table-tracking-device .ui-button.p-button-danger, .ui-buttonset.p-button-danger > .ui-button, .ui-splitbutton.p-button-danger > .ui-button {
+  background: rgba(211, 47, 47, 0.92);
+  color: #ffffff;
+  border-color: transparent;
+  height: 100%;
+}
+
+#button-search-tracking-data {
+  height: 100%;
+  width: 13em;
+}
+
+
+#table-tracking-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#table-tracking-header span.p-input-icon-left {
+  position: relative;
+  display: inline-block;
+}
+
+#table-tracking-header span.p-input-icon-left > i:first-of-type {
+  left: 0.75rem;
+  color: #495057;
+}
+
+#table-tracking-header .p-input-icon-left > i {
+  position: absolute;
+  top: 50%;
+  margin-top: -.5rem;
+}
+#table-tracking-header .pi.pi-search {
+  font-size: 1em;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-feature-settings: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+}
+
+#table-tracking-header .p-input-icon-left > .ui-inputtext {
+  padding-left: 2.5rem
+}
+
+#table-tracking-header .ui-inputtext {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1rem;
+  color: #495057;
+  background: #ffffff;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ced4da;
+  transition: background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
+  appearance: none;
+  border-radius: 4px;
+  margin: 0;
+}
+
+
+#custom-style-multiselector .ui-multiselect {
+  display: inline-flex;
+  cursor: pointer;
+  position: relative;
+  -webkit-user-select: none;
+  user-select: none;
+  background: #ffffff;
+  border: 1px solid #ced4da;
+  transition: background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
+  border-radius: 4px;
+}
+
+#custom-style-multiselector .ui-multiselect-label {
+  display: block;
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#custom-style-multiselector .ui-multiselect-label-container {
+  overflow: hidden;
+  flex: 1 1 auto;
+  cursor: pointer;
+}
+
+#custom-style-multiselector .ui-multiselect .ui-multiselect-label {
+  padding: 0.5rem 0.75rem;
+  transition: background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+
+
+#custom-style-multiselector .ui-multiselect .ui-multiselect-trigger {
+  background: transparent;
+  color: #495057;
+  width: 2.357rem;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+#custom-style-multiselector .ui-multiselect-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+#custom-style-multiselector .ui-helper-hidden-accessible {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#custom-style-multiselector .ui-helper-hidden-accessible input, .ui-helper-hidden-accessible select {
+  transform: scale(0);
+}
+
+#content-items-exports .ui-button {
+  margin: 0;
+  display: inline-flex;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  align-items: center;
+  vertical-align: bottom;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  color: #ffffff;
+  background: #6366F1;
+  border: 1px solid #6366F1;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  border-radius: 1px;
+}
+
+#content-items-exports .ui-button.ui-button-icon-only {
+  width: 3rem;
+  padding: 0.75rem 0;
+}
+
+#content-items-exports .ui-button-icon-only {
+  justify-content: center
+}
+
+#content-items-exports .ui-button-icon-only .ui-button-text {
+  visibility: hidden;
+  width: 0;
+  flex: 0 0 auto;
+}
+
+#content-items-exports  .ui-button-text {
+  transition: all .2s;
+  font-weight: 700;
+}
+
+#content-items-exports .ui-button.p-button-success {
+  color: #ffffff;
+  background: #22C55E;
+  border: 1px solid #22C55E;
+}
+
+#content-items-exports .ui-button.p-button-warning {
+  color: #ffffff;
+  background: #F59E0B;
+  border: 1px solid #F59E0B;
+}
+
+.container {
+  /*height: 200px;*/
+  position: relative;
+  /*border: 3px solid green;*/
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#data-subscription thead > tr > th {
+  background-color: #efefef;
+  border-color: #efefef;
+}
+
+#data-subscription tbody > tr {
+  border-color: transparent;
+}
+

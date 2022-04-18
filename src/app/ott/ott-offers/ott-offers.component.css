@@ -1,0 +1,43 @@
+:host >>> .ui-widget-overlay {
+    background-color: #ffffffd6 !important;
+    z-index: 100 !important;
+    min-height: 80vh;
+} 
+.logoClaro {
+    width: 134px;
+    margin-right: 16px;
+}
+.pageDescription {
+    font-size: 19px;
+    position: relative;
+    top: 17px; 
+    font-size: 2vw;
+}
+
+#btnContinuar {
+    background-color: #da291c !important;
+    color: white !important;
+    border: 0.2px solid #da291c;
+}
+
+.botonSeleccionar {
+    border: 0.2px solid #a6a6a6;
+    background-color: white;
+    color: #a6a6a6;
+}
+
+
+.botonSeleccionado {
+    background-color: #da291c !important;
+    color: white !important;
+    border: 0.2px solid #da291c;
+}
+
+
+:host ::ng-deep 
+
+ .ui-carousel-dots-container {
+
+    display: none !important;
+
+}

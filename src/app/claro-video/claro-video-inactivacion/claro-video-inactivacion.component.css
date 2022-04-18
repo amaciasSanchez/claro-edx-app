@@ -1,0 +1,30 @@
+.selected-color {
+    background-color: #e0260c;
+    color: white;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+
+.button-arrow-right {
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    border: 1px solid #b3b3b3;
+    outline: none;
+}
+
+.content-arrow-button {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.content-arrow-button button {
+    margin-right: 20px;
+}

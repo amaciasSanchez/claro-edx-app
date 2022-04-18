@@ -1,0 +1,26 @@
+version: '3'
+services:
+  edx-webapp:
+    container_name: edx-webapp
+    image: edx/edx-webapp:v1.2.0
+    #build: .
+    ports:
+      - "8210:80"
+    volumes:
+      - ../../dist/clarodx:/usr/share/nginx/html
+    restart: always
+    networks:
+      - edx
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 400M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+networks:
+  edx:

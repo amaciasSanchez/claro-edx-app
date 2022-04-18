@@ -1,0 +1,320 @@
+<section class="section-content app-p6-cli-estado-cuenta" style="width: 100%">
+    <div style="margin: 24px">
+        <div class="row">
+            <div class="ui-g-10 my-auto">
+                <img
+                    alt=""
+                    src="assets/images/bundle/Header/logoclaro.png"
+                    style="width: 134px; margin-right: 16px"
+                />
+                <div style="float: right; margin-right: -200px">
+                    <span
+                        style="
+                            margin-left: 60%;
+                            font-size: 25px;
+                            text-align: right;
+                        "
+                    >
+                        Estado De Cuenta
+                    </span>
+                    <p style="font-size: 16">
+                        Este es el estado de cuenta de tu cliente y sus
+                        movimientos pendiente de pago
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <personal-information-process
+                style="width: 100%"
+            ></personal-information-process>
+        </div>
+
+        <table
+            class="ui-table"
+            style="width: 90%; min-width: 90%; border-bottom: 1px"
+        >
+            <tr style="border-bottom: 1px">
+                <td colspan="5" style="padding: 15px; font-size: 30px">
+                    <strong class="text">
+                        <span title="Suscripción">{{
+                            selectedCurrentDebt.subproduct
+                        }}</span>
+                        <span title="Código de Contrato">
+                            ({{ selectedCurrentDebt.contractId }})</span
+                        >
+                    </strong>
+                </td>
+            </tr>
+            <tr style="border-top: 0px">
+                <td>
+                    <img [hidden]="month===3"
+                        (click)="verFecha3Meses()"
+                        src="assets/images/bundle/imagen21.png"
+                        alt=""
+                        style="background: transparent"
+                    />
+                    <img [hidden]="month!==3"
+                        (click)="verFecha3Meses()"
+                        src="assets/images/bundle/imagen21.png"
+                        alt=""
+                        style="background: transparent;border-bottom: 3px solid blue;"
+                    />
+                    <img [hidden]="month===6"
+                        (click)="verFecha6Meses()"
+                        src="assets/images/bundle/imagen20.png"
+                        alt=""
+                        style="background: transparent"
+                    />
+                    <img [hidden]="month!==6"
+                        (click)="verFecha6Meses()"
+                        src="assets/images/bundle/imagen20.png"
+                        alt=""
+                        style="background: transparent;border-bottom: 3px solid blue;"
+                    />
+                    <img [hidden]="month===12"
+                        (click)="verFecha1Year()"
+                        src="assets/images/bundle/imagen23.png"
+                        alt=""
+                        style="background: transparent"
+                    />
+                    <img [hidden]="month!==12"
+                    (click)="verFecha1Year()"
+                    src="assets/images/bundle/imagen23.png"
+                    alt=""
+                    style="background: transparent;border-bottom: 3px solid blue;"
+                />
+                    <img
+                        (click)="verAcuerdos()"
+                        src="assets/images/bundle/imagen18.png"
+                        alt=""
+                        style="background: transparent; margin-left: 35px ;"
+                    />
+                    <img
+                        (click)="verSiguientePagina()"
+                        src="assets/images/bundle/imagen22.png"
+                        alt=""
+                        style="background: transparent; margin-left: 35px ;"
+                    />
+                </td>
+  
+                <td>
+                    <span
+                        title="Total Amount"
+                        style="
+                            line-height: 40px;
+                            margin-right: 18px;
+                            font-size: 30px;
+                        "
+                    >
+                        ${{ selectedCurrentDebt.totalAmount }}</span
+                    >
+                    <br />
+                    <span style="line-height: 20px; margin-right: 17px"
+                        >Deuda Total</span
+                    >
+                </td>
+                <td>
+                    <span
+                        title="totalOpenAmount"
+                        style="
+                            line-height: 40px;
+                            margin-right: 18px;
+                            font-size: 30px;
+                        "
+                    >
+                        ${{ selectedCurrentDebt.totalOpenAmount }}</span
+                    >
+                    <br />
+                    <span style="line-height: 20px; margin-right: 7px"
+                        >Deuda Corriente</span
+                    >
+                </td>
+                <td>
+                    <span
+                        title="totalOpenAmount"
+                        style="
+                            line-height: 40px;
+                            margin-right: 18px;
+                            font-size: 30px;
+                        "
+                    >
+                        {{ selectedCurrentDebt.dueMaxTime }}</span
+                    >
+                    <br />
+                    <span style="line-height: 20px; margin-right: 5px"
+                        >Fecha máxima de pago
+                    </span>
+                </td>
+                <td align="center"></td>
+            </tr>
+        </table>
+        <br />
+     
+      <!--    
+errorInvocation: errorInvocation}}   -  spinStatus: spinStatus}}  --> 
+<div [hidden]="!spinStatus">
+    <div>
+        <sk-double-bounce
+            [isRunning]="spinStatus"
+            [delay]="120"
+        >
+            Cargando los datos
+        </sk-double-bounce>
+    </div>
+</div>
+<div [hidden]="!errorInvocation ">
+    <span>
+          Error  en la Invocacion 
+    </span>
+</div>
+
+
+
+        <p-table  
+            #dt
+            [value]="selectedCurrentDebt.invoices"
+            [totalRecords]="
+                selectedCurrentDebt.invoices != null
+                    ? selectedCurrentDebt.invoices.lenght
+                    : 0
+            "
+            [rows]="8"
+            [paginator]="true"
+            [rowsPerPageOptions]="[10, 20, 30]"
+        >
+            <ng-template pTemplate="header">
+                <tr>
+                    <td style="font-weight: bold">REFERENCIA</td>
+                    <td style="font-weight: bold">TIPO MOVIMIENTO</td>
+                    <td style="font-weight: bold">FECHA MOVIMIENTO</td>
+                    <td style="font-weight: bold">VALOR MOVIMIENTO</td>
+                    <td style="font-weight: bold">SALDO ANTERIOR</td>                  
+                    <td style="font-weight: bold">SALDO ACTUAL</td>
+                    <td style="font-weight: bold">CANAL DE PAGO</td>
+                    <td style="font-weight: bold">INFORMACION ADICIONAL</td>
+                </tr>
+                
+            </ng-template>
+
+            <ng-template pTemplate="body" let-detail >
+                <tr   [hidden]="spinStatus"  style="border-bottom:5px;color:black;">
+                    <td style="padding: 5px">
+
+                        <button 
+                        [hidden]="detail.type !== 'BLL' && detail.type !== '2' && detail.type !== '4'"  
+                        (click)="irReferencia(detail)" style="border: 0px;color:blue">
+
+                            <strong class="text">
+                                <span title="">
+                                    {{ detail.reference }}</span>
+                            </strong>
+                        </button>
+
+                        <strong 
+                        [hidden]="detail.type === 'BLL' || detail.type === '2' || detail.type === '4'"   class="text">
+                            <span title="Número de documento">
+                                {{ detail.reference }}</span>
+                        </strong>
+
+                      
+                    </td>
+                    <td style="padding: 5px">
+                        <strong class="text">
+                            <span title="Tipo: {{ detail.type }}"
+                            >{{ detail.typeDescription }}
+                        </span>
+                        </strong>
+                    </td>
+                    <td style="padding: 5px">
+                        
+                            <span title="Fecha de carga del documento:">{{ detail.date }} </span>
+                        
+                    </td>
+                    <td style="padding: 5px">
+                        <strong class="text">
+                            <span title="Valor del documento">$ {{ detail.amount }}</span>
+                        </strong>
+                    </td>
+                    <td style="padding: 5px">
+                        
+                            <span title="Saldo Anterior"> $ {{ detail.previousAmount }}</span>
+                       
+                    </td>
+                   
+                    <td style="padding: 5px">
+                       
+                            <span title="Saldo Actual">$ {{ detail.openAmount }}</span>
+                       
+                    </td>
+                    <td style="padding: 5px">
+                        
+                            <span title="Canal de pago"> {{ detail.channelDescription }}</span>
+                        
+                    </td>
+                    <td style="padding: 2px;font-size:14px;color:darkblue;">
+                        
+                            <span title="IDatos adicionales">{{ detail.info }}</span>
+                        
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        <div class="ui-g-2">
+            <div style="height: 60px; margin-top: 0%">
+                <div style="float: left; margin-top: 20px">
+                    <button
+                        placement="center"
+                        [hidden]="false"
+                        (click)="volver()"
+                        ngbTooltip="Atrás"
+                        style="
+                            border-radius: 50%;
+                            background-color: white;
+                            border: 0px;
+                        "
+                    >
+                        <i
+                            class="ui-icon-arrow-back"
+                            style="
+                                font-size: 33px;
+                                line-height: 2px;
+                                color: red;
+                            "
+                        ></i>
+                    </button>
+                </div>
+                <div>
+                    <app-btn-volver-vista
+                        style="margin-right: 10%"
+                    ></app-btn-volver-vista>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="display: none">
+            <div class="mx-auto">
+                <div style="margin-left: -333px; margin-top: 20px">
+                    <img
+                        src="assets/images/claroVideo/arrow_trash.png"
+                        alt=""
+                        style="
+                            width: auto;
+                            height: 60px;
+                            background: transparent;
+                        "
+                    />
+                    <img
+                        src="assets/images/claroVideo/trash.png"
+                        alt=""
+                        style="
+                            width: auto;
+                            height: 60px;
+                            background: transparent;
+                        "
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

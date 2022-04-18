@@ -1,0 +1,646 @@
+<!--
+<app-navbar></app-navbar>
+-->
+
+<div class="global-container">
+  <div class="data-containter">
+    <div class="row">
+      <!--INFORMACIÓN DE FINANCIERA A ESTUDIAR-->
+
+      <div class="info col-md-4">
+        <!--PRESENTACIÓN DE ENTIDAD A REVISAR-->
+
+        <div class="container center-block">
+          <div class="card center-block" style="width: 100%;">
+            <div class="card-body">
+              <div id="fin" class="badgeFin">
+                <h2>
+                  <img src="{{ showIcon }}" class="pr-3 img-icon" alt="financiera-icon" />   {{ badgeFin }}
+                </h2>
+              </div>
+
+              <hr />
+
+              <h6 class="card-title">{{ resumeDataSummary }}</h6>
+            </div>
+
+            <div>
+              <table class="info-table table">
+                <thead>
+                  <tr>
+                    <th scope="col">Total</th>
+                    <th scope="col">Cuentas</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{ resumeDataTotal }}</td>
+                    <td>{{ resumeDataAmount }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!--DATOS CHECK IN-->
+
+        <div class="container center-block">
+          <div class="container card capture-data check-in-container">
+            <div>
+              <h5><b>Check In - Archivos Transformados</b></h5>
+              <hr />
+              <p>
+                Esta lista de archivos presentes han llegado a su mail para
+                validar el formato requerido por bancos y desde aquí poder
+                aprobar el envío.
+              </p>
+            </div>
+
+            <span *ngIf="showActionCheckin === false" style="color: yellow;">
+              * No hay archivos en lista Check In.
+            </span>
+
+            <table class="table" *ngIf="showActionCheckin">
+              <thead>
+                <tr>                
+                  <th scope="col">Nombre del Archivo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let check of vFilesCheckIn; index as i">
+                  <!-- <th scope="row">{{ i + 1 }}</th> -->
+                  <td id="nameFile" id="bcid">{{ check.name }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <div *ngIf="showActionCheckin === true">
+              <button
+                class="btn btn-outline-dark btn-lg btn-block send-check-in-btn"
+                (click)="open(fileFormat)"
+              >
+                Enviar a Banco
+              </button>
+              <!--<button class="btn btn-outline-dark btn-lg btn-block delete-check-in-btn"
+              (click)="open(deleteCheckin)"
+              [disabled]="showActionCheckin">
+                Eliminar Archivos
+              </button>-->
+              <button
+                class="btn btn-outline-dark btn-lg btn-block detail-check-in-btn"
+                (click)="goToCheckIn()"
+              >
+                Más Detalles
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--DATOS CAPTURADOS / INFORMACIÓN GENERAL DE LAS ENTIDADES-->
+
+      <div class="resume col-md-8">
+        <!---PERSPECTIVA POR ENTIDADES FINANCIERAS-->
+
+        <div class="container card capture-data">
+          <div>
+            <h4>Resumen Por Entidades Financieras Tarjetas de Crédito</h4>
+            <p>
+              Total de valores en dólares por entidades financieras Tarjetas de Crédito, se suman
+              todos los archivos, cantidad total de cuentas existentes en los
+              archivos.
+            </p>
+
+            <hr />
+          </div>
+
+          <span *ngIf="showResumeFiles === false" style="color: red;">
+            * No hay información que mostrar.
+          </span>
+
+          <table class="table" *ngIf="showResumeFiles === true">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Entidad</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Monto</th>
+                <th scope="col">Estado</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let dxb of dataBanks">
+                <td>
+                  <div *ngIf="codeId == dxb.bankId; else icono">
+                    <img src="{{ showIcon }}" alt="financiera-icon"  class="img-icon"/>
+                  </div>
+
+                  <ng-template #icono>
+                    <img
+                      src="../../../assets/commons/credit-card.png"
+                      alt="financiera-icon" class="img-icon"
+                    />
+                  </ng-template>
+                </td>
+
+                <td>
+                  {{ dxb.bankName }}
+                </td>
+
+                <td style="text-align: center;">
+                  {{ dxb.amount }}
+                </td>
+
+                <td style="text-align: center;">
+                  {{ dxb.total }}
+                </td>
+
+                <td style="text-align: center;">
+                  <span *ngIf="dxb.description != null"
+                    ><i
+                      class="fa fa-question-circle"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="{{ dxb.description }}"
+                    ></i
+                  ></span>
+
+                  <span *ngIf="dxb.description == null"
+                    ><i
+                      class="fa fa-check-circle"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="{{ dxb.description }}"
+                      style="color: #2aff00;"
+                    ></i
+                  ></span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!--PERSPECTIVA POR BILLING CYCLES-->
+
+        <div class="container card capture-data" *ngIf="false">
+          <div>
+            <h4>Perspectiva: Billing Cycles</h4>
+            <hr />
+            <p *ngIf="mostrar">Detalle de perspectiva Billing Cycles</p>
+          </div>
+
+
+          <span *ngIf="showResumeFiles === false" style="color: red;">
+            * No hay información que mostrar.
+          </span>
+
+          <table class="table" *ngIf="showResumeFiles === true">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Monto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let resume of resumes.billingCycles">
+                <td id="bcid">{{ resumes.billingCycleId }}</td>
+                <td>{{ resumes.total }}</td>
+                <td>{{ resumes.amount }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!--CARGA DE LISTA DE ARCHIVOS DE CUENTAS CONSIDERADOS-->
+
+        <div class="container card capture-data">
+          <div>
+            <h4>Lista de Archivos de Cuentas Consideradas</h4>
+            <hr />
+            <p>
+              Lista de los archivos de pago provenientes de Huawei para
+              procesarlos y obtener este Resumen de valores y montos des sus
+              ventas y transacciones.
+            </p>
+          </div>
+
+          <span *ngIf="showResumeFiles === false" style="color: red;">
+            * No hay información que mostrar.
+          </span>
+
+          <table class="table" *ngIf="showResumeFiles === true" >
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Lote</th>
+                <th scope="col">Nombre del Archivo</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Monto</th>
+                <!--<th scope="col">Estado</th>-->
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let db of dbb">
+                <td>
+                  <div>
+                    <img src="{{ showIcon }}" alt="financiera-icon" class="img-icon"/>
+                  </div>
+                </td>
+                <td>{{ db.loteFile }}</td>
+                <td id="nameFile" style="max-width: 25px;" id="bcid">{{ db.nameFile }}</td>
+                <td id="nameFile" id="bcid">{{ db.typeFile }}</td>
+                <td id="nameFile" id="bcid">{{ db.amountFile }}</td>
+                <td id="nameFile" id="bcid">{{ db.totalFile }}</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--CARGA DE ARCHIVOS RECIEN INGRESADOS-->
+
+        <div class="container card capture-data">
+          <div>
+            <h4>Lista de Archivos Recién Ingresados</h4>
+            <hr />
+            <p *ngIf="mostrar">
+              En estos archivos están siendo calculados el total en dólares y
+              cantidad de cuentas. El proceso de resumen lo considera
+              automáticamente en el cálculo
+            </p>
+          </div>
+
+          <span *ngIf="!mostrar"
+            >No se ha procesado perspectiva Archivos No Procesados</span
+          >
+
+          <table class="table" *ngIf="mostrar">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Nombre del Archivo</th>
+                <th scope="col">Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let resume of resumes.filesNoProcesados; index as i">
+                <th scope="row">{{ i + 1 }}</th>
+                <td id="nameFile" style="max-width: 50px;" id="bcid">{{ resume }}</td>
+                <td>
+                  <i
+                    class="fa fa-file"
+                    placement="bottom"
+                    ngbTooltip="Disponible"
+                  ></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!--BOTONES-->
+
+        <div class="container">
+          <div class="resolv" *ngIf="showResumeFiles === true">
+            <button
+              id="define"
+              class="btn btn-outline-dark btn-lg btn-block send-check-in-btn"
+              (click)="open(fileFormat)"
+            >
+              <i class="fa fa-thumbs-up"></i>
+              <h6 class="d-none d-sm-none d-md-block">Transformar</h6>
+            </button>
+            <button
+              class="btn btn-outline-dark btn-lg btn-block detail-check-in-btn"
+              [routerLink]="['/principal', codebk]"
+              routerLinkActive="router-link-active"
+            >
+              <i class="fa fa-file-text-o"></i>
+              <h6 class="d-none d-sm-none d-md-block">Más detalles</h6>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!---------------------------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------->
+
+<ng-template #acept let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      <i class="fa fa-tasks"></i> Mensaje de confirmación
+    </h4>
+  </div>
+  <div class="modal-body">
+    <h6><b>Transformar: </b></h6>
+    <hr />
+    <p>
+      Usted va a enviar a <b>transformar</b> la siguiente lista de archivos de
+      pagos de bancos para que sean inmediantemente transformados al formato
+      especifico del banco.
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      data-toggle="modal"
+      data-target=".bd-example-modal-sm"
+      (click)="procesarFilePayment(transformFiles)"
+    >
+      Confirmar
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="c('Save click')"
+    >
+      Cancelar
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #transformFiles>
+  <div class="modal-body" style="padding: 3rem;">
+    <h1 style="text-align: center; font-size: 8rem;">
+      <i class="fa fa-check-circle"></i>
+    </h1>
+    <h4 style="text-align: center;">Archivos transformados</h4>
+  </div>
+  <div class="col text-center">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      data-toggle="modal"
+      data-target=".bd-example-modal-sm"
+      (click)="reloadPage()"
+    >
+      Recargar Página
+    </button>
+  </div>
+</ng-template>
+
+<!------------------------------------------------------------------------------------------------------------->
+<!------------------------------------------------------------------------------------------------------------->
+
+<!---------------------------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------->
+<ng-template #fileFormat let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      <i class="fa fa-tasks"></i> Formato del archivo
+    </h4>
+  </div>
+  <div class="modal-body">  
+
+    <div class="form-group row m-2">
+      <label for="fileFormatSelect" class="col-sm-4 col-form-label-sm text-left p-0 mt-2 pb-3">Formato</label>
+      <div class="col-sm-8">
+        <select [(ngModel)]="defaultNameOption" [attr.disabled]="tarjetaValue ? '' : null"  class="custom-select text-uppercase"  placement="right" ngbTooltip="Formato de entidad financiera" 
+        (ngModelChange)="onOptionsSelected()" >
+          <option class="text-uppercase" 
+            *ngFor="let formato of listFileFormat; let i = index" 
+            [value]="formato.defaultName">{{formato.formatCode}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row m-2">
+      
+      <label for="fileFormatSelect" class="col-sm-4 col-form-label-sm text-left p-0 mt-2">Nombre del archivo</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control text-file-format" [(ngModel)]="selectOption" placement="right" ngbTooltip="Nombre que se le enviará al banco" required>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer mr-4">
+    
+    <button
+      type="button" 
+      class="btn btn-outline-dark"
+      data-toggle="modal"
+      data-target=".bd-example-modal-sm"
+      (click)="open(checkFormat)"  *ngIf="tarjetaValue == false "
+    >
+      Confirmar
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      data-toggle="modal"
+      data-target=".bd-example-modal-sm"
+      (click)="open(checkFormatDisabled)"  *ngIf="tarjetaValue == true "
+    >
+      Confirmar
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="c('Save click')"
+    >
+      Cancelar
+    </button>
+  </div>
+</ng-template>
+
+<!---------------------------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------->
+
+<ng-template #checkFormatDisabled let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">
+        <i class="fa fa-tasks mr-3"></i> Mensaje de confirmación
+      </h4>
+    </div>
+    <div class="modal-body">
+      <p class ="m-2 p-modal-body">
+        Esta seguro que desea transformar a formato <br/>
+        <mark><b class="text-uppercase">{{ badgeFin }}</b></mark>  <br/> con el nombre <br/>
+        <mark><b>{{ selectOption }}.text</b></mark>.
+      </p>
+  </div>
+  <div class="modal-footer mr-4">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      data-toggle="modal"
+      data-target=".bd-example-modal-sm"
+      (click)="sendFilePayment(sendedCheckin)"
+
+
+      
+    >
+      Aceptar
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="c('Save click')"
+    >
+      Cancelar
+    </button>
+  </div>
+</ng-template>
+
+<!---------------------------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------->
+
+<ng-template #checkFormat let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      <i class="fa fa-tasks mr-3"></i> Mensaje de confirmación
+    </h4>
+  </div>
+  <div class="modal-body">
+    <p class ="m-2 p-modal-body">
+      Esta seguro que desea transformar a formato <br/>
+      <mark><b class="text-uppercase" (ngModelChange)="onOptionsSelected()">{{SelectFormatCode}} {{ badgeFin }}</b></mark> <br/> con el nombre <br/>
+      <mark><b class="text-uppercase">{{ selectOption }}.text</b></mark>.
+    </p>
+</div>
+<div class="modal-footer mr-4">
+  <button
+    type="button"
+    class="btn btn-outline-dark"
+    data-toggle="modal"
+    data-target=".bd-example-modal-sm"
+    (click)="sendFilePayment(sendedCheckin)"
+  >
+    Aceptar
+  </button>
+  <button
+    type="button"
+    class="btn btn-outline-dark"
+    (click)="c('Save click')"
+  >
+    Cancelar
+  </button>
+</div>
+</ng-template>
+
+<!---------------------------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------->
+
+
+
+<!---------------------------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------->
+
+<ng-template #sendCheckin let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      <i class="fa fa-tasks"></i> Mensaje de confirmación
+    </h4>
+  </div>
+  <div class="modal-body">
+    <h6><b>Enviar archivos a Bancos</b></h6>
+    <hr />
+    <p>
+      Usted desea aprobar el envío de archivos de pagos a Bancos de la lista de
+      Checkin.
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      data-toggle="modal"
+      data-target=".bd-example-modal-sm"
+      (click)="sendFilePayment(sendedCheckin)"
+    >
+      Confirmar
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="c('Save click')"
+    >
+      Cancelar
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #sendedCheckin>
+  <div class="modal-body" style="padding: 3rem;">
+    <h1 style="text-align: center; font-size: 8rem; color: green;">
+      <i class="fa fa-check-circle"></i>
+    </h1>
+    <h4 style="text-align: center;">¡Archivos Enviados!</h4>
+  </div>
+  <div class="col text-center">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      data-toggle="modal"
+      data-target=".bd-example-modal-sm"
+      (click)="reloadPage()"
+    >
+      Listo
+    </button>
+  </div>
+</ng-template>
+
+<!------------------------------------------------------------------------------------------------------------->
+<!------------------------------------------------------------------------------------------------------------->
+
+<!---------------------------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------->
+
+<ng-template #deleteCheckin let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      <i class="fa fa-tasks"></i> Mensaje de confirmación
+    </h4>
+  </div>
+  <div class="modal-body">
+    <p>Se desea eliminar esta lista de archivos</p>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      data-toggle="modal"
+      data-target=".bd-example-modal-sm"
+      (click)="deleteFilePayment(deletedCheckin)"
+    >
+      Confirmar
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="c('Save click')"
+    >
+      Cancelar
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #deletedCheckin>
+  <div class="modal-body" style="padding: 3rem;">
+    <h1 style="text-align: center; font-size: 8rem; color: red;">
+      <i class="fa fa-trash-alt"></i>
+    </h1>
+    <h4 style="text-align: center;">¡Archivos Eliminados!</h4>
+  </div>
+  <div class="col text-center">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      data-toggle="modal"
+      data-target=".bd-example-modal-sm"
+      (click)="reloadPage()"
+    >
+      Listo
+    </button>
+  </div>
+</ng-template>
+
+<!------------------------------------------------------------------------------------------------------------->
+<!------------------------------------------------------------------------------------------------------------->
+
+<app-back-to-bottom></app-back-to-bottom>

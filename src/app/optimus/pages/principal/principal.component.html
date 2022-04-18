@@ -1,0 +1,117 @@
+<!--
+<app-navbar></app-navbar>
+-->
+
+<!--Contenedor Global-->
+<div class="global-container">
+  <div class="container">
+    <h3>
+      <b>Visualización de Lista de Archivos.</b>
+    </h3>
+    <hr />
+    <p>
+      Lista de los archivos de pago provenientes de Huawei para procesarlos y obtener este Resumen de valores y montos des sus ventas y transacciones.
+    </p>
+  </div>
+  <!--Contenedor-->
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <!--Tabla-->
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Seleccionar</th>
+              <th scope="col">Nombre del Archivo</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Monto</th>
+              <th scope="col">F. Modificación</th>
+              <th scope="col">Peso</th>
+              <th scope="col">Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!--iteramos los elementos del API-->
+            <tr *ngFor="let frd of filesResumenData; index as i">
+              <td>
+                <div class="custom-control custom-checkbox">
+                  <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    [(ngModel)]="frd.select"
+                    id="{{ frd.dtname }}"
+                  />
+                  <label
+                    class="custom-control-label countFiles"
+                    for="{{ frd.dtname }}"
+                    >{{ i + 1 }}</label
+                  >
+                </div>
+              </td>
+              <td id="nam{{ i }}">{{ frd.dtname }}</td>
+              <td>{{ frd.dtmoun }}</td>
+              <td>{{ frd.dtmone }}</td>
+              <td>{{ frd.dtdate }}</td>
+              <td>{{ frd.dtsize }}</td>
+              <td id="{{ i }}">{{ frd.select }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!--Contenedor para acciones-->
+  <div class="container">
+    <!--ACCIÓN ENVIAR-->
+
+    <button class="btn btn-success" id="btns" (click)="enviarArchivos(content)">
+      <i class="fa fa-paper-plane"></i>
+      Transformar
+    </button>
+
+    <!--ACCIÓN ELIMINAR-->
+
+    <button
+      class="btn btn-danger"
+      id="btnd"
+      (click)="eliminarArchivos(content)"
+    >
+      <i class="fa fa-trash"></i>
+      Eliminar
+    </button>
+  </div>
+
+<!--  <app-footer></app-footer>-->
+
+  <app-back-to-bottom></app-back-to-bottom>
+
+  <ng-template #content let-c="close">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">{{ accionarealizar }}</h4>
+    </div>
+    <div class="modal-body">
+      <p style="text-align: justify;">
+        Usted está a punto de <b>{{ captureAction }}</b> estos archivos. Si está
+        de acuerdo pulse el botón <span style="color: seagreen;">ACEPTAR</span>,
+        caso contrario pulse el botón
+        <span style="color: sienna;">CANCELAR</span>.
+      </p>
+
+      <ul *ngFor="let data of sendDelFile">
+        <li id="dataPopup">{{ data }}</li>
+      </ul>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="aceptar()">
+        Aceptar
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-dark"
+        (click)="c('Save click')"
+      >
+        Cancelar
+      </button>
+    </div>
+  </ng-template>
+</div>

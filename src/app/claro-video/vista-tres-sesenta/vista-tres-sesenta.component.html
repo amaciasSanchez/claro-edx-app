@@ -1,0 +1,187 @@
+<div class="swiper-slide" style="width: 90%;margin: 0 auto;">
+    <!-- <p-scrollPanel [style]="{ height: '700px', border: 'none' }"> -->
+    <div>
+        <!-- <h1>Vista 360 de tu cliente</h1> -->
+        <p style="margin: 0 50px;margin-left: 0;">
+            Te presentamos la información más importante de tu cliente. Haz
+            clic o pon el mouse sobre uno de los Iconos para ver su
+            información.
+        </p>
+        <div style="margin-bottom:20px; width: 100%">
+            <div style="width: 100%" class="ui-g ui-fluid">
+
+
+                <i id="area-tooltip1" class="area-tooltip" data-toggle="tooltip" data-html="true" data-placement="top"
+                    title="{{arrayArea[0].title}}" data-animation="false" data-trigger="manual">&#160;</i>
+                <i id="area-tooltip2" class="area-tooltip" data-toggle="tooltip" data-html="true" data-placement="right"
+                    title="{{arrayArea[1].title}}" data-animation="false" data-trigger="manual">&#160;</i>
+                <i id="area-tooltip3" class="area-tooltip" data-toggle="tooltip" data-html="true" data-placement="right"
+                    title="{{arrayArea[2].title}}" data-animation="false" data-trigger="manual">&#160;</i>
+                <i id="area-tooltip4" class="area-tooltip" data-toggle="tooltip" data-html="true" data-placement="right"
+                    title="{{arrayArea[3].title}}" data-animation="false" data-trigger="manual">&#160;</i>
+                <i id="area-tooltip5" class="area-tooltip" data-toggle="tooltip" data-html="true" data-placement="right"
+                    title="{{arrayArea[4].title}}" data-animation="false" data-trigger="manual">&#160;</i>
+                <i id="area-tooltip6" class="area-tooltip" data-toggle="tooltip" data-html="true" data-placement="left"
+                    title="{{arrayArea[5].title}}" data-animation="false" data-trigger="manual">&#160;</i>
+                <i id="area-tooltip7" class="area-tooltip" data-toggle="tooltip" data-html="true" data-placement="left"
+                    title="{{arrayArea[6].title}}" data-animation="false" data-trigger="manual">&#160;</i>
+                <i id="area-tooltip8" class="area-tooltip" data-toggle="tooltip" data-html="true" data-placement="left"
+                    title="{{arrayArea[7].title}}" data-animation="false" data-trigger="manual">&#160;</i>
+                <i id="area-tooltip9" class="area-tooltip" data-toggle="tooltip" data-html="true" data-placement="left"
+                    title="{{arrayArea[8].title}}" data-animation="false" data-trigger="manual">&#160;</i>
+                <i id="area-tooltip10" class="area-tooltip" data-toggle="tooltip" data-html="true" data-placement="left"
+                    title="{{arrayArea[9].title}}" data-animation="false" data-trigger="manual">&#160;</i>
+                <i id="area-tooltip11" class="area-tooltip" data-toggle="tooltip" data-html="true" data-placement="left"
+                    title="{{arrayArea[10].title}}" data-animation="false" data-trigger="manual">&#160;</i>
+
+                <div class="ui-g-12 ui-lg-6">
+                    <img runat="server" id="imgSlide1" style="width: 500px;height: 500px;" [src]="getLinkPicture()"
+                        data-topimage="7%" height="500px" width="500px" usemap="#imgmap" />
+                    <map name="imgmap">
+
+
+                        <area class="area" shape="rect" coords="{{ arrayArea[0].coords }}" style="cursor: pointer;"
+                            (click)="setData(arrayArea[0])" TooltipBackround="transparent" TooltipId="area-tooltip1"
+                            (mouseover)="setLinkPicture(
+                                            arrayArea[0].pathImageHover,
+                                            arrayArea[0].order,
+                                            arrayArea[0],
+                                            $event
+                                            )
+                            " (mouseleave)="setLinkPicture(arrayArea[0].pathImageleave, 0,arrayArea[0],$event)" />
+                        <area class="area" shape="rect" coords="{{ arrayArea[1].coords }}" style="cursor: pointer;"
+                            (click)="setData(arrayArea[1])" TooltipBackround="transparent" TooltipId="area-tooltip2"
+                            (mouseover)="
+                                setLinkPicture(
+                                arrayArea[1].pathImageHover,
+                                arrayArea[1].order,arrayArea[1],$event
+                                )
+                                " (mouseleave)="
+                                setLinkPicture(arrayArea[1].pathImageleave, 0,arrayArea[1],$event)
+                                " />
+                        <area class="area" shape="rect" coords="{{ arrayArea[2].coords }}" style="cursor: pointer;"
+                            (click)="setData(arrayArea[2]); ordenes();" TooltipBackround="transparent" TooltipId="area-tooltip3"
+                            (mouseover)="
+                                                        setLinkPicture(
+                                                        arrayArea[2].pathImageHover,
+                                                        arrayArea[2].order,arrayArea[2],$event
+                                                        )
+                                                        " (mouseleave)="
+                                                        setLinkPicture(arrayArea[2].pathImageleave, 0,arrayArea[2],$event)
+                                                        " />
+                        <area class="area" shape="rect" coords="{{ arrayArea[3].coords }}" style="cursor: pointer;"
+                            (click)="services();" TooltipBackround="transparent"
+                            TooltipId="area-tooltip4" (mouseover)="
+                                            setLinkPicture(
+                                            arrayArea[3].pathImageHover,
+                                            arrayArea[3].order,arrayArea[3],$event
+                                            )
+                                            " (mouseleave)="
+                                            setLinkPicture(arrayArea[3].pathImageleave, 0,arrayArea[3],$event)
+                                            " />
+                        <area class="area" shape="rect" coords="{{ arrayArea[4].coords }}" style="cursor: pointer;"
+                            (click)="buscar();" TooltipBackround="transparent"
+                            TooltipId="area-tooltip5" (mouseover)="
+                                            setLinkPicture(
+                                            arrayArea[4].pathImageHover,
+                                            arrayArea[4].order,arrayArea[4],$event
+                                            )
+                                            " (mouseleave)="
+                                            setLinkPicture(arrayArea[1].pathImageleave, 0,arrayArea[4],$event)
+                                            " />
+                        <area class="area" shape="rect" coords="{{ arrayArea[5].coords }}" style="cursor: pointer;"
+                            (click)="setData(arrayArea[5]); consumos();" TooltipBackround="transparent" TooltipId="area-tooltip6"
+                            (mouseover)="
+                                            setLinkPicture(
+                                            arrayArea[5].pathImageHover,
+                                            arrayArea[5].order,arrayArea[5],$event
+                                            )
+                                            " (mouseleave)="
+                                            setLinkPicture(arrayArea[5].pathImageleave, 0,arrayArea[5],$event)
+                                            " />
+                        <area class="area" shape="rect" coords="{{ arrayArea[6].coords }}" style="cursor: pointer;"
+                            (click)="setData(arrayArea[6]);process();" TooltipBackround="transparent"
+                            TooltipId="area-tooltip7" (mouseover)="
+                                            setLinkPicture(
+                                            arrayArea[6].pathImageHover,
+                                            arrayArea[6].order,arrayArea[6],$event
+                                            )
+                                            " (mouseleave)="
+                                            setLinkPicture(arrayArea[6].pathImageleave, 0,arrayArea[6],$event)
+                                            " />
+                        <area class="area" shape="rect" coords="{{ arrayArea[7].coords }}" style="cursor: pointer;"
+                            (click)="setData(arrayArea[7]); devices();" TooltipBackround="transparent" TooltipId="area-tooltip8"
+                            (mouseover)="
+                                            setLinkPicture(
+                                            arrayArea[7].pathImageHover,
+                                            arrayArea[7].order,arrayArea[7],$event
+                                            )
+                                            " (mouseleave)="
+                                            setLinkPicture(arrayArea[7].pathImageleave, 0,arrayArea[7],$event)
+                                            " />
+                        <area class="area" shape="rect" coords="{{ arrayArea[8].coords }}" style="cursor: pointer;"
+                            (click)="setData(arrayArea[8])" TooltipBackround="transparent" TooltipId="area-tooltip9"
+                            (mouseover)="
+                                            setLinkPicture(
+                                            arrayArea[8].pathImageHover,
+                                            arrayArea[8].order,arrayArea[8],$event
+                                            )
+                                            " (mouseleave)="
+                                            setLinkPicture(arrayArea[8].pathImageleave, 0,arrayArea[8],$event)
+                                            " />
+
+                        <area class="area" shape="rect" coords="{{ arrayArea[9].coords }}" style="cursor: pointer;"
+                            (click)="setData(arrayArea[9]);  facturacion();" 
+                            (mouseover)="facturacionMO();"
+                            TooltipBackround="transparent" TooltipId="area-tooltip10"
+                            (mouseover)="
+                                                            setLinkPicture(
+                                                            arrayArea[9].pathImageHover,
+                                                            arrayArea[9].order,arrayArea[9],$event
+                                                            )
+                                                            " (mouseleave)="
+                                                            setLinkPicture(arrayArea[9].pathImageleave, 0,arrayArea[9],$event)
+                                                            " />
+                        <area class="area" shape="rect" coords="{{ arrayArea[10].coords }}" style="cursor: pointer;"
+                            (click)="metodoPago();" TooltipBackround="transparent" TooltipId="area-tooltip11"
+                            (mouseover)="
+                                                            setLinkPicture(
+                                                            arrayArea[10].pathImageHover,
+                                                            arrayArea[10].order,arrayArea[10],$event
+                                                            )
+                                                            " (mouseleave)="
+                                                            setLinkPicture(arrayArea[10].pathImageleave, 0,arrayArea[10],$event)
+                                                            " />
+
+                        <area class="area" (click)="retornar();" style="cursor: pointer;" coords="{{ arrayArea[11].coords }}" shape="circle">
+
+
+                    </map>
+
+                    <!-- <i id="area-tooltip1" class="area-tooltip" data-toggle="tooltip" data-html="true" data-placement="left"
+                        title="Tomatoes" data-animation="false" data-trigger="manual">&#0;</i> -->
+                </div>
+
+                <!-- <div> -->
+                <div class="ui-g-12 ui-lg-6" style="margin-top: 50px;">
+                    <app-content-view-tres-sesenta *ngIf="showContentView" [title]="dataGridview.title"
+                        [tipo]="dataGridview.tipo" [data]="dataGridview.data"
+                        (selectedServices)="selectedServices($event)" [@fadeInOut]></app-content-view-tres-sesenta>
+                        <br>
+                        <app-mensaje-servicio [data]="dataGridview.data"></app-mensaje-servicio>
+                </div>
+            </div>
+            <div style="margin-bottom:20px">
+                <!-- [disabled]="disabledBtn" -->
+                <!-- <button icon="ui-icon-refresh" label="Refresh" pbutton="" type="button" ng-reflect-label="Refresh"
+                    (click)="buscar()" ng-reflect-icon="ui-icon-refresh"
+                    class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left">
+                    <span aria-hidden="true" class="ui-button-icon-left ui-clickable ui-icon-refresh"></span><span
+                        class="ui-button-text ui-clickable">Buscar Ofertas</span>
+                </button> -->
+            </div>
+            <div>&nbsp;</div>
+        </div>
+    </div>
+    <!-- </p-scrollPanel> -->
+</div>

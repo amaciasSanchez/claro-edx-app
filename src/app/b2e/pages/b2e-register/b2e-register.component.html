@@ -1,0 +1,333 @@
+<div class="global">
+
+    <div *ngIf="antesQR == false">
+        <img src="../../../../assets/images/b2eimages/{{imagenRegistro}}.png"
+             class="bkg-img"
+             alt="persona-celular"
+             style="z-index: -100;">
+    </div>
+
+    <div *ngIf="antesQR == true">
+        <img src="../../../../assets/images/b2eimages/{{imagenRegistro}}.png"
+             class="bkg-img"
+             alt="persona-celular"
+             style="z-index: -100;">
+    </div>
+
+
+    <!--FRAGMENTO: ACEPTAR TÉRMINOS Y CONDICIONES-->
+
+    <p-dialog header="{{ titulo }}" [(visible)]="validar" [modal]="true"
+              [style]="{width: '50vw', color: 'white'}" [baseZIndex]="10000"
+              [draggable]="false" [resizable]="false">
+        <p style="text-align: center;"><i style="font-size: 3em; color: #7C8592" class="pi pi-info-circle"></i></p>
+        <p style="text-align: center;">{{ descripcion }}​</p>
+
+        <p-footer>
+
+            <button type="button"
+                    pButton icon=""
+                    (click)="validar=false"
+                    label="Entendido"
+                    class="btn"></button>
+        </p-footer>
+    </p-dialog>
+
+
+    <!--FRAGMENTO: BIENVENIDA-->
+
+
+    <div class="ui-g form-group" *ngIf="darBienvenida" style="margin: 0px; padding: 0px">
+        <div class="ui-g-12 ui-md-7" style="padding-top: 3%; padding-left: 3%;">
+            <img src="../../../../assets/images/claro-logo-8.png" style="width: 200px; " alt="logo">
+            <br><br>
+            <h2 *ngIf="usuarios.gender == '1'" style="font-weight: 100">
+                Hola {{ usuarios.firstName | titlecase }}, bienvenido a <br>Claro EDX
+                Enterprise Digital Experience ...
+            </h2>
+            <h2 *ngIf="usuarios.gender == '2'" style="font-weight: 100">
+                Hola {{ usuarios.firstName | titlecase }}, bienvenida a <br>Claro EDX
+                Enterprise Digital Experience ...
+            </h2>
+            <h2 *ngIf="usuarios.gender != '2' && usuarios.gender != '1'" style="font-weight: 100; color: #ffffff">
+                Hola {{ usuarios.firstName | titlecase }}, bienvenido a <br>Claro EDX
+                Enterprise Digital Experience ...
+            </h2>
+            <br>
+            <h4 *ngIf="usuarios.gender == '2' || usuarios.gender == '1'" style="font-weight: 100">
+                Te invitamos a explorar<br>
+                todas las capacidades<br>
+                digitales para funcionarios<br>
+                de la Empresa desde<br>
+                nuestra aplicación móvil<br>
+                Claro EDX<br>
+            </h4>
+            <h4 *ngIf="usuarios.gender != '2' && usuarios.gender != '1'" style="font-weight: 100; color: #ffffff">
+                Te invitamos a explorar<br>
+                todas las capacidades<br>
+                digitales para funcionarios<br>
+                de la Empresa desde<br>
+                nuestra aplicación móvil<br>
+                Claro EDX<br>
+            </h4>
+            <br>
+            <button class="ui-button ui-button-text-only submit btn-block" (click)="iniciarRegistro()"
+                    style="width: 50%">
+                <span class="ui-button-text">Registrarme</span>
+            </button>
+
+        </div>
+        <div class="ui-g-12 ui-md-5">
+        </div>
+    </div>
+
+
+    <!--FRAGMENTO: INFORMACIÓN ADICIONAL-->
+
+
+    <div class="ui-g form-group" *ngIf="ocultarDiv" style="background-color: rgba(9, 8, 8, 0.34); color: #ffffff">
+        <div class="ui-g-12 ui-md-7" style="padding-top: 3%; padding-left: 3%;width: 50%; height: 100%;">
+
+            <img src="../../../../assets/images/claro-logo-8.png" style="width: 150px; " alt="logo">
+            <br>
+            <br>
+            <h5 style="font-weight: 100">Necesitamos cierta información adicional de tu perfil<br>
+                para completar tu registro a Claro EDX.
+            </h5>
+            <form>
+                <div class="ui-g form-group">
+                    <!--======RECIBE NOMBRE COMPLETO======-->
+                    <div class="ui-g-12 ui-md-6" style="padding:0px;padding-top: 10px;">
+                        <label for="formGroupExampleInput1" style="font-size: 12px;">Nombre Completo</label>
+                        <input type="text"
+                               class="form-control"
+                               id="formGroupExampleInput1"
+                               value="{{ usuarios.fullName }}"
+                               disabled>
+                    </div>
+
+                    <!--=====CORREO INSTITUCIONAL========-->
+                    <div class="ui-g-12 ui-md-6" style="padding:0px;padding-top: 10px; padding-left: 1rem;">
+                        <label for="formGroupExampleInput2" style="font-size: 12px;">Correo Institucional</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2"
+                               value="{{ usuarios.mail }}" disabled>
+                    </div>
+
+                    <!--======RECIBE CEDULA DE IDENTIDAD======-->
+                    <div class="ui-g-12 ui-md-6" style="padding:0px;padding-top: 10px;">
+                        <label for="formGroupExampleInput3" style="font-size: 12px;">Cédula de Identidad</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput3"
+                               value="{{ usuarios.identification }}" disabled>
+                    </div>
+
+                    <div class="ui-g-12 ui-md-6" style="padding:0px;padding-top: 10px;">
+                    </div>
+
+                    <!--======RECIBE ID DE FUNCIONARIO======-->
+                    <div class="ui-g-12 ui-md-6" style="padding:0px;padding-top: 10px;">
+                        <label for="formGroupExampleInput4" style="font-size: 12px;">ID de Funcionario</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput4"
+                               value="{{ usuarios.employmentId }}" disabled>
+                    </div>
+
+
+                    <div class="ui-g-12 ui-md-6" style="padding:0px;padding-top: 10px;">
+                    </div>
+
+                    <div class="ui-g-12 ui-md-7" style="padding:0px;padding-top: 10px;">
+                    </div>
+                    <!--======RECIBE NOMBRE CARGO DEL EMPLEADO======-->
+                    <div class="ui-g-12 ui-md-12" style="padding:0px;padding-top: 10px;">
+                        <label for="formGroupExampleInput5" style="font-size: 12px;">Cargo</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput5"
+                               value="{{ usuarios.position }}" disabled>
+                    </div>
+
+
+                    <div class="ui-g-12 ui-md-6" style="padding:0px;padding-top: 10px;">
+                    </div>
+
+                    <div class="ui-g-12 ui-md-7" style="padding:0px;padding-top: 10px;">
+                    </div>
+                    <!--======ACCIÓN TELÉFONO MÓVIL======-->
+
+                    <!--======MUESTRA DATOS DE NÚMERO=======-->
+
+                    <div class="ui-g-12 ui-md-6"
+                         style="padding:0px;padding-top: 10px;"
+                         *ngIf="cambiarTelefono == false">
+
+                        <label for="formGroupExampleInput7"
+                               style="font-size: 12px;">Teléfono Móvil</label>
+                        <div style="display:flex;">
+                            <div style="width: 90px;border: 1px solid #c5c9ce;padding: 0px;margin-right: 10px;">
+                            <div style="position: relative;">
+                                <img src="assets/images/banderas/593.png"
+                                     style="width:24px;position:absolute;top:1px;left:5px;padding-top: 5px; margin-left: 5px;"/>
+                                <div style="font-size:14px;float:right;margin-top:7px; margin-right:10px">{{selectedCountry}}</div>
+                            </div>
+                            </div>
+                            <input type="text" class="form-control" id="formGroupExampleInput7" style="width: 150px;"
+                                   value="{{ celEstructura }}" disabled>
+                        </div>
+                    </div>
+
+                    <!--=======SE INGRESA NUEVO NÚMERO=======-->
+
+                    <div class="ui-g-12 ui-md-6"
+                         style="padding:0px;padding-top: 10px;"
+                         *ngIf="cambiarTelefono == true">
+
+                        <label for="nuevoCelu" style="font-size: 12px;">Teléfono Móvil</label>
+                        <div style="display:flex;">
+                            <p-dropdown [options]="countries" [(ngModel)]="selectedCountry">
+                                <ng-template let-item pTemplate="selectedItem">
+
+                                    <div style="position: relative;height:25px;">
+                                        <img src="assets/images/banderas/593.png"
+                                             style="width:24px;position:absolute;top:1px;left:5px"/>
+                                        <div style="font-size:14px;float:right;margin-top:4px;margin-left: 45px;">{{item.label}}</div>
+                                    </div>
+
+                                </ng-template>
+                                <ng-template let-country pTemplate="item">
+                                    <div style="position: relative;height:25px;">
+                                        <img src="assets/images/banderas/593.png"
+                                             style="width:24px;position:absolute;top:1px;left:5px"/>
+                                        <div style="font-size:14px;float:right;margin-top:4px">{{country.label}}</div>
+                                    </div>
+                                </ng-template>
+                            </p-dropdown>
+                            <input type="text" style="width: 150px;"
+                                   class="form-control"
+                                   name="nuevoCelu"
+                                   id="nuevoCelu"
+                                   maxlength="9"
+                                   [(ngModel)]="nuevoCelu"
+                                   [ngStyle]="{'border-color': 'white'}"
+                                   enabled>
+                        </div>
+                    </div>
+
+                    <div class="ui-g-12 ui-md-6"
+                         style="padding:0px;padding-top: 10px; padding-left: 1rem;">
+                        <br>
+                        <div class="ui-g-12">
+                            <p-checkbox name="cambiarTelefono"
+                                        binary="true"
+                                        label="Deseo usar otro número celular"
+                                        [(ngModel)]="cambiarTelefono"
+                                        inputId="cambiarTelefono"></p-checkbox>
+                        </div>
+                    </div>
+
+                    <!--======AGREGA NUEVA PLACA (--opcional--)======-->
+
+                    <div class="ui-g-12 ui-md-6" style="padding:0px;padding-top: 10px;">
+                        <label for="formGroupExampleInput6" style="font-size: 12px;">Extensión</label>
+                        <input type="text"
+                               class="form-control"
+                               id="formGroupExampleInput6"
+                               value="{{ plaEstructura | uppercase }}"
+                               maxlength="8" disabled>
+                    </div>
+
+                    <div class="ui-g-12 ui-md-6" style="padding:0px;padding-top: 10px;padding-left: 1rem;">
+                        <label for="nuevaPlaca" style="font-size: 12px;">Placa de Vehículo (Opcional)</label>
+                        <input type="text"
+                               class="form-control"
+                               id="nuevaPlaca"
+                               value="{{ plaEstructura | uppercase }}"
+                               [(ngModel)]="nuevaPlaca"
+                               name="nuevaPlaca"
+                               maxlength="8" enabled>
+                    </div>
+                    <div class="ui-g-12 ui-md-7" style="padding:0px;padding-top: 10px;">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="ui-g-12 ui-md-5"
+             style=" background-color: rgba(0, 0, 0, .85);color: white;width: 50%; height: 100vh; padding: 0px; margin: 0px">
+            <div class="terminos-condiciones">
+
+                <h4 style="font-weight: 100">
+                    Términos y Condiciones para<br>
+                    el uso de Claro EDX.
+                </h4>
+                <br>
+                <p style="font-weight: 100; text-align: justify;">
+                    Declaro conocer que conozco y acepto, libre y voluntariamente,
+                    las condiciones de uso de la App Claro EDX y que la información
+                    consignada en este aplicativo es verdadera y exacta. <br>
+                    Autorizo a la CONECEL para que utilice los mecanismos tecnológicos necesarios
+                    para confirmarlos y <b><i>reconozco que, si se comprueba la falsedad de
+                    la información declarada, CONECEL, podrá tomar todas las medidas
+                    administrativas u otras que considere pertinentes.</i></b><br>
+
+                </p>
+
+                <div style="padding-top: 50px">
+
+                    <p-checkbox name="aceptoTerminos" binary="true" label="Acepto Términos y Condiciones"
+                                [(ngModel)]="aceptoTerminos" inputId="aceptoTerminos"></p-checkbox>
+                    <br><br>
+                    <button class="ui-button ui-button-text-only submit btn-block" (click)="siguientePaso()"
+                            style="width: 50%">
+                        <span class="ui-button-text">Continuar</span>
+                    </button>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!--FRAGMENTO ANTES DE CONTINUAR-->
+    <div class="" *ngIf="antesQR == true">
+        <div class="ui-g-12 ui-md-5"
+             style=" background-color: rgba(0, 0, 0, .85);color: white;width: 50%; height: 100vh; padding-top: 3%; padding-left: 3%;width: 50%;">
+            <div class="terminos-condiciones">
+
+
+                <img src="../../../../assets/images/claro-logo-8.png" style="width: 200px; " alt="logo">
+
+                <h4 style="font-weight: 100">
+                    ¡Gracias por tu información!<br>
+                </h4>
+                <br>
+                <h3 style="font-weight: 100">
+                    Accede a Claro EDX<br>
+                    desde tu celular usando<br>
+                    la aplicación móvil disponible<br>
+                    en Apple Store o Google Play<br>
+                    <br>
+
+                </h3>
+
+                <div class="insignias">
+                    <div class="ui-g-12 ui-md-6">
+                        <img src="../../../../assets/images/b2eimages/gp.png" style="width: 150px; " alt="logo">
+                    </div>
+                    <div class="ui-g-12 ui-md-6">
+                        <img src="../../../../assets/images/b2eimages/as.png" style="width: 150px; " alt="logo">
+                    </div>
+                </div>
+
+                <div class="ui-g-12" style="padding-top: 50px">
+
+                    <button class="btn btn-outline-light" (click)="continuar()"
+                            style="width: 80%; background-color: transparent; border-color: white;">
+                        <span class="ui-button-text">¡Listo, ya tengo la aplicación!</span>
+                    </button>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<app-back-to-bottom class="d-none d-sm-none d-md-block"></app-back-to-bottom>

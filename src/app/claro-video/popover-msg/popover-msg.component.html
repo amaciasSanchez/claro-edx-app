@@ -1,0 +1,95 @@
+<!-- <div class="content-popover"> -->
+<div class="avi-close-desktop avi-close1-desktop">
+    <div class="avi-open-desktop avi-open1-desktop" style="display: block;">
+        <div class="mensaje-open" *ngIf="activarpopover">
+            <!-- <div class="ico-close"> X </div> -->
+            <p class="color-blanco">
+                <span style="display: block;margin-bottom: 16px;">
+                    <i class="ui-icon-report" *ngIf="typeError.type=='ERROR'"
+                        style="color: #e74c3c;font-size: 67px;"></i>
+                    <i class="ui-icon-report-problem" *ngIf="typeError.type=='ALERT'"
+                        style="color:#f1b606;font-size: 67px;"></i>
+                    <i class="material-icons" *ngIf="typeError.type=='SUCCESS'"
+                        style="color: #e30000;font-size: 67px;">check_circle</i>
+                </span>
+                
+                <span style="line-height: 24px;" *ngIf="!activarBtnsConfirmarCancelar " >
+                    El correo jperez@gmail.com ya esta siendo
+                    usado en otra suscripción de Claro Video. Debes ingresar un nuevo correo electrónico.
+                </span>
+                <span style="line-height: 24px;" *ngIf="activarBtnsConfirmarCancelar && !activarBtnTransaccionProcesada" >
+                    Este es el último paso del proceso.
+                    Se procederá a activar Claro Video a tu cliente
+                    
+                </span>
+                <span style="line-height: 24px;" *ngIf="activarBtnTransaccionProcesada" >
+                    Listo, tu transacción ha sido procesada con éxito.
+                    Puedes revisar el estado del servicio en la vista 360 del cliente
+                    
+                </span>
+                <button *ngIf="!activarBtnsConfirmarCancelar && !activarBtnTransaccionProcesada" pbutton=""
+                    type="button" label="Entendido" style="display: block;margin: 0 auto;"
+                    class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only color-botttom"><span
+                        class="ui-button-text ui-clickable" (click)="actionClose()">Entendido</span><span
+                        class="ink ripple-animate"
+                        style="height: 61px; width: 61px; top: -12.8px; left: 6.48334px; pointer-events: none;"></span></button>
+
+                <button *ngIf="activarBtnTransaccionProcesada" pbutton="" type="button" label="Entendido"
+                    style="display: block;margin: 0 auto;text-decoration: underline;background: #e30000;"
+                    class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only color-botttom"><span
+                        class="ui-button-text ui-clickable" (click)="regresareView360()">Entendido</span><span
+                        class="ink ripple-animate"
+                        style="height: 61px; width: 61px; top: -12.8px; left: 6.48334px; pointer-events: none;"></span></button>
+
+
+            </p>
+
+            <div *ngIf="activarBtnsConfirmarCancelar && !activarBtnTransaccionProcesada" style="display: flex;">
+                <button pbutton="" type="button" label="Entendido"
+                    style="display: inline-block;margin: 0 auto;max-width: 155px;text-decoration: underline !important;"
+                    class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only color-botttom"
+                    (click)="aceptar()">
+                    <span class="ui-button-text ui-clickable">Aceptar</span><span class="ink ripple-animate"
+                        style="height: 61px; width: 61px; top: -12.8px; left: 6.48334px; pointer-events: none;"></span>
+                </button>
+
+                <button pbutton="" type="button" label="Entendido"
+                    style="display: inline-block;margin: 0 auto;max-width: 155px;background: #e30000;text-decoration: underline !important;"
+                    class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only color-botttom"
+                    (click)="cancelar()">
+                    <span class="ui-button-text ui-clickable">Cancelar</span><span class="ink ripple-animate"
+                        style="height: 61px; width: 61px; top: -12.8px; left: 6.48334px; pointer-events: none;"></span>
+                </button>
+            </div>
+
+            <!-- <div *ngIf="activarBtnsConfirmarCancelar"  class="ng-star-inserted" style="display: flex;">
+                <button
+                    class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only color-botttom"
+                    label="Entendido" pbutton=""
+                    style="display: inline-block;margin: 0 auto;max-width: 155px;text-decoration: underline !important;"
+                    type="button"><span  class="ui-button-text ui-clickable">Aceptar</span><span
+                         class="ink ripple-animate"
+                        style="height: 61px; width: 61px; top: -20.65px; left: 40.5px; pointer-events: none;"></span>
+                    </button>
+                    <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only color-botttom"
+                    label="Entendido" pbutton=""
+                    style="display: inline-block;margin: 0 auto;max-width: 155px;background: #e30000;text-decoration: underline !important;"
+                    type="button"><span  class="ui-button-text ui-clickable">Cancelar</span><span
+                        _ngcontent-uko-c4="" class="ink ripple-animate"
+                        style="height: 61px; width: 61px; top: -12.8px; left: 6.48334px; pointer-events: none;"></span></button>
+            </div> -->
+        </div>
+    </div>
+    <div class="info-avi-close">
+
+        <!-- <div  class="content-avi-close">
+                <h3  class="color-blanco">HOLA, SOY AVI</h3>
+                <p  class="color-blanco">Yo te ayudaré en el proceso de solicitud<br >de
+                    cuenta en linea....</p>
+            </div> -->
+    </div>
+</div>
+
+
+
+<!-- </div> -->

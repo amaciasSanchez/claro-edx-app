@@ -1,0 +1,261 @@
+<section
+    class="section-content app-p1-cli-valores-pendientes"
+    style="width: 100%"
+>
+
+<p-messages [value]="msgs"></p-messages>
+    <div style="margin: 24px">
+        <div class="row">
+            <div class="ui-g-10 my-auto">
+                <img
+                    alt=""
+                    src="assets/images/bundle/Header/logoclaro.png"
+                    style="width: 134px; margin-right: 16px"
+                />
+                <div style="float: right; margin-right: -150px">
+                    <span
+                        style="
+                            margin-left: 80%;
+                            font-size: 25px;
+                            text-align: right;
+                        "
+                    >
+                        Cuentas
+                    </span>
+                    <p style="font-size: 16">
+                        Estas son las cuentas de tu cliente y sus valores
+                        pendiente de pago
+                    </p>
+                </div>
+                <div style="text-align: right"></div>
+            </div>
+        </div>
+        <div class="row">
+            <personal-information-process
+                style="width: 100%"
+            ></personal-information-process>
+        </div>
+ <!--    
+errorInvocation: errorInvocation}}   -  spinStatus: spinStatus}}  --> 
+<div [hidden]="!spinStatus">
+    <div>
+        <sk-double-bounce
+            [isRunning]="spinStatus"
+            [delay]="120"
+        >
+            Cargando los datos
+        </sk-double-bounce>
+    </div>
+</div>
+
+
+<div [hidden]="errorInvocation ">
+        <p-table
+            #dt
+            [value]="currentDebtItems"
+            [totalRecords]=" currentDebtItems != null ? currentDebtItems.length : 0 "
+            [rows]="5"
+            [paginator]="false"
+            [rowsPerPageOptions]="[5, 10, 20]"
+        >
+           
+
+            <ng-template pTemplate="body" let-subscription>
+              
+                <tr
+                    [hidden]="spinStatus"
+                    style="border-bottom: 0px; border-left: 0px"
+                >
+             
+                    <td
+                        colspan="5"
+                        style="
+                            padding: 15px;
+                            font-size: 30px;
+                            border-top: 1px none black;
+                            border-left: 0;
+                            width: 100%;
+                        "
+                    >
+                        <strong class="text">
+                            <span title="Suscripción">{{
+                                subscription.subproduct
+                            }}</span>
+                            <span title="Código de Contrato">
+                                ({{ subscription.contractId }})</span
+                            >
+                        </strong>
+                    </td>
+                </tr>
+                <tr
+                    [hidden]="spinStatus"
+                    style="background-color: white; border: 1px normal"
+                >
+                    <td>
+                        <img
+                            src="assets/images/bundle/Imagen6.png"
+                            alt=""
+                            style="
+                                width: 45px;
+                                height: 45px;
+                                background: transparent;
+                            "
+                        />
+                        <span
+                            title="Fecha de Suscripción"
+                            style="line-height: 40px; margin-right: 27px"
+                            >{{
+                                subscription.activateDate
+                                    | date: "dd/MM/yyyy HH:mm"
+                            }}</span
+                        >
+                    </td>
+                    <td>
+                        <img
+                            [src]="
+                                subscription.subproductId == 'AUT' ||
+                                subscription.subproductId == 'PPA' ||
+                                subscription.subproductId == 'TAR'
+                                    ? 'assets/images/bundle/Imagen7.png'
+                                    : subscription.subproductId == 'INT.WTTX' ||
+                                      subscription.subproductId == 'INT.GPON'
+                                    ? 'assets/images/bundle/Imagen12.png'
+                                    : 'assets/images/bundle/Imagen7.png'
+                            "
+                            alt=""
+                            style="background: transparent"
+                        />
+                        <span
+                            title="Código de Suscripción"
+                            style="line-height: 40px; margin-right: 27px"
+                            >{{ subscription.serviceNumber }}</span
+                        >
+                        <br />
+                        <span [hidden]="!subscription.moreServiceNumber"
+                           style="font-size:small;font-weight:bold" >Este no es el &uacute;nico servicio de la
+                            cuenta</span
+                        >
+                    </td>
+                    <td>
+                        <span
+                            title="Total Amount"
+                            style="
+                                line-height: 40px;
+                                margin-right: 18px;
+                                font-size: 30px;
+                            "
+                        >
+                            ${{ subscription.totalAmount }}</span
+                        >
+                        <br />
+                        <span style="line-height: 20px; margin-right: 17px"
+                            >Deuda Total</span
+                        >
+                    </td>
+                    <td>
+                        <span
+                            title="totalOpenAmount"
+                            style="
+                                line-height: 40px;
+                                margin-right: 18px;
+                                font-size: 30px;
+                            "
+                        >
+                            ${{ subscription.totalOpenAmount }}</span
+                        >
+                        <br />
+                        <span style="line-height: 20px; margin-right: 7px"
+                            >Deuda Corriente</span
+                        >
+                    </td>
+                    <td>
+                        <span
+                            title="Fecha Maxima"
+                            style="
+                                line-height: 40px;
+                                margin-right: 18px;
+                                font-size: 30px;
+                            "
+                        >
+                            {{ subscription.dueMaxTime }}</span
+                        >
+                        <br />
+                        <span
+                            [hidden]="spinStatus"
+                            style="line-height: 20px; margin-right: 5px"
+                            >Fecha máxima de pago
+                        </span>
+                    </td>
+                    <td>
+                        <button
+                            (click)="verMovimientos(subscription)"
+                            class="button-arrow-right ng-star-inserted"
+                            placement="top"
+                            ngbTooltip="Ver Movimientos"
+                            style="
+                                border: hidden;
+                                margin-left: -70px;                             
+                                padding: 0px;
+                            "
+                        >
+                            <i
+                                class="ui-icon-visibility"
+                                style="font-size: 33px; line-height: 43px"
+                            ></i>
+                        </button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div><br/>
+    <div [hidden]="spinStatus || currentDebtItems === undefined || currentDebtItems.length>0" >
+        <span  style="font-weight: bold;font-size:20px;margin-left: 10%;">
+            No hay datos que presentar.
+        </span>
+    </div>
+        <div class="row" style="margin-left:40%;margin-top:50px" > 
+            <button (click)="recargaCompleta()"  [hidden]="errorInvocation || carga==='FULL'" 
+            class="button-arrow-right ng-star-inserted" placement="top"
+                ngbTooltip="Cargar todas las cuentas del cliente" style="border-radius:15px;
+                                            border: 1px solid black;                       
+                                            padding: 20px;
+                                        ">
+                <i style="font-size: 33px; line-height: 43px"></i>
+                <span>Ver todas las cuentas del cliente</span>
+            </button>
+        </div>
+
+
+        <div class="ui-g-2">
+            <div style="height: 60px; margin-top: 40%">
+                <app-btn-volver-vista
+                    style="margin-right: 10%"
+                ></app-btn-volver-vista>
+            </div>
+        </div>
+        <div class="row" style="display: none">
+            <div class="mx-auto">
+                <div style="margin-left: -333px; margin-top: 20px">
+                    <img
+                        src="assets/images/claroVideo/arrow_trash.png"
+                        alt=""
+                        style="
+                            width: auto;
+                            height: 60px;
+                            background: transparent;
+                        "
+                    />
+                    <img
+                        src="assets/images/claroVideo/trash.png"
+                        alt=""
+                        style="
+                            width: auto;
+                            height: 60px;
+                            background: transparent;
+                        "
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

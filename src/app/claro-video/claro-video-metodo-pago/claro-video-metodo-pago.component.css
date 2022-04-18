@@ -1,0 +1,59 @@
+
+
+  .image-device{
+    height: 150px;
+    max-width: 150px;
+    display: flex;
+    margin: auto;
+    padding: inherit;
+  }
+
+  .carousel-metodo{
+
+  }
+  .carousel-metodo ul{
+    margin-top: 20px ;
+    list-style-type: none;
+    padding: 0px;
+  }
+  
+  .carousel-metodo li{
+  }
+  
+  .carousel-metodo {
+    background-color: white;
+  }
+  .carousel-metodo img{
+    display: flex;
+    margin:auto;
+  }
+  .carousel-metodo .ui-carousel-item {
+    /* border: 1px solid black !important;
+    border-radius: 35px; */
+    max-width: 300px;
+  }
+
+  .ui-carousel-dots-container{
+    display: none;
+  } 
+
+  
+  @media (min-width: 990px){
+    .carousel-metodo .ui-carousel-items-container{
+
+        /*justify-content: space-around!important;*/
+        display: flex!important;
+      
+      
+    }
+}
+.logoClaro {
+  width: 134px;
+  margin-right: 16px;
+}
+.pageDescription {
+  font-size: 19px;
+  position: relative;
+  top: 17px; 
+  font-size: 2vw;
+}

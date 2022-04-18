@@ -1,0 +1,23 @@
+.global-container {
+    margin: 5rem 0 3rem 0;
+    padding: 0;
+}
+
+.table thead {
+    text-align: center;
+    background-color: #E7E7E7;
+}
+.table tr {
+    text-align: center;
+
+    transition-property: background-color;
+    transition-duration: 0.5s;
+}
+
+.table tr:hover {
+    background-color: #F6F6F6;
+}
+
+#dataPopup{
+    font-size: 14px;
+}

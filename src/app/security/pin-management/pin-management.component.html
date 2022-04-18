@@ -1,0 +1,68 @@
+
+<ng-template let-modal #content >
+        
+    <div class="modal-body">
+        <div style="text-align: center; margin-bottom: 20px;">
+            <img  src="assets/images/update-password/security.png" alt="Security">
+        </div>            
+        
+        <div style="text-align: center;">
+            {{message}}
+        </div>
+       
+    </div>
+
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-outline-light"
+            (click)="modal.close('')">Aceptar</button>
+    </div>
+
+
+</ng-template>
+
+
+<div class="container-fluid claro-bg-image">
+<div class="row">
+    <div class="col-12 col-lg-6 col-md-8 col-sm-8 containerText p-4 align-items-center">
+        <div class="card bg-dark text-white fadeIn animated">
+            <div class="card-body card-img-overlay fadeIn animated">
+                <h2 class="card-title"> <img src="assets/images/claro.png" style="width: 200px; " alt="logo"> EDX</h2>
+                <hr style="background-color: white;">
+                <p class="card-text text-white">                    
+                    Hola {{profile["firstName"]}} {{profile["lastName"]}}, aquí puedes definir un PIN de seguridad como segundo factor de autenticación.
+                    Te será útil para recuperar tu contraseña en caso de que la pierdas.
+                    Tu PIN de seguridad te será solicitado cuando intentes ejecutar transacciones sensibles en el sistema.
+                <form [formGroup]="form" (ngSubmit)="setUpPIN()" class="edx-form p-4 fadeIn animated">
+                    <div class="col-xs-12 col-12 col-md-10 form-group">
+
+                        <div class="input-group">
+
+                            <input class="form-control" type="password" name="password" autocomplete="off"  formControlName="currentPassword" placeholder="Contraseña">
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <br>
+                        <div class="input-group">
+
+                            <input class="form-control" type="text" name="pin" autocomplete="off"  formControlName="pin" placeholder="PIN">
+                            <span class="focus-input100"></span>
+                        </div>
+                        <br>
+                        <br>
+                        <button type="submit" class="btn btn-sm form-control2 btn-outline-dark btn-block">Siguiente</button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 col-lg-6 col-md-8 col-sm-8">
+        <!-- Container Right -->
+    </div>
+</div>
+</div>

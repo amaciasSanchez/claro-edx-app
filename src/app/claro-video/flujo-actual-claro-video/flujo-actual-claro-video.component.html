@@ -1,0 +1,88 @@
+<section>
+    <div style="margin: 24px;">
+        <header>
+            <div style="margin-left: 12px; margin-right: 12px;">
+                <div class="ui-g-9">
+                    <div class="row">
+        
+                        <img style="width: 8vw; height: auto;  vertical-align: text-bottom;"
+                            src="assets/images/bundle/Header/logoclaro.png">
+                        <span style=" margin-left: 13px; margin-top: 10px; line-height: 2rem;  font-size: 2rem; ">
+                            iBPM – Intelligent Business Process Management
+                        </span>
+                    </div>
+                    <div class="row" >
+                        <div class="ng-star-inserted" ><img alt=""
+                            src="assets/images/bundle/flujo/icon-header-flujo.png" style="width: 80px;"><span
+                            style="color: #838282;font-size: 1.4vw;"> {{proceso.title}} ( {{proceso.processId}} )</span></div>
+            
+                    </div>
+                </div>
+                <div class="ui-g-3">
+                    <img alt="" src="assets/images/bundle/Header/logobpm.jpg" style="width: 25vw;">
+        
+                </div>
+            </div>
+        
+        </header>
+     
+
+        <div class="float-right" style="margin-right: 10%;">
+            <app-btn-volver-vista></app-btn-volver-vista>
+        </div>
+
+        <div class="contenedor" style="margin: 0 auto; width:100%;">
+
+            <img alt="" src="assets/images/bundle/flujo/inicio.png" style="width: 52px;height: 68px;">
+            <div class="row" style="margin:0">
+                <div style="background: black; height: 1px; width: 850px; position: absolute; margin-top: 80px;"></div>
+                <div class="d-flex justify-content-around" style="min-width: 850px; height: 160px; ">
+                    <div class="content-flujo">
+                        <i *ngIf="step == 1" class="ui-icon-location-on" placement="top"
+                            ngbTooltip="Volver a la etapa"
+                            (click)="volverEtapa()"
+
+                            style="color: #e12f20;font-size: 51px;position: absolute;top: -55px;cursor: pointer;"></i>
+                        <div class="d-flex flex-column">
+                            <div *ngIf="proceso.type == 'bundle'" class="title-step">Venta de Plan Pospago</div>
+                            <div *ngIf="proceso.type != 'bundle'" class="title-step"> Venta de Claro Video </div>
+                            <img alt="" src="assets/images/bundle/flujo/carroventa.png" class="img-step">
+                        </div>
+                    </div>
+                    <div class="content-flujo">
+                        <i *ngIf="step == 2" class="ui-icon-location-on" placement="top"
+                            ngbTooltip="Volver a la etapa"
+                            (click)="volverEtapa()"
+                            style="color: #e12f20;font-size: 51px;position: absolute;top: -55px;cursor: pointer;"></i>
+
+                        <div class="d-flex flex-column">
+                            <div class="title-step">Creación de Claro ID para Claro Video </div>
+                            <img alt="" src="assets/images/bundle/flujo/clariid.png" class="img-step">
+                        </div>
+                    </div>
+                    <div class="content-flujo">
+                        <i *ngIf="step == 3" class="ui-icon-location-on" placement="top"
+                            ngbTooltip="Volver a la etapa"
+                            (click)="volverEtapa()"
+
+                            style="color: #e12f20;font-size: 51px;position: absolute;top: -55px;cursor: pointer;"></i>
+                        <div class="d-flex flex-column">
+                            <div class="title-step">Activación de suscripción Claro Video en AMCO</div>
+                            <img alt="" src="assets/images/bundle/flujo/clarovideo.png" class="img-step">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <img alt="" src="assets/images/bundle/flujo/finflujo.png" style="width: 52px;height: 68px;">
+        </div>
+
+
+
+        <personal-information-process></personal-information-process>
+
+
+
+    </div>
+
+</section>

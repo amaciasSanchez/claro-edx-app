@@ -1,0 +1,82 @@
+<p-blockUI [blocked]="aProgressSpinner">
+    <div class="splash-screen">
+        <div class="splash-loader-container">
+            <svg class="splash-loader" width="65px" height="65px" viewBox="0 0 66 66"
+                xmlns="http://www.w3.org/2000/svg">
+                <circle class="splash-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30">
+                </circle>
+            </svg>
+        </div>
+    </div>
+</p-blockUI>
+
+<div class="ui-g ui-fluid">
+    <div class="ui-g-12 " [ngClass]="{ 'toolbar-steps-for-price': activarPreviewPrice }" style="padding-left: 3.3rem;">
+        <div #stepabc class="ui-steps ui-widget ui-helper-clearfix ui-steps-readonly">
+            <ul role="tablist">
+                <li [attr.disabled]="num > activeSteps" *ngFor="let item of stepsItems; let num = index"
+                    class="ui-steps-item  ui-steps-current ng-star-inserted"
+                    [ngClass]="{ 'ui-state-highlight': activeSteps === num }" [ngStyle]="{
+                        'max-width:': activeSteps === 0 ? '205px' : '205px'
+                    }">
+                    <a style="outline: none;" (click)="activeIndexChange(num, num > activeSteps)"
+                        class="ui-menuitem-link ng-star-inserted" href="javascript:void(0)"><span
+                            class="ui-steps-number" style="font-size: 12px;">{{ num + 1 }}</span>
+                        <span class="ui-steps-title">{{ item.label }}</span></a>
+                </li>
+            </ul>
+
+            <!-- <button _ngcontent-rqh-c167="" type="button" pbutton="" label="Info"
+                class="ui-button-info ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+                style="margin-right: .25em;min-width: 8em;max-width: 8em;font-size: 1em;height: 2.143em;font-family: &quot;Roboto&quot;, &quot;Helvetica Neue&quot;, sans-serif;border: 1px solid;border-radius: 3px;padding: 6px 15px;font-size: 15px;display: inline-flex;margin-top: 20px;margin-bottom: 5px;width: initial;text-align: center;max-width: initial;min-width: initial;text-transform: lowercase;color: #1f98af;text-decoration: none;background-color: #ffff;box-shadow: none;"><span
+                    class="ui-dropdown-trigger-icon ui-clickable ng-tns-c54-84 pi pi-chevron-down"
+                    style="display: inline-block;float: left;line-height: 22px;color: #1f98af;"></span><span
+                    class="ui-button-text ui-clickable" style="padding: 0;line-height: 1.143em;">Ver más</span><span
+                    class="ink ripple-animate"
+                    style="height: 112px; width: 112px; top: -20.6px; left: 615px; pointer-events: none;"></span></button> -->
+        </div>
+    </div>
+
+    <!-- PRICE PREVIEW -->
+
+    <div class="toolbar-precio-oferta" *ngIf="activarPreviewPrice">
+        <h3 _ngcontent-ocr-c12="" style="text-align: right;margin-right: 56px;">
+            Total de la oferta
+            <span style="color: #B12704 !important;">{{
+                totalPagoOferta | currency: "USD"
+            }}</span>
+        </h3>
+    </div>
+
+    <!-- END PRICE PREVIEW -->
+
+
+    <div class="ui-g-12" *ngIf="stepView === 'BUSCAR_CLIENTE'">
+        <app-buscar-cliente style="margin: 0 auto;width: 90%;" *ngIf="stepView === 'BUSCAR_CLIENTE'"
+                (regresarClick)="regresarClick($event)" (loadinpage)="loadinpageClick($event)"></app-buscar-cliente>    
+    </div>
+
+    <div class="ui-g-12" [ngStyle]="{ width: page === 'HIDDEN_BANNER' ? '100%' : '' }">
+        <!-- <swiper [config]="configForm" style="height: 700px" #usefulSwiper> -->
+        <div class="swiper-wrapper">
+
+            <app-vista-tres-sesenta style="width: 100%;" [nombreCliente]="nombreCliente"
+                *ngIf="stepView === 'VISTA_360'" (regresarClick)="regresarClick($event)"
+                (loadinpage)="loadinpageClick($event)"></app-vista-tres-sesenta>
+
+            <app-productos-servicios style="width: 100%;" [nombreCliente]="nombreCliente" [service]="serviceSelected"
+                [topics]="Topics" *ngIf="stepView === 'PRODUCTOS_SERVICIOS'" (regresarClick)="regresarClick($event)"
+                (loadinpage)="loadinpageClick($event)" >
+            </app-productos-servicios>
+
+            <app-bestoffer-view style="width: 100%;" [nombreCliente]="nombreCliente" [service]="serviceSelected"
+                [Topics]="Topics" [topicId]="topicId" [bestofferdata]="bestOfferData"
+                *ngIf="stepView === 'MEJOR_OFERTA'" (loadinpage)="loadinpageClick($event)"
+                (regresarClick)="regresarClick($event)"></app-bestoffer-view>
+
+            <app-activar-oferta style="width: 100%;" *ngIf="stepView === 'ACTIVAR_OFERTA'"
+                (regresarClick)="regresarClick($event)"></app-activar-oferta>
+        </div>
+    </div>
+</div>
+<app-back-to-bottom class="d-none d-sm-none d-md-block"></app-back-to-bottom>

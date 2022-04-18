@@ -1,0 +1,64 @@
+<div [@carouselAnimation] class="vegas-slide vegas-transition-fade vegas-transition-fade-in" *ngIf="ocultar"
+     [ngClass]="{'vegas-transition-fade-out': ocultar}">
+    <div class="vegas-slide-inner vegas-animation-kenburnsUpRight"
+         style="background-image: url('assets/images/banners/Lego.jpg'); background-color: rgb(255, 255, 255); background-position: center center; background-size: cover; animation-duration: 5000ms;">
+    </div>
+</div>
+<div *ngIf="!ocultar" class="vegas-slide vegas-transition-fade vegas-transition-fade-in vegas-transition-fade-out"
+     [ngClass]="{'vegas-transition-fade-out': !ocultar}" style="transition: all 2000ms ease 0s;"
+     [ngStyle]="{'opacity': !ocultar?'1':'0'}">
+    <div class="vegas-slide-inner vegas-animation-kenburnsDown"
+         style="background-image: url('assets/images/banners/landing-banner-1.jpg'); background-color: rgb(255, 255, 255); background-position: center center; background-size: cover; animation-duration: 5000ms;">
+    </div>
+</div>
+
+<p-messages [value]="msgs"></p-messages>
+<div class="container-fluid topAPP" style="background-color: rgba(13, 13, 13, 0.71);;position: fixed;display: flex;justify-content: center;">
+
+    <div class="ui-g form-group">
+        <div class="ui-g-12 ui-md-2" style="margin-top: 40px;">
+            <img id="profile-img" style="margin: 0 auto;width: 180px;margin-bottom: 35px;" class="profile-img-card" src="assets/images/claroUp/icon-login.svg">
+        </div>
+
+        <div class="ui-g-12 ui-md-6" style="margin-top: 45px;">
+            <span id="loginTitulo">Enterprise Digital Experience</span>
+            <p id="loginLema">Toda la funcionalidad de nuestra Empresa en una nueva experiencia digital.</p>
+        </div>
+        <div class="ui-g-12 ui-md-4" style="margin-top: 40px;">
+            <div class="col-padding">
+
+                <form id="j_idt13" name="j_idt13" method="post" action="" class="form-signin" enctype="" autocomplete="off">
+                    <input type="hidden" name="j_idt13" value="j_idt13">
+                    <span id="reauth-email" class="reauth-email"></span>
+
+                    <input id="j_username" name="j_username"
+                           type="text" placeholder="Usuario de red" [(ngModel)]="form.usuario" (input)="controlInput()"
+                           class="ui-inputtext2 ui-state-default ui-widget"                      
+                           role="textbox" autocomplete="username">
+
+                    <input id="j_password" name="j_password" type="password" [(ngModel)]="form.password"
+                           class="ui-inputtext2 ui-state-default ui-widget"                           
+                           (input)="controlInput()" maxlength="30" placeholder="Contraseña" role="textbox"
+                           aria-disabled="false" aria-readonly="false" autocomplete="current-password">
+
+                    <button id="j_idt27" name="j_idt27"
+                            class="ui-button ui-button-text-only submit btn-block"
+                            [disabled]="activeBtn" (click)="login();" type="submit" role="button" aria-disabled="false">
+                        <span class="ui-button-text">Ingresar</span>
+
+                    </button>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+    body {
+        min-height: auto !important;
+    }
+</style>
+

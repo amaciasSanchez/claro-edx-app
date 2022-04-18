@@ -1,0 +1,33 @@
+
+/*****************************************/
+/*************BOTON REGRESAR**************/
+
+.flotante {
+    display: scroll;
+    position: fixed;
+    bottom: -moz-calc(100% - (30px + 102px));
+    bottom: -webkit-calc(100% - (30px + 102px));
+    bottom: calc(100% - (30px + 102px));
+    left: 0rem;
+    z-index: 1000;
+    height: 62px;
+}
+
+.btn {
+    box-shadow: none;
+    background-color: #428d98;
+    color: white;
+}
+
+.btn:hover {
+    background-color: #308698;
+}
+
+.btn-touch {
+    width: 3rem;
+    padding: 6px 0px;
+    border-radius: 0rem;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1.42857;
+}

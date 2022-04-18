@@ -1,0 +1,10 @@
+.chatlist {
+    background-color: rgba($color: #e3e3e3, $alpha: 0.5);
+    height: 500px;
+    overflow-y: scroll;
+}
+
+.options-chat-group {
+    align-items: center;
+    display: flex;
+}

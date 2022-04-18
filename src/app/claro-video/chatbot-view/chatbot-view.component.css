@@ -1,0 +1,17 @@
+.bkgcht{
+    background-image: url(../../../assets/images/bkgchat.png);
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+}
+
+.chatform{
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 30px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+a {
+    color: blue;
+}

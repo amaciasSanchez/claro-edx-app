@@ -1,0 +1,132 @@
+<p-blockUI [blocked]="aProgressSpinner">
+    <div class="splash-screen">
+        <div class="splash-loader-container">
+            <svg class="splash-loader" width="65px" height="65px" viewBox="0 0 66 66"
+                xmlns="http://www.w3.org/2000/svg">
+                <circle class="splash-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30">
+                </circle>
+            </svg>
+        </div>
+    </div>
+</p-blockUI>
+<section class="section-content">
+    <div style="margin: 24px;">
+        <div class="row" style="justify-content: space-between;" >
+            <div class="ui-g-10 my-auto">
+                <img alt="" src="assets/images/bundle/Header/logoclaro.png" class="logoClaro">
+                <span class="pageDescription">Estas son las formas de pago de tu cliente...</span>
+            </div>
+    
+            <div style="display: flex; width: 140px; justify-content: space-between; padding: 10px;" >
+                <div style="height: 60px; ">
+                    <app-btn-volver-busqueda-cliente style="margin-right: 10%;"></app-btn-volver-busqueda-cliente>
+                </div>
+                <div style="height: 60px; ">
+                    <app-btn-volver-vista style="margin-right: 10%;"></app-btn-volver-vista>    
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <personal-information-process style="width: 100%;"></personal-information-process>
+        </div>
+
+        <div class="col-12 carousel-metodo">
+            <p-carousel [value]="paymentMethods" [numVisible]="4"  [numScroll]="4"
+                [circular]="false" [responsiveOptions]="responsiveOptions">
+                <ng-template let-metodo pTemplate="item">
+                    <div style="margin: 10px; border: 1px solid black !important;
+                    border-radius: 35px;">
+                        <div class="image-device">
+                            <img [src]="metodo.image" style="width: 100%; height: auto">
+
+                        </div>
+                        <div class="content-ul" style="height: 300px ;">
+                            <ul>
+                                <li>
+                                    <div class="ui-g ">
+                                        <div class="ui-g-2 my-auto">
+                                            <img src="assets/images/pago/Imagen1.png" style="width: 30px; height: 30px;"
+                                                alt="">
+                                        </div>
+                                        <div class="ui-g-10" style="line-height: 25px; font-size: large;">
+                                            {{metodo.paymentMethod}}
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="ui-g ">
+                                        <div class="ui-g-2 my-auto">
+                                            <img src="assets/images/pago/Imagen2.png" style="width: 30px; height: 30px;"
+                                                alt="">
+                                        </div>
+                                        <div class="ui-g-10" style="line-height: 25px; font-size: large;">
+                                            {{metodo.bank}}
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="ui-g ">
+                                        <div class="ui-g-2 my-auto">
+                                            <img src="assets/images/pago/Imagen3.png" style="width: 30px; height: 30px;"
+                                                alt="">
+                                        </div>
+                                        <div class="ui-g-10" style="line-height: 25px; font-size: large;">
+                                            {{metodo.accountNumber}}
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="ui-g ">
+                                        <div class="ui-g-2 my-auto">
+                                            <img src="assets/images/pago/Imagen4.png" style="width: 30px; height: 30px;"
+                                                alt="">
+                                        </div>
+                                        <div class="ui-g-10" style="line-height: 25px; font-size: large;">
+                                            {{metodo.expirationDate}}
+
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="ui-g ">
+                                        <div class="ui-g-2 my-auto">
+                                            <img src="assets/images/pago/Imagen5.png" style="width: 30px; height: 30px;"
+                                                alt="">
+                                        </div>
+                                        <div class="ui-g-10" style="line-height: 25px; font-size: large;">
+                                            {{metodo.serviceDescription}}
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="ui-g ">
+                                        <div class="ui-g-2 my-auto">
+                                            <img src="assets/images/pago/Imagen6.png" style="width: 30px; height: 30px;"
+                                                alt="">
+                                        </div>
+                                        <div class="ui-g-10" style="line-height: 25px; font-size: large;">
+                                            {{metodo.serviceNumber}}
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="ui-g ">
+                            <div class="ui-g-12" style="line-height: 25px; font-size: large;" title="Proximamente..." >
+                                <button (click)="activarOverlay()" type="button" class="btn btn-link btn-block btn-lg" disabled >
+                                    Mas informacion</button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-carousel>
+        </div>
+
+        <div class="row" style="margin-top: 10px;">
+            <app-mensaje-info-servicio></app-mensaje-info-servicio>
+        </div>
+
+    </div>
+</section>

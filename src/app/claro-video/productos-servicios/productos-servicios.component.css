@@ -1,0 +1,15 @@
+:host >>> .ui-widget-overlay {
+    background-color: #ffffffd6 !important;
+    z-index: 100 !important;
+    min-height: 80vh;
+} 
+.logoClaro {
+    width: 134px;
+    margin-right: 16px;
+}
+.pageDescription {
+    font-size: 19px;
+    position: relative;
+    top: 17px; 
+    font-size: 2vw;
+}

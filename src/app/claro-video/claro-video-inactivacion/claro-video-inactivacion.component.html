@@ -1,0 +1,167 @@
+<p-blockUI [blocked]="aProgressSpinner">
+    <div class="splash-screen">
+        <div class="splash-loader-container">
+            <svg class="splash-loader" width="65px" height="65px" viewBox="0 0 66 66"
+                xmlns="http://www.w3.org/2000/svg">
+                <circle class="splash-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30">
+                </circle>
+            </svg>
+        </div>
+    </div>
+</p-blockUI>
+
+<section class="section-content producto-servicio " style="width: 100%">
+    <div style="margin: 24px;">
+        <div class="row">
+            <header-process style="width: 100%;" [titulo]="'Inactivación de Oferta '+labelTitleInactivation+'.  (' + subscription.subscriptionInformation.properties.contractId + ')'"
+                [subtitulo]="'Inactivación de Oferta'"></header-process>
+        </div>
+
+        <div class="row">
+            <div class="ui-g-10 my-auto">
+
+                <h4 style=" margin-left: 122px;font-weight: 300;font-size: 18px;">
+                    Ahora debes confirmar la inactivación de la oferta para que sea procesada en AMCO América Móvil
+                    Content Office…
+                </h4>
+            </div>
+
+            <div class="ui-g-2">
+                <div style="height: 60px; ">
+                    <app-btn-volver-vista style="margin-right: 10%;"></app-btn-volver-vista>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <personal-information-process style="width: 100%;"></personal-information-process>
+
+        </div>
+
+        <div class="header-li">
+            <strong class="text">
+                <h4 style="color: #838282; font-weight: bold;">
+                    {{subscription.subscriptionInformation.properties.subproductDescription}}
+                </h4>
+            </strong>
+        </div>
+        
+        <p-table
+            #dt 
+            [value]="selectedOffers"
+            [totalRecords]="selectedOffers != null ? selectedOffers.lenght : 0"
+            [rows]="5"
+            [paginator]="true"
+            [rowsPerPageOptions]="[5, 10, 20]" >
+            <ng-template pTemplate="body" let-offer >
+                <tr>
+                    <td>  
+                        <img src="assets/images/bundle/Imagen6.png" alt="" style="width: 45px;height: 45px; background: transparent;"> 
+                        <span title="Fecha de Suscripción" style="line-height: 40px; margin-right: 27px;">{{subscription.subscriptionInformation.activeDate | date: 'dd/MM/yyyy hh:mm'}}</span>
+                    </td>
+                    <td>
+                        <img [src]="(subscription.subscriptionInformation.properties.subproductId == 'AUT' || 
+                                    subscription.subscriptionInformation.properties.subproductId == 'PPA' || 
+                                    subscription.subscriptionInformation.properties.subproductId == 'TAR') ? 
+                                        'assets/images/bundle/Imagen7.png' 
+                                    : ((subscription.subscriptionInformation.properties.subproductId == 'INT.WTTX' || 
+                                    subscription.subscriptionInformation.properties.subproductId == 'INT.GPON') ? 
+                                        'assets/images/bundle/Imagen12.png'
+                                        : 'assets/images/bundle/Imagen7.png') " alt="" style="background: transparent;"> 
+                        <span title="Código de Suscripción" style="line-height: 40px;    margin-right: 27px;">{{subscription.subscriptionInformation.serviceNumber}}</span>
+                    </td>
+                    <td>
+                        <img src="assets/images/bundle/Imagen8.png" alt="" style="width: 45px;height: 45px; background: transparent;"> 
+                        <span title="Plan de Suscripción" style="line-height: 40px;    margin-right: 27px;">{{subscription.subscriptionInformation.properties.model}}</span>
+                    </td>
+                    <td>
+                        <img [src]="(subscription.subscriptionInformation.paymentType == 'Contrafactura') ? 
+                                        'assets/images/bundle/Imagen9.png' 
+                                    : ((subscription.subscriptionInformation.paymentType == 'Tarjeta de Crédito') ? 
+                                            'assets/images/bundle/Imagen14.png'
+                                        : ((subscription.subscriptionInformation.paymentType == 'Cuenta Bancaria') ? 
+                                                'assets/images/bundle/Imagen15.png'
+                                            : ((subscription.subscriptionInformation.paymentType == 'Cheque') ? 
+                                                    'assets/images/bundle/Imagen16.png'
+                                                : 'assets/images/bundle/dolar.png'))) " alt="" style="width: 45px;height: 45px; background: transparent;"> 
+                        <span title="Forma de Pago" style="display: inline-block; position: relative; vertical-align: middle;" >
+                                <span style="display: block;" >{{subscription.subscriptionInformation.paymentType}}</span>
+                                <span style="display: block;" >{{subscription.subscriptionInformation.paymentDescription}}</span>
+                        </span>
+                    </td>
+                    <td>
+                        <div style="display: flex;" >
+                            <div>
+                                <img src="assets/images/bundle/Imagen10.png" alt="">
+                            </div>
+                            <div>
+                                <span style="vertical-align: -webkit-baseline-middle;" >{{offer.offerName}}</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td align="center" >
+                        <button class="button-arrow-right ng-star-inserted" placement="top" ngbTooltip="Ver ofertas"
+                                style="border: hidden;margin-left: 5px;padding: 0px;"><i class="ui-icon-visibility"
+                                    style="font-size: 33px;line-height: 43px;"></i></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table> 
+
+        <br>
+
+        <div class="row  d-flex justify-content-around">
+            <div>
+                <Button (click)="selectAction(2)" class="selected-color">Cancelar la renovación </Button>
+            </div>
+            <div>
+                <Button (click)="selectAction(3)" class="selected-color">Eliminar la oferta ahora </Button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<p-dialog [(visible)]="modalAdvertencia" [style]="{width: '600px'}">
+    <span style="display: block;  text-align: center; margin-bottom: 16px;">
+        <i class="ui-icon-report-problem" style="color:#f1b606;font-size: 67px;"></i>
+    </span>
+    <div style="line-height: 24px; text-align: center; padding: 15px;">
+        <span>
+            {{message}}
+        </span>
+        <br>
+        <br>
+        <span>
+            ¿Esta seguro que desea hacerlo?
+        </span>
+    </div>
+    <br>
+    <div style="width: 100%;">
+        <button type="button" class="mx-auto" style="width: 50%; background: #2f4050;" pButton (click)="executeAction()" label="Si"></button>
+        <button type="button" class="mx-auto" style="width: 50%; background: #e03232;" pButton (click)="modalAdvertencia=false" label="No"></button>
+    </div>
+</p-dialog>
+
+<p-dialog [(visible)]="modalMessageResponse" [style]="{width: '600px'}" [modal]="true" >
+    <span style="display: block;  text-align: center; margin-bottom: 16px;">
+        <i [class]="(inactivateResponse !== undefined && inactivateResponse.status == 'WARNING') ? 
+            'ui-icon-report-problem modal-icon-warning' 
+            : (inactivateResponse !== undefined && inactivateResponse.status == 'ERROR') ?
+                'ui-icon-close modal-icon-error'
+                : 'ui-icon-check modal-icon-success'"></i>
+    </span>
+    <div style="line-height: 24px; text-align: center; padding: 15px;">
+        <span>
+            {{inactivateResponse !== undefined ? inactivateResponse.message : ''}}
+        </span>
+    </div>
+    
+    <br>
+
+    <div style="width: 100%;text-align: center;">
+        <button type="button" class="mx-auto" style="background: #e03232;width:40%" pButton
+            (click)="closeResponseMessage()" label="Cerrar"></button>
+    </div>
+</p-dialog>

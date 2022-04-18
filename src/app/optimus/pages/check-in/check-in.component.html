@@ -1,0 +1,117 @@
+<!--
+<app-navbar></app-navbar>
+-->
+<!--Contenedor Global-->
+<div class="global-container">
+  <div class="container">
+    <h3>
+      <b>Visualización de Lista de archivos Check In - Archivos Transformados</b>
+    </h3>
+    <hr />
+    <p>
+      Esta lista de archivos presentes han llegado a su mail para validar el
+      formato requerido por bancos y desde aquí poder aprobar el envío.
+    </p>
+  </div>
+
+  <!--Contenedor-->
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <!--Tabla-->
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Seleccionar</th>
+              <th scope="col">Nombre del Archivo</th>
+              <th scope="col">Ruta</th>
+              <th scope="col">F. Modificación</th>
+              <th scope="col">Peso</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!--iteramos los elementos del API-->
+            <tr *ngFor="let vFile of vFiles; index as i">
+              <td>
+                <div class="custom-control custom-checkbox">
+                  <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    [(ngModel)]="vFile.select"
+                    id="{{ vFile.name }}"
+                  />
+                  <label
+                    class="custom-control-label countFiles"
+                    for="{{ vFile.name }}"
+                    >{{ i + 1 }}</label
+                  >
+                </div>
+              </td>
+              <td id="nam{{ i }}">{{ vFile.name }}</td>
+              <td id="rut{{ i }}">{{ vFile.path }}</td>
+              <td>{{ vFile.dateModified }}</td>
+              <td>{{ vFile.size }}</td>
+              <td id="{{ i }}">
+                <label for="" *ngIf="vFile.select == true">ENV</label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!--Contenedor para acciones-->
+  <div class="container">
+    <!--ACCIÓN ENVIAR-->
+
+    <button class="btn btn-success" id="btns" (click)="enviarArchivos(content)">
+      <i class="fa fa-paper-plane"></i>
+      Enviar
+    </button>
+
+    <!--ACCIÓN ELIMINAR-->
+
+    <button
+      class="btn btn-danger"
+      id="btnd"
+      (click)="eliminarArchivos(content)"
+    >
+      <i class="fa fa-trash"></i>
+      Eliminar
+    </button>
+  </div>
+
+
+  <app-back-to-bottom></app-back-to-bottom>
+
+  <ng-template #content let-c="close">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">{{ accionarealizar }}</h4>
+    </div>
+    <div class="modal-body">
+      <p style="text-align: justify;">
+        Usted está a punto de <b>{{ captureAction }}</b> estos archivos. Si está
+        de acuerdo pulse el botón <span style="color: seagreen;">ACEPTAR</span>,
+        caso contrario pulse el botón
+        <span style="color: sienna;">CANCELAR</span>.
+      </p>
+
+      <ul *ngFor="let data of manageName">
+        <li>{{ data }}</li>
+      </ul>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="aceptar()">
+        Aceptar
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-dark"
+        (click)="c('Save click')"
+      >
+        Cancelar
+      </button>
+    </div>
+  </ng-template>
+</div>

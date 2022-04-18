@@ -1,0 +1,36 @@
+.navbar {
+    background-color: #da291c;
+}
+
+.btn {
+    color: white !important;
+    background-color: #da291c !important;
+    box-shadow: none !important;
+    border-color: transparent !important;
+}
+
+.btn:hover {
+    color: #da291c !important;
+    background-color: #ffffff !important;
+    box-shadow: none !important;
+    border-color: transparent !important;
+}
+
+.dropdownForm1 {
+    background-color: rgba(0,0,0,0.8) !important;
+    color: white !important;
+}
+
+.dropdownForm1 button {
+    color: white !important;
+    background-color: #000000 !important;
+    box-shadow: none !important;
+    border-color: #ffffff !important;
+}
+
+.dropdownForm1 button:hover {
+    color: white !important;
+    background-color: #3913e4 !important;
+    box-shadow: none !important;
+    border-color: #ffffff !important;
+}

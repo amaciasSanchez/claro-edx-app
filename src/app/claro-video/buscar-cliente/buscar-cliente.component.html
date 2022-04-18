@@ -1,0 +1,42 @@
+<div class="swiper-slide">
+    <div style="margin: auto; width: 45%; text-align: center; margin-top: 3%;">
+        <h1 style="line-height: 3; color: #428d98; font-weight: 100;" >Busca a tu Cliente</h1>
+        <div>
+            <app-error-message
+                [message]="errorInterface.message"
+                [isError]="errorInterface.isError"></app-error-message>
+        </div>
+        <div
+            [ngClass]="{ 'error-content': errorInterface.isError }"
+            style="margin-bottom:20px;padding: 20px;padding-left: 0;">
+            <span class="md-inputfield md-inputfield-fill">
+                <input
+                    type="text"
+                    [(ngModel)]="searchClientNumber"
+                    (input)="inputChange($event)"
+                    (keyup.enter)="searchNumber()"  
+                    maxlength="50"
+                    pInputText/>
+                <label>Número Celular, Identificación o Número de Servicio</label>
+            </span>
+        </div>
+        <div style="margin-bottom:20px">
+            <button
+                [disabled]="disabledBtn"
+                icon="ui-icon-refresh"
+                label="Refresh"
+                pbutton=""
+                type="button"
+                ng-reflect-label="Refresh"
+                (click)="searchNumber()"
+                ng-reflect-icon="ui-icon-refresh"
+                class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left">
+                <span
+                    aria-hidden="true"
+                    class="ui-button-icon-left ui-clickable ui-icon-refresh"></span><span
+                class="ui-button-text ui-clickable">Obten su información</span>
+            </button>
+        </div>
+        <app-mensaje-busqueda-cliente></app-mensaje-busqueda-cliente>
+    </div>
+</div>

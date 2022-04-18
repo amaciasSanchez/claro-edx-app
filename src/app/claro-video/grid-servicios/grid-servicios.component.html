@@ -1,0 +1,409 @@
+<p-table
+    #dt
+    [columns]="cols"
+    [value]="arrayServicios"
+    [totalRecords]="totalRecords"
+    [loading]="loading"
+    [rows]="5"
+    [paginator]="true"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    sortField="productDescription"
+    [sortOrder]="-1">
+    <ng-template pTemplate="caption">
+        <div style="display: flex; justify-content: space-between;" >
+            <div>
+                Ofertas de la Suscripción
+            </div>
+            <div style="text-align: right">
+                <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                <input type="text" pInputText size="30" (input)="dt.filterGlobal($event.target.value, 'contains')"  class="filter">
+            </div>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th class="row-header contentItemHeader" *ngFor="let col of columns" [pSortableColumn]="col.field" >
+                <div [title]="col.header" >
+                    <img [src]="col.img" >
+                    <div>
+                        <div>{{col.header}}</div>
+                        <p-sortIcon [field]="col.field" *ngIf="col.canOrder" ></p-sortIcon>
+                    </div>
+                </div>
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData >
+        <tr>
+            <td>
+                <input type="checkbox" [(ngModel)]="rowData['selected']"  [disabled]="rowData.disable" (click)="validarCheck(rowData)" />
+                <!-- <input *ngIf="!flat" type="checkbox" [disabled]="rowData.productId != 'claroup' &&
+                                                    rowData.productId != 'Claro_Video'" [(ngModel)]="rowData['selected']" /> -->
+                <!-- <input *ngIf="flat" type="checkbox" [disabled]="rowData.productId != 'claroup' &&
+                                                    rowData.productId != 'Claro_Video' &&
+                                                    rowData.productId != perminProductId" [(ngModel)]="rowData['selected']"" /> -->
+            </td>
+            <td title="{{ rowData.activatedDate | date: 'dd/MM/yyyy HH:mm' }}" >
+                {{ rowData.activatedDate | date: 'dd/MM/yyyy HH:mm' }}
+            </td>
+            <td title="{{ rowData.productDescription }}" >
+                {{ rowData.productDescription }}
+            </td>
+            <td title="{{ rowData.offerName }}" >
+                {{ rowData.offerName }}
+            </td>
+            <td title="{{ rowData.startDate | date: 'dd/MM/yyyy HH:mm'  }}" >
+                {{ rowData.startDate | date: 'dd/MM/yyyy HH:mm'  }}
+            </td>
+            <td title="{{ rowData.endDate | date: 'dd/MM/yyyy HH:mm'  }}" >
+                {{ rowData.endDate | date: 'dd/MM/yyyy HH:mm'  }}
+            </td>
+            <td title="{{ rowData.offerType }}" >
+                {{ rowData.offerType }}
+            </td>
+            <td title="{{ rowData.price | number : '.2-2' }}" >
+                {{ rowData.price | number : '.2-2' }}
+            </td>
+            <td title="{{ rowData.claroId }}" >
+                {{ rowData.claroId }}
+            </td>
+            <td title="{{ rowData.status }}" [class]="rowData.status!=='Vigente'?'text-error':''" >
+                {{ rowData.status }}
+            </td>
+            <td>
+                <!-- {{ servicio.claroId }} -->
+                <!--<button  (click)="verDispositivo(rowData)"  title="Proximamente..."-->
+                <button  (click)="verDispositivo(subscription.subscriptionInformation.serviceNumber)"  title="Dispositivos del Cliente por Servicio"
+                    class="button-arrow-right ng-star-inserted" placement="top" ngbTooltip="Ver Dispositivo"
+                    style="border: hidden;margin-left: 5px;padding: 0px; background: transparent;">
+                    <img src="assets/images/icons/products/show.png" alt="" style="width: 30px;" >
+                </button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+
+<div class="row">
+    <div class="mx-auto">
+        <div style="margin-top: 20px;">
+            <img src="assets/images/claroVideo/trash.png" alt="" (click)="inactivate()"
+            style="width: auto;height: 65px; background: transparent;">
+        </div>
+
+    </div>
+</div>
+
+
+<p-dialog [(visible)]="modalAdvertencia" [style]="{width: '600px'}" [modal]="true" >
+    <span style="display: block;  text-align: center; margin-bottom: 16px;">
+        <i [class]="(response !== undefined && response.status == 'WARNING') ?
+            'ui-icon-report-problem modal-icon-warning'
+            : (response !== undefined && response.status == 'ERROR') ?
+                'ui-icon-close modal-icon-error'
+                : 'ui-icon-check modal-icon-success'"></i>
+    </span>
+    <div style="line-height: 24px; text-align: center; padding: 15px;">
+        <span>
+            {{response !== undefined ? response.message : ''}}
+        </span>
+        <br>
+        <br>
+        <ul *ngIf="response !== undefined && response.detail !== undefined && response.detail.length > 0" >
+            <li *ngFor="let det of response.detail" >
+                {{det.offerCode + ': ' + det.message }}
+            </li>
+        </ul>
+    </div>
+
+    <br>
+    <div style="width: 100%;text-align: center;">
+        <button type="button" class="mx-auto" style="background: #e03232;width:40%" pButton
+            (click)="closeDialog()" label="Cerrar"></button>
+    </div>
+
+</p-dialog>
+
+<p-dialog [(visible)]="modalMessage" [style]="{width: '600px'}" [modal]="true" >
+    <span style="display: block;  text-align: center; margin-bottom: 16px;">
+        <i [class]="(response !== undefined && response.status == 'WARNING') ?
+            'ui-icon-report-problem modal-icon-warning'
+            : (response !== undefined && response.status == 'ERROR') ?
+                'ui-icon-close modal-icon-error'
+                : 'ui-icon-check modal-icon-success'"></i>
+    </span>
+    <div style="line-height: 24px; text-align: center; padding: 15px;">
+        <span>
+            {{response !== undefined ? response.message : ''}}
+        </span>
+        <br>
+    </div>
+
+    <br>
+    <div style="width: 100%;text-align: center;">
+        <button type="button" class="mx-auto" style="background: #e03232;width:40%" pButton (click)="cerrarModalMessage(flagLoader)" label="Cerrar"></button>
+    </div>
+
+</p-dialog>
+
+
+<p-dialog [(visible)]="modalTablet" [style]="{width: '600px'}" [modal]="true">
+    <span style="display: block;  text-align: center; margin-bottom: 16px;">
+        <i [class]="(response !== undefined && response.status == 'WARNING') ?
+            'ui-icon-report-problem modal-icon-warning'
+            : (response !== undefined && response.status == 'ERROR') ?
+                'ui-icon-close modal-icon-error'
+                : 'ui-icon-check modal-icon-success'"></i>
+    </span>
+    <div style="line-height: 24px; text-align: center; padding: 15px; font-size: 20px;">
+        <span>
+           {{mensajeModal}}
+        </span>
+        <br>
+    </div>
+
+    <br>
+    <div style="text-align:center; margin: auto;">
+        <table style=" margin: auto;">
+            <tr>
+                <td style="padding-right: 20px">
+                    <div style="text-align: center;">
+                        <button type="button" style="background: #e03232; width: 100px;" pButton (click)="inactivateTablet(offers)" label="Si"></button>
+                    </div>
+                </td>
+                <td>
+                    <div style=" text-align: center;">
+                        <button type="button" style="color: #e03232; background:rgb(255, 255, 255); border-color: #e03232; width: 100px;border-width: 2px;border-style: solid;" pButton (click)="cerrarModalTable()" label="No"></button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</p-dialog>
+
+
+<p-dialog [(visible)]="modalPerminOffer" [style]="{width: '600px'}" [modal]="true">
+
+    <div style="line-height: 24px; text-align: center; padding: 15px; font-size: 20px;">
+        <span>
+           El suscriptor tiene otras ofertas de penalidad (PERMIN) que no has selecionado.
+        </span>
+        <br>
+        <br>
+        <span>
+           ¿Está seguro que desea continuar con la selección actual?
+         </span>
+    </div>
+    <br>
+    <div style="text-align:center; margin: auto;">
+        <table style=" margin: auto;">
+            <tr>
+                <td style="padding-right: 20px">
+                    <div style="text-align: center;">
+                        <button type="button" style="background: #e03232; width: 100px;" pButton (click)="confirmarPerminOferta()" label="Continuar"></button>
+                    </div>
+                </td>
+                <td>
+                    <div style=" text-align: center;">
+                        <button type="button" style="color: #e03232; background:rgb(255, 255, 255); border-color: #e03232; width: 100px;border-width: 2px;border-style: solid;" pButton (click)="cerrarModalPerminOferta()" label="Cancelar"></button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</p-dialog>
+
+<p-dialog [(visible)]="modalSeleccionInactivacion" [style]="{width: '600px'}" [modal]="true">
+    <div style="text-align: right;font-size: 18px;" (click)="cerrarSeleccionInactivacion()">
+        <span class="fa fa-times-circle"></span>
+    </div>
+    <div style="line-height: 24px; text-align: center; padding: 15px; font-size: 20px;">
+        <span>
+           Seleccione el esquema de inactivación de la penalidad
+        </span>
+        <br>
+    </div>
+    <br>
+    <div style="text-align:center; margin: auto;">
+        <table style=" margin: auto;">
+            <tr>
+                <td style="padding-right: 20px">
+                    <div style="text-align: center;">
+                        <button type="button" style="background: #e03232; width: 250px;" pButton (click)="confirmarSeleccionInactivacion('factunaNueva')" label="Generar Factura"></button>
+                    </div>
+                </td>
+                <td>
+                    <div style="text-align: center;">
+                        <button type="button" style="background: #e03232; width: 250px;" pButton (click)="confirmarSeleccionInactivacion('facturaExistente')" label="Ingresar Factura Existente" [disabled]="perminAllValue"></button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</p-dialog>
+
+<p-dialog [(visible)]="modalGenerarFactura" [style]="{width: '600px'}" [modal]="true">
+
+    <div style="line-height: 20px; padding: 15px;font-size: 1em;">
+<table style="width: 100%;margin:auto;">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Costo sin impuesto</th>
+        <th>Costo con impuesto</th>
+      </tr>
+    </thead>
+    <tr *ngFor = "let rowData of arrayFacturaServicios">
+
+            <td style="text-align: left;padding-right: 10px;">
+                {{ rowData.product }}
+            </td>
+            <td style="text-align: right;padding-right: 10px;">
+                {{ rowData.priceBeforeTaxes | number : '.2-2' }}
+            </td>
+            <td style="text-align: right;padding-right: 10px;">
+                {{ rowData.priceAfterTaxes | number : '.2-2' }}
+            </td>
+    </tr>
+    <tfoot>
+        <tr>
+            <td colspan="1"></td>
+            <td colspan="1" style="text-align: right;padding-right: 10px; border-top: 1px solid rgb(214, 214, 214);"><b>Total a facturar:</b> </td>
+            <td colspan="1" style="text-align: right;padding-right: 10px; border-top: 1px solid rgb(214, 214, 214);"><b>${{totalFacturar | number : '.2-2'}}</b> </td>
+          </tr>
+    </tfoot>
+  </table>
+        <br>
+    </div>
+    <br>
+    <div style="text-align:center; margin: auto;">
+        <table style=" margin: auto;">
+            <tr>
+                <td style="padding-right: 20px">
+                    <div style="text-align: center;">
+                        <button type="button" style="background: #e03232; width: 100px;" pButton (click)="savePickTicket()" label="Continuar"></button>
+                    </div>
+                </td>
+                <td>
+                    <div style=" text-align: center;">
+                        <button type="button" style="color: #e03232; background:rgb(255, 255, 255); border-color: #e03232; width: 100px;border-width: 2px;border-style: solid;" pButton (click)="cerrarModalGenerarFactura()" label="Cancelar"></button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</p-dialog>
+
+<p-dialog [(visible)]="modalPickTicket" [style]="{width: '600px'}" [modal]="true">
+    <div style="text-align: right;font-size: 18px;" (click)="cerrarModalPickTicket()">
+        <span class="fa fa-times-circle"></span>
+    </div>
+    <div style="line-height: 24px; text-align: center; padding: 15px; font-size: 20px;">
+        <span>
+            Por favor, continúe la facturación en caja
+        </span>
+        <br><br>
+        <span>
+            código de Pick Ticket: </span>
+            <span style="font-weight: bold;">{{idPickTicket}}</span>
+        <br><br>
+        <button type="button" style="color: #e03232; background:rgb(255, 255, 255); border-color: #e03232; width: 100px;border-width: 2px;border-style: solid;" pButton (click)="copyToClipboard(idPickTicket)" placement="rigth" ngbTooltip="Copiado!" triggers="click:blur">
+            <span class="fa fa-copy" style=" font-size: 40px;"></span>
+        </button>
+    </div>
+    <br>
+</p-dialog>
+
+<p-dialog [(visible)]="modalIngresarFactura" [style]="{width: '600px'}" [modal]="true">
+
+    <div style="line-height: 24px; text-align: center; padding: 15px; font-size: 20px;">
+        <span>
+            Por favor debe ingrese el número factura, para poder continuar
+        </span>
+        <br>
+    </div>
+
+    <div style="line-height: 24px; text-align: center; padding: 15px; font-size: 20px;">
+        <input type="text" [(ngModel)]="numeroFactura" class="inputText" pInputText style="text-align: center;">
+    </div>
+
+    <br>
+    <div style="text-align:center; margin: auto;">
+        <table style=" margin: auto;">
+            <tr>
+                <td style="padding-right: 20px">
+                    <div style="text-align: center;">
+                        <button type="button" style="background: #e03232; width: 100px;" pButton (click)="confirmarNumeroFactura()" label="Continuar"></button>
+                    </div>
+                </td>
+                <td>
+                    <div style=" text-align: center;">
+                        <button type="button" style="color: #e03232; background:rgb(255, 255, 255); border-color: #e03232; width: 100px;border-width: 2px;border-style: solid;" pButton (click)="cerrarModalIngresoFactura()" label="Cancelar"></button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</p-dialog>
+
+<p-dialog [(visible)]="modalResonConfirm" [style]="{width: '600px'}" [modal]="true">
+
+    <div style="line-height: 24px; text-align: center; padding: 15px; font-size: 20px;">
+        <span>
+            ¿Está seguro que desea continuar sin ingresar el numero de factura?
+        </span>
+        <br>
+    </div>
+
+    <div style="line-height: 24px; padding: 15px; font-size: 20px;">
+        <label [class]="selectedReasonValue?'':'text-error'"><span [class]="selectedReasonValue?'required-text-hidden':'required-text-show'">*(Requerido)</span> Razón: </label><br>
+        <p-dropdown [options]="arrayReasons" [(ngModel)]="selectedReason" optionLabel="description" [filter]="true" placeholder="Seleccionar razón" styleClass='reason-drop'></p-dropdown>
+    <br><br>
+        <label [class]="observationValue?'':'text-error'"><span [class]="observationValue?'required-text-hidden':'required-text-show'">*(Requerido)</span>Observacion: </label><br>
+        <textarea type="text" [(ngModel)]="observation" class="inputText" pInputTextarea style="width: 100%;"></textarea>
+    </div>
+    <br>
+    <div style="text-align:center; margin: auto;">
+        <table style=" margin: auto;">
+            <tr>
+                <td style="padding-right: 20px">
+                    <div style="text-align: center;">
+                        <button type="button" style="background: #e03232; width: 100px;" pButton (click)="inactivateTablet(offers)" label="Continuar"></button>
+                    </div>
+                </td>
+                <td>
+                    <div style=" text-align: center;">
+                        <button type="button" style="color: #e03232; background:rgb(255, 255, 255); border-color: #e03232; width: 100px;border-width: 2px;border-style: solid;" pButton (click)="cerrarModalResonConfirm()" label="Cancelar"></button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</p-dialog>
+
+
+<p-dialog [(visible)]="modalError" [style]="{width: '600px'}" [modal]="true">
+    <span style="display: block;  text-align: center; margin-bottom: 16px;">
+        <i class="ui-icon-close modal-icon-error"></i>
+    </span>
+
+    <div style="line-height: 24px; text-align: center; padding: 15px; font-size: 20px;">
+        <span>
+            {{mensajeErrorModal}}
+        </span>
+        <br>
+    </div>
+
+    <br>
+    <div style="text-align:center; margin: auto;">
+        <table style=" margin: auto;">
+            <tr>
+                <td style="padding-right: 20px">
+                    <div style="text-align: center;">
+                        <button type="button" style="background: #e03232; width: 100px;" pButton (click)="cerrarModalError()" label="Aceptar"></button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</p-dialog>

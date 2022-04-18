@@ -1,0 +1,53 @@
+<div>
+    <div *ngIf="paso == 0 " class="header-li">
+        <strong class="text">
+            {{proceso.processInstanceDesc}} ({{proceso.processInstanceId}})
+        </strong>
+    </div>
+    <div class="contenedor d-flex justify-content-around">
+
+        <span>
+            <img src="assets/images/bundle/Imagen6.png" alt=""
+                style="width: 45px;height: 45px; background: transparent;margin-right: 10px;"> <span
+                style="line-height: 40px;    margin-right: 27px;">{{proceso.processInstanceVariables.transactionDate}}
+            </span>
+        </span>
+        <span>
+            <img src="assets/images/bundle/Imagen7.png" alt="" style="background: transparent;margin-right: 10px;">
+            <span style="line-height: 40px;    margin-right: 27px;">{{proceso.processInstanceVariables.serviceNumber}}
+            </span>
+        </span>
+        <span>
+            <img src="assets/images/bundle/Imagen8.png" alt=""
+                style="width: 45px;height: 45px; background: transparent;margin-right: 10px;"> <span
+                style="line-height: 40px;    margin-right: 27px;">{{proceso.processInstanceVariables.serviceDescription}}
+            </span>
+        </span>
+        <span>
+            <img src="assets/images/bundle/Imagen9.png" alt=""
+                style="width: 45px;height: 45px; background: transparent; margin-right: 10px;"> <span
+                style="line-height: 40px;    margin-right: 27px;">{{proceso.processInstanceVariables.paymentMethod}}
+            </span>
+        </span>
+
+
+        <span  *ngIf="paso > 0 " >
+            <img src="assets/images/bundle/Imagen10.png" alt="">
+            <input type="text" [(ngModel)]="correoCliente" class="inputText" 
+                placeholder="Correo electrónico" pInputText>
+        </span>
+
+        <button *ngIf="paso >1" (click)="activarOverlay()" class="button-arrow-right ng-star-inserted"
+            placement="top" ngbTooltip="Ver" style="border: hidden;margin-left: 5px;padding: 0px;"><i
+                class="ui-icon-visibility" style="font-size: 33px;line-height: 43px;"></i></button>
+
+
+        <button class="button-arrow-right"   *ngIf="paso == 0 "  (click)="activarCorreo(proceso)">
+            <i class="ui-icon-arrow-forward icon-right"></i>
+        </button>
+
+    </div>
+    <div class="divider"></div>
+
+</div>
+<app-modal-info-bundle [showModalInfoBundle] = "activarpopover"  (dismissInfo)= "dismissInfo($event)" > </app-modal-info-bundle>

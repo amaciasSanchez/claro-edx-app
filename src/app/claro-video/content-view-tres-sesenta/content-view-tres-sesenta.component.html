@@ -1,0 +1,526 @@
+<div class="div_prima_mensual">
+    <div
+        *ngIf="tipo == 1"
+        class="tabla_resumen uk-overflow-container"
+        gm-bind=""
+        content="string_productos_adicinales">
+        <div class="ng-scope">
+            <div>
+                <div
+                    class="title-div">
+                    {{ title }}
+                </div>
+            </div>
+            <tr class="borde_resumen">
+                <td class="padding_resumen_bottom" style="text-align: left;">
+                    <span>Nombre: </span>
+                </td>
+                <td
+                    class="td_resumen_precio padding_resumen_bottom"
+                    style="text-align: left;">
+                    {{ data.personalInformation.fullName }}
+                </td>
+            </tr>
+
+            <tr class="borde_resumen">
+                <td class="padding_resumen_bottom" style="text-align: left;">
+                    <span>Identificación: </span>
+                </td>
+                <td
+                    class="td_resumen_precio padding_resumen_bottom"
+                    style="text-align: left;">
+                    {{ data.personalInformation.identificationNumber }}
+                </td>
+            </tr>
+            <tr class="borde_resumen">
+                <td class="padding_resumen_bottom" style="text-align: left;">
+                    <span>Tipo Identificación: </span>
+                </td>
+                <td
+                    class="td_resumen_precio padding_resumen_bottom"
+                    style="text-align: left;">
+                    {{
+                    data.personalInformation.identificationType === "CED"
+                    ? "CÉDULA"
+                    : data.personalInformation.identificationType ===
+                    "PAS"
+                    ? "PASAPORTE"
+                    : "RUC"
+                    }}
+                </td>
+            </tr>
+            <tr class="borde_resumen" *ngIf="data.personalInformation.fechaNacimiento">
+                <td class="padding_resumen_bottom" style="text-align: left;">
+                    <span>Fecha de nacimiento: </span>
+                </td>
+                <td
+                    class="td_resumen_precio padding_resumen_bottom"
+                    style="text-align: left;">
+                    {{ data.personalInformation.fechaNacimiento}}
+                </td>
+            </tr>
+            <tr class="borde_resumen">
+                <td class="padding_resumen_bottom" style="text-align: left;">
+                    <span>Nacionalidad: </span>
+                </td>
+                <td
+                    class="td_resumen_precio padding_resumen_bottom"
+                    style="text-align: left;">
+                    {{ data.personalInformation.nationality }}
+                </td>
+            </tr>
+
+            <!-- <tr class="borde_resumen">
+                <td class="padding_resumen_bottom" style="text-align: left;">
+                    <span>Correo electronico: </span>
+                </td>
+                <td
+                    class="td_resumen_precio padding_resumen_bottom"
+                    style="text-align: right;"
+                >
+                    {{ data.contactInformation.email }}
+                </td>
+            </tr> -->
+        </div>
+    </div>
+    <!-- <br />
+    <br /> -->
+    <div
+        *ngIf="tipo == 8"
+        class="tabla_resumen uk-overflow-container"
+        gm-bind=""
+        content="string_productos_adicinales">
+        <div class="ng-scope">
+            <div>
+                <div
+                    colspan="2"
+                    class="title-div">
+                    {{ title }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div
+        *ngIf="tipo == 9"
+        class="tabla_resumen uk-overflow-container"
+        gm-bind=""
+        content="string_productos_adicinales" style="background: #da291c">
+        <div class="ng-scope">
+            <div>
+                <div colspan="2" style="color:white; font-size: 14px">
+                    Esta característica del sistema no está disponible por el momento
+                </div>
+            </div>
+        </div>
+    </div>
+    <div
+        *ngIf="tipo == 10"
+        class="tabla_resumen uk-overflow-container"
+        gm-bind=""
+        content="string_productos_adicinales" style="background: #da291c">
+        <div class="ng-scope">
+            <div>
+                <div colspan="2" style="color:white; font-size: 14px">
+                    Esta característica del sistema no está disponible por el momento
+                </div>
+            </div>
+        </div>
+    </div>
+    <div
+        *ngIf="tipo == 3"
+        class="tabla_resumen uk-overflow-container"
+        gm-bind=""
+        content="string_productos_adicinales">
+        <div class="ng-scope">
+            <div>
+                <div
+                    colspan="2"
+                    class="title-div">
+                    {{ title }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div
+        *ngIf="tipo == 6"
+        class="tabla_resumen uk-overflow-container"
+        gm-bind=""
+        content="string_productos_adicinales">
+        <div class="ng-scope">
+            <div>
+                <div
+                    colspan="2"
+                    class="title-div">
+                    {{ title }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div
+        *ngIf="tipo == 5"
+        class="tabla_resumen uk-overflow-container"
+        gm-bind=""
+        content="string_productos_adicinales">
+        <div class="ng-scope">
+            <div>
+                <div
+                    colspan="2"
+                    class="title-div">
+                    {{ title }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div
+        *ngIf="false"
+        class="tabla_resumen uk-overflow-container"
+        gm-bind=""
+        content="string_productos_adicinales">
+        <div class="ng-scope" *ngIf="data.subscriptions.length === 1">
+            <div>
+                <div
+                    colspan="2"
+                    class="title-div">
+                    {{ title }}
+                </div>
+            </div>
+            <tr class="borde_resumen">
+                <td class="padding_resumen_bottom" style="text-align: left;">
+                    <span>Número de servicio: </span>
+                </td>
+                <td
+                    class="td_resumen_precio padding_resumen_bottom"
+                    style="text-align: left;">
+                    {{
+                    data.subscriptions[0].subscriptionInformation
+                    .serviceNumber
+                    }}
+                </td>
+            </tr>
+            <tr class="borde_resumen">
+                <td class="padding_resumen_bottom" style="text-align: left;">
+                    <span>IMEI: </span>
+                </td>
+                <td
+                    class="td_resumen_precio padding_resumen_bottom"
+                    style="text-align: left;">
+                    {{
+                    data.subscriptions[0].subscriptionInformation.properties
+                    .imei
+                    }}
+                </td>
+            </tr>
+            <tr class="borde_resumen">
+                <td class="padding_resumen_bottom" style="text-align: left;">
+                    <span>Marca: </span>
+                </td>
+                <td
+                    class="td_resumen_precio padding_resumen_bottom"
+                    style="text-align: left;">
+                    {{
+                    data.subscriptions[0].subscriptionInformation.properties
+                    .brand
+                    }}
+                </td>
+            </tr>
+            <tr class="borde_resumen">
+                <td class="padding_resumen_bottom" style="text-align: left;">
+                    <span>Modelo: </span>
+                </td>
+                <td
+                    class="td_resumen_precio padding_resumen_bottom"
+                    style="text-align: left;">
+                    {{
+                    data.subscriptions[0].subscriptionInformation.properties
+                    .model
+                    }}
+                </td>
+            </tr>
+            <tr class="borde_resumen">
+                <td class="padding_resumen_bottom" style="text-align: left;">
+                    <span>Tipo de Pago: </span>
+                </td>
+                <td
+                    class="td_resumen_precio padding_resumen_bottom"
+                    style="text-align: left;">
+                    {{
+                    data.subscriptions[0].subscriptionInformation
+                    .paymentType
+                    }}
+                </td>
+            </tr>
+            <tr class="borde_resumen">
+                <td class="padding_resumen_bottom" style="text-align: left;">
+                    <span>Estado: </span>
+                </td>
+                <td
+                    class="td_resumen_precio padding_resumen_bottom"
+                    style="text-align: left;">
+                    {{ data.subscriptions[0].subscriptionInformation.status }}
+                </td>
+            </tr>
+        </div>
+
+        <h6
+            *ngIf="tipo == 4 && data.subscriptions.length > 1"
+            class="title-div">
+            {{ title }}
+        </h6>
+
+        <h6
+            *ngIf="data.subscriptions.length === 0"
+            style="font-weight: bold;font-size: 16px;font-family: 'Raleway', Helvetica, Arial, sans-serif;margin: 0;">
+            No tiene servicios activos
+        </h6>
+
+        <ul
+            *ngIf="tipo == 4 && data.subscriptions.length > 1"
+            class="content-custom-ul">
+            <!-- *ngFor="let item of items" -->
+            <li
+                *ngFor="let item of data.subscriptions"
+                class="li-border"
+                style="cursor: pointer;"
+                (click)="opendetailItem(item); open(content)">
+                <div
+                    class="ui-helper-clearfix ng-star-inserted  un-selected"
+                    [ngClass]="{ 'selected-service ': item.serviceSelected }">
+                    <div
+                        class="p-col-12 avatar-certificados-content icon-phone-services"
+                        style="float: left;">
+                        <!-- <img
+                            src="https://image.flaticon.com/icons/png/512/2322/2322566.png"
+                        /> -->
+                        <!-- <i
+                            style="text-indent: initial;"
+                            class="ui-icon ui-icon-phone"
+                        > </i>-->
+                        <!-- <i class="material-icons"></i> -->
+                        <img
+                            src="assets/images/claroUp/icon-phone.svg"
+                            alt=""
+                            style="width: 17px;"
+                        />
+
+                        <!-- <span
+                            *ngIf="item.open"
+                            class="ui-panelmenu-icon pi pi-fw ng-tns-c16-54 ng-star-inserted pi-chevron-down"
+                        ></span> -->
+                        <div _ngcontent-xdw-c9="" _ngcontent-klq-c4=""></div>
+                    </div>
+                    <div class="text-header">
+                        <span style="color: #1F97AE !important;">{{
+                            item.subscriptionInformation.properties.model
+                        }}</span>
+                        <br/>
+                        Número de servicio:
+                        {{ item.subscriptionInformation.serviceNumber }}
+                        <br/>
+                        Tipo de pago:
+                        {{ item.subscriptionInformation.paymentType }}
+                    </div>
+                    <div class="text-detalle">
+                        Estado:
+                        <span
+                            [ngClass]="{
+                                'active-state':
+                                    item.subscriptionInformation.status ===
+                                    'Active'
+                            }"
+                            [ngStyle]="{
+                                'padding-top':
+                                    item.subscriptionInformation.status ===
+                                    'Active'
+                                        ? '0px'
+                                        : '',
+                                'padding-bottom':
+                                    item.subscriptionInformation.status ===
+                                    'Active'
+                                        ? '1px'
+                                        : ''
+                            }">
+                            {{ item.subscriptionInformation.status }}</span>
+                    </div>
+                    <span
+                        _ngcontent-xdw-c9=""
+                        class="ui-carousel-next-icon pi pi-chevron-right"
+                        ng-reflect-ng-class="[object Object]"
+                        style="color: #DDDDDD;font-size: 47px;float: right;margin-top: -72px;margin-right: 7px;">
+                    </span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div
+        *ngIf="tipo == 7"
+        class="tabla_resumen uk-overflow-container"
+        gm-bind=""
+        content="string_productos_adicinales">
+        <div class="ng-scope">
+            <div>
+                <div
+                    colspan="2"
+                    class="title-div">
+                    {{ title }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div
+        *ngIf="tipo == 2"
+        class="tabla_resumen uk-overflow-container"
+        gm-bind=""
+        content="string_productos_adicinales">
+        <div class="ng-scope">
+            <div>
+                <div
+                    colspan="2"
+                    class="title-div">
+                    {{ title }}
+                </div>
+            </div>
+            <tr class="borde_resumen">
+                <td class="padding_resumen_bottom" style="text-align: left;">
+                    <span>Email: </span>
+                </td>
+                <td
+                    class="td_resumen_precio padding_resumen_bottom"
+                    style="text-align: left;">
+                    {{ data.contactInformation.email }}
+                </td>
+            </tr>
+            <tr class="borde_resumen">
+                <td class="padding_resumen_bottom" style="text-align: left;">
+                    <span>Provincia: </span>
+                </td>
+                <td
+                    class="td_resumen_precio padding_resumen_bottom"
+                    style="text-align: left;">
+                    {{ data.contactInformation.province }}
+                </td>
+            </tr>
+            <tr class="borde_resumen">
+                <td class="padding_resumen_bottom" style="text-align: left;">
+                    <span>Distrito: </span>
+                </td>
+                <td
+                    class="td_resumen_precio padding_resumen_bottom"
+                    style="text-align: left;">
+                    {{ data.contactInformation.district }}
+                </td>
+            </tr>
+            <tr class="borde_resumen">
+                <td class="padding_resumen_bottom" style="text-align: left;">
+                    <span>Parroquia: </span>
+                </td>
+                <td
+                    class="td_resumen_precio padding_resumen_bottom"
+                    style="text-align: left;">
+                    {{ data.contactInformation.parish }}
+                </td>
+            </tr>
+            <tr class="borde_resumen">
+                <td class="padding_resumen_bottom" style="text-align: left;">
+                    <span>Dirección: </span>
+                </td>
+                <td
+                    class="td_resumen_precio padding_resumen_bottom"
+                    style="text-align: left;">
+                    {{ data.contactInformation.addressLine1 }}
+                </td>
+            </tr>
+        </div>
+    </div>
+</div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        {{ detalleItem.subscriptionInformation.properties.brand }}
+        {{ detalleItem.subscriptionInformation.properties.model }}
+        <!-- <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button> -->
+    </div>
+    <div class="modal-body">
+        <table id="detalle-plan" style="margin: 0 auto;width: 90%;">
+            <tbody>
+            <!-- <tr>
+            <td colspan="2" align="center">
+                <img
+                    _ngcontent-goq-c4=""
+                    class="mat-elevation-z2 ng-tns-c31-17 ng-trigger ng-trigger-fadeInOut ng-star-inserted uk-overlay-scale"
+                    src="assets/images/claroUp/category/topics/imagen.jpg"
+                    width="47%"
+                    style="display: block;"
+                />
+            </td>
+        </tr> -->
+            <!-- ngIf: typeof(planDetalle.nivelPlan)!=='undefined' -->
+            <tr class="ng-scope">
+                <td class="detalle-plan-td-parametro">
+                    Número de servicio:
+                </td>
+                <td
+                    style="width: 30% !important;text-align: center !important"
+                    class="ng-binding">
+                    {{ detalleItem.subscriptionInformation.serviceNumber }}
+                </td>
+            </tr>
+            <tr class="ng-scope">
+                <td class="detalle-plan-td-parametro">IMEI:</td>
+                <td
+                    style="width: 30% !important;text-align: center !important"
+                    class="ng-binding">
+                    {{
+                    detalleItem.subscriptionInformation.properties.imei
+                    }}
+                </td>
+            </tr>
+            <!-- end ngIf: typeof(planDetalle.nivelPlan)!=='undefined' -->
+            <tr>
+                <td class="detalle-plan-td-parametro ng-binding">
+                    IMSI:
+                </td>
+                <td
+                    style="text-align: center !important;width: 30% !important;"
+                    class="ng-binding">
+                    {{
+                    detalleItem.subscriptionInformation.properties.imsi
+                    }}
+                </td>
+            </tr>
+            <tr>
+                <td class="detalle-plan-td-parametro ng-binding">
+                    ICCID:
+                </td>
+                <td
+                    style="text-align: center !important;width: 30% !important;"
+                    class="ng-binding">
+                    {{
+                    detalleItem.subscriptionInformation.properties.iccid
+                    }}
+                </td>
+            </tr>
+            <tr>
+                <td class="detalle-plan-td-parametro ng-binding">Estado</td>
+                <td
+                    style="text-align: center !important;width: 30% !important;"
+                    class="ng-binding">
+                    {{ detalleItem.subscriptionInformation.status }}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-footer" style="justify-content: center;">
+        <a
+            class="uk-button boton-cotizador pv-button-enviarcOTIZAaqUI"
+            style="background-color: #428d98!important;text-transform: none;"
+            href="javascript:void(0)"
+            (click)="closeModal(); modal.close('Save click')">
+            <span style="color: #ffffff;">Cerrar</span>
+            <!-- <span class="loader ng-hide" ng-show="loading"></span> -->
+        </a>
+    </div>
+</ng-template>

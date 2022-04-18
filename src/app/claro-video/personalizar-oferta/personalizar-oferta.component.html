@@ -1,0 +1,353 @@
+<div class="compare_back" [ngStyle]="{ 'margin-top': totalPagoOferta > 0 ? '113px' : '' }">
+    <a id="compareBackLink" href="javascript:void(0);" (click)="regresar()"
+        style="border: 1px solid;border-radius: 3px;padding: 6px 15px;font-size: 15px;display: inline-flex;margin-top: 20px;margin-bottom: 5px;width: initial;text-align: center;max-width: initial;min-width: initial;text-transform: lowercase;color: #1f98af;text-decoration: none;">
+        <i style="line-height: 19px !important ;
+    float: left !important;
+    margin-left: -8px !important;" class="ui-icon ui-icon-navigate-before"></i>
+        volver
+    </a>
+</div>
+
+<h3 style="margin-top: 15px;" class="uk-panel-title descripcion_cotizador ng-binding">
+    Personaliza tu oferta
+</h3>
+
+<div class="uk-width-1-1" style="margin: 0 auto;
+    max-width: 1024px;">
+    <h6 class="uk-panel-title descripcion_cotizador_subtitle tab-cuentas">
+        Puedes activar claroUP en cualquiera de estos equipos adquiridos en el
+        último mes.
+    </h6>
+    <div class="uk-overflow-auto">
+    </div>
+</div>
+<!-- max-height: 400px !important;min-height: 266px !important;overflow-y: auto !important;overflow-x: hidden !important; -->
+<div style="width: 100%;display: inline-block;" *ngIf="!loading">
+    <div class="ui-g-12 ui-lg-4">
+        <ul class="content-custom-ul">
+            <div *ngFor="let JsonOferta of arrayOrders.orders">
+                <li *ngFor="let item of JsonOferta.orderDetails" class="li-border"
+                    style="cursor: pointer;background-color: #e6eef7;border-radius: 20px;margin-top: 100px;padding: 13px;">
+                    <!-- [ngClass]="{ 'selected-service ': item.serviceSelected }" -->
+                    <div class="ui-helper-clearfix ng-star-inserted  un-selected">
+                        <div class="p-col-12 avatar-certificados-content icon-phone-services"
+                            style="float: left;margin-left: 5px;">
+                            <p-checkbox [style]="{ position: 'relative', top: '0px' }" name="groupname"
+                                value="{{ item.orderId }}" [(ngModel)]="selectedServices"
+                                (onChange)="onChangeServiceNumber()"></p-checkbox>
+                            <img src="assets/images/claroUp/icon-phone.svg" alt=""
+                                style="width: 17px;margin-right: 14px;" />
+                            <div></div>
+                        </div>
+                        <div class="text-header">
+                            <span style="color: #1F97AE !important;">
+                                {{ item.product }}</span>
+                            <br />
+                            <span> <strong> SKU:</strong> {{ item.sku }}</span>
+                            <br />
+                            <span>
+                                <strong>IMEI: </strong> {{ item.imei }}</span>
+                            <br />
+
+                            <strong> Facturado el:</strong>
+                            {{ JsonOferta.invoiceDate | date }}
+
+                            <br />
+                            <span style="color: #da291c !important;margin-left: 17px;font-weight: bold;">
+                                {{
+                                    item.productPrice
+                                        | currency: "USD":"symbol":"1.2-2"
+                                }}</span>
+                        </div>
+
+                    </div>
+                </li>
+            </div>
+        </ul>
+    </div>
+    <div class="ui-g-12 ui-lg-8">
+        <div style="">
+            <div>
+                <div *ngFor="let off of arrayDataPersonalizarOferta;let indice=index">
+                    <p-carousel [value]="off.ofertas" [circular]="ftruealse" [numVisible]="3" [autoplayInterval]="null"
+                        [circular]="false" styleClass="content-Ca" dotsContainerClass="pagin">
+                        <!-- <p-header>
+                                                                    <h3>Basic</h3>
+                                                                </p-header> -->
+                        <ng-template let-item pTemplate="item">
+                            <!-- *ngIf="showOfertas" -->
+                            <div id="wk-gridcf3"
+                                class="uk-grid-width-1-1 uk-grid-width-small-1-1 uk-grid-width-medium-1-1
+                                                                    uk-grid-width-large-1-1 uk-grid-width-xlarge-1-1 uk-grid uk-grid-match uk-text-center uk-text-center-small"
+                                data-uk-grid-match="{target:'> div > .uk-panel', row:true}">
+                                <div class="uk-row-first ng-scope">
+                                    <div class="uk-panel" [ngClass]="{ opacity: item.opacity }">
+                                        <div class="uk-grid uk-flex-middle altura_planes" style="margin-bottom: 12px;">
+                                            <div class="uk-width-medium-1-1 uk-row-first">
+                                                <img class="mat-elevation-z2 ng-tns-c31-17 ng-trigger ng-trigger-fadeInOut ng-star-inserted uk-overlay-scale"
+                                                    src="assets/images/claroUp/phone-claroup.png"
+                                                    style="display: block;width: 50px;margin: 0 auto;" />
+                                            </div>
+                                            <div _ngcontent-goq-c4="" class="uk-width-medium-1-1">
+                                                <span> {{item.offerName}} </span> <br>
+                                                <span style="color: #da291c;font-size: 17px;">
+                                                    {{item.priceTotal | currency}}
+                                                </span>
+                                            </div>
+                                            <div class="uk-width-medium-1-1">
+                                                <div class="uk-panel">
+                                                    <div class="uk-margin">
+                                                        <br />
+                                                        <a style="color: #0097a9;" _ngcontent-goq-c4="" class="comparar"
+                                                            href="javascript:void(0);" (click)="
+                                                                                                        detalleOferta(item);
+                                                                                                        open(content)
+                                                                                                    ">Lee los
+                                                            detalles</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-width-medium-1-1">
+                                                <a class="uk-button btn-plan ng-binding" href="javascript: void(0);"
+                                                    [ngClass]="{
+                                                                                                seleccionado: (item.elegido  && off.elegido)
+                                                                                            }"
+                                                    (click)="cambiarPlan(item,off)" style="padding: 0 14px;">{{
+                                                                                                !item.elegido
+                                                                                                    ? "Seleccionar"
+                                                                                                    : "Seleccionado"
+                                                                                            }}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </p-carousel>
+                    <!-- <div *ngFor="let items of off.ofertas">
+                       
+                    </div> -->
+                </div>
+            </div>
+            <!-- <div *ngFor="let item of arrayNumEquipo;let indice=index;">
+                
+            </div> -->
+        </div>
+    </div>
+</div>
+
+<!-- *ngIf="tabView === 'CUENTA'" -->
+<div class="uk-width-1-1" style="margin-bottom: 45px;min-height: 45vh;">
+    <h6 class="uk-panel-title descripcion_cotizador_subtitle ng-binding tab-cuentas" style="  font-size: 17px;">
+        Selecciona la forma de pago de tu seguro claroUp.
+    </h6>
+    <span style="font-size: 12px;">Solo tenemos disponible al momento la capacidad de que pagues este
+        servicio en una de tus cuentas activas</span>
+    <div class="uk-overflow-auto" style="padding: 15px;width: 100%;display: flex;
+        word-wrap: anywhere;overflow-x: auto;">
+        <div style="margin-right: 5px;width: 455px;min-width: 211px;" *ngFor="let item of dataFormaPago"
+            class="box-forma-pago" (click)="selectedFormaPAgo(item)"
+            [ngClass]="{ 'selected-formaPago': item.selected }">
+            <span><strong>Número de servicio:</strong> 0{{ item.subscriptionInformation.serviceNumber }}</span><br />
+            <span *ngIf="item.paymentMethods[0].details"><strong>Cuenta:</strong>
+                {{item.paymentMethods[0].details.accountNumber}} </span><br />
+            <!-- <span>Fecha corte</span> -->
+        </div>
+
+    </div>
+    <app-error-message [message]="errorInterface.message" [isError]="errorInterface.isError"></app-error-message>
+    <div style="display: block;margin-top: 49px;">
+        <button *ngIf="!activarSeguro && cuentaSelected"
+            class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only secondary" id="j_idt9"
+            name="j_idt9" role="button" [disabled]="disabledBtnActivarSeguro"
+            style="width: 146px;height: 38px;margin: -8px auto;display: inline-block;float: right;" type="button"
+            (click)="activacionSeguro()">
+            <span _ngcontent-lkh-c4="" class="ui-button-text ui-c" style="text-align: left;">Activar oferta</span>
+            <span class="ui-button-icon-left ui-icon ui-c    ui-icon ui-icon-arrow-forward"
+                style="float: right;margin-top: -25px;font-size: 20px;"></span>
+            <span _ngcontent-lkh-c4="" class="ink animate ripple-animate"
+                style="height: 119.016px; width: 119.016px; top: -45.4px; left: -36.15px; pointer-events: none;"></span>
+        </button>
+
+        <div *ngIf="activarSeguro" class="spinner" style="float: right;bottom: 9px;">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+</div>
+
+<ng-template #content let-modal>
+    <div class="modal-body">
+        <table id="detalle-plan" style="margin: 0 auto;width: 90%;">
+            <tbody>
+                <tr>
+                    <td colspan="2" align="center" style="color: #0097a9;">
+                        {{itemModalDetalle.offerName}}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <img class="mat-elevation-z2 ng-tns-c31-17 ng-trigger ng-trigger-fadeInOut ng-star-inserted uk-overlay-scale"
+                            src="assets/images/claroUp/phone-claroup.png" width="70px" style="display: block;" />
+                    </td>
+                </tr>
+
+                <tr class="ng-scope">
+                    <td class="detalle-plan-td-parametro">Código de oferta:</td>
+                    <td style="width: 30% !important;text-align: center !important" class="ng-binding">
+                        {{ itemModalDetalle.offerCode }}
+                    </td>
+                </tr>
+                <!-- <tr>
+                    <td class="detalle-plan-td-parametro ng-binding">
+                        Fecha de inicio:
+                    </td>
+                    <td style="text-align: center !important;width: 30% !important;" class="ng-binding">
+                        {{ itemModalDetalle.startDate }}
+                    </td>
+                </tr> -->
+                <!-- <tr *ngIf="itemModalDetalle.endDate">
+                    <td class="detalle-plan-td-parametro ng-binding">
+                        Fecha de fin:
+                    </td>
+                    <td style="text-align: center !important;width: 30% !important;" class="ng-binding">
+                        {{ itemModalDetalle.endDate }}
+                    </td>
+                </tr> -->
+                <tr>
+                    <td class="detalle-plan-td-parametro ng-binding">
+                        Precio:
+                    </td>
+                    <td style="text-align: center !important;width: 30% !important;" class="ng-binding">
+                        <span style="color:#DA262C;display: block;font-weight: 700;">
+                            {{ itemModalDetalle.priceBeforeTax | currency }}
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="detalle-plan-td-parametro ng-binding">
+                        Precio total (Incluye IVA):
+                    </td>
+                    <td style="text-align: center !important;width: 30% !important;" class="ng-binding">
+                        <!-- font-size: 1.3em; -->
+                        <span style="color:#DA262C;display: block;font-weight: 700;">
+                            {{ itemModalDetalle.priceTotal | currency }}
+                        </span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="td_resumen_final" colspan="2">
+                        <span style="font-size: 12px;">{{ itemModalDetalle.longDescription }}.<br />
+                            {{ itemModalDetalle.featuresDescription }}
+                            <br />
+                            {{ itemModalDetalle.aditionalDescription }}</span>
+                    </td>
+                </tr>
+                <!-- ngRepeat: parametro in planDetalle.param -->
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-footer" style="justify-content: center;">
+        <a class="uk-button boton-cotizador pv-button-enviarcOTIZAaqUI" style="background-color: #428d98!important;"
+            href="javascript:void(0)" (click)="closeModal()">
+            <span>Cerrar</span>
+            <span class="loader ng-hide" ng-show="loading"></span>
+        </a>
+    </div>
+</ng-template>
+
+<ng-template #content1 let-modal>
+    <div class="modal-header">
+        <span style="color: #0097a9;">{{ itemModalDetalle.offerName }}</span>
+    </div>
+    <div class="modal-body">
+        <div aria-hidden="false" style="display: block;">
+            <div style="padding: 9px !important;width: auto;text-align: center;" *ngIf="!errorActivarOferta">
+                <h3 class="uk-panel-title" style="color: #0097a9;">
+                    Seguro activado
+                </h3>
+                <p style="margin-bottom: 25px !important;">
+                    El seguro ha sido activado con exito!
+                </p>
+                <p-accordion [activeIndex]="0">
+                    <p-accordionTab [transitionOptions]="'0ms'" header="Resumen del seguro contratado">
+                        <div class="div_prima_mensual">
+                            <table class="tabla_resumen uk-overflow-container" content="string_productos_adicinales">
+                                <tbody class="ng-scope">
+                                    <tr *ngFor="let offer of seguro.offering">
+                                        <td
+                                            style="text-align: left;font-size: 12px;font-family: 'Raleway', Helvetica, Arial, sans-serif;">
+                                            SEGURO CONTRATADO
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="borde_resumen" *ngFor="let offer of seguro.offering">
+                                        <td class="padding_resumen_bottom" style="text-align: left;">
+                                            <span>{{ offer.offerName }}</span>
+                                        </td>
+                                        <td class="td_resumen_precio padding_resumen_bottom"
+                                            style="text-align: right;color: #f03829;">
+                                            {{ offer.price | currency }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="borde_resumen">
+                                        <td class="padding_resumen_bottom" style="text-align: left;">
+                                            <span>Numero de servicio</span>
+                                        </td>
+                                        <td class="td_resumen_precio padding_resumen_bottom" style="text-align: right;">
+                                            {{ seguro.serviceNumber }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td_resumen_plan padding_resumen_top"
+                                            style="text-align: left;color:#6d6d6d;">
+                                            Total Prima Mensual
+                                        </td>
+                                        <td class="td_resumen_precio padding_resumen_top"
+                                            style="text-align: right;color: #f03829;">
+                                            {{ seguro.totalAmount | currency }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br />
+                            <br />
+                        </div>
+                    </p-accordionTab>
+                </p-accordion>
+
+                <div class="spinner" style="margin: 0 auto;" *ngIf="loadingModalCerrar">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                </div>
+
+                <a *ngIf="!loadingModalCerrar" class="uk-button boton-cotizador" href="javascript:void(0)"
+                    (click)="cerrar()" style="background-color: #428d98 !important;margin-top: 12px;">
+                    <span>Aceptar</span>
+                </a>
+            </div>
+
+            <div style="padding: 9px !important;width: auto;text-align: center;" *ngIf="errorActivarOferta">
+                <h3 class="uk-panel-title" style="color: #0097a9;">
+                    Error al activar seguro
+                </h3>
+                <p style="margin-bottom: 25px !important;">
+                    {{ mensaje.error }}
+                </p>
+
+                <a *ngIf="!loadingModalCerrar" class="uk-button boton-cotizador" href="javascript:void(0)"
+                    (click)="cerrar()" style="background-color: #428d98 !important;margin-top: 12px;">
+                    <span>Cerrar</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<style>
+    .ui-dropdown-items-wrapper {
+        min-width: 200px !important;
+    }
+</style>

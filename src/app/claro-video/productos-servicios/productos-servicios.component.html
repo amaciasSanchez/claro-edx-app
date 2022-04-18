@@ -1,0 +1,160 @@
+<div class="swiper-slide" *ngIf="page === 'PRODUCTOS_SERVICIOS'">
+    <!-- <p-scrollPanel #sc [style]="{ height: '700px', border: 'none' }"> -->
+    <div style="margin: 2px 50px">
+        <div class="row" style="justify-content: space-between">
+            <div class="ui-g-10 my-auto">
+                <span class="pageDescription"
+                    >Nuestros Productos y Servicios</span
+                >
+            </div>
+
+            <div
+                style="
+                    display: flex;
+                    width: 140px;
+                    justify-content: space-between;
+                    padding: 10px;
+                "
+            >
+                <div style="height: 60px">
+                    <app-btn-volver-busqueda-cliente
+                        style="margin-right: 10%"
+                    ></app-btn-volver-busqueda-cliente>
+                </div>
+                <div style="height: 60px">
+                    <app-btn-volver-vista
+                        style="margin-right: 10%"
+                    ></app-btn-volver-vista>
+                </div>
+            </div>
+        </div>
+        <!-- <p style="margin-bottom:10px; margin-top:20px;font-size: 1.5vw;">
+            Selecciona una de las categorías existentes
+        </p> -->
+        <app-error-message
+            [message]="errorInterface.message"
+            [isError]="errorInterface.isError"
+        >
+        </app-error-message>
+        <div style="width: 100%; height: 20px"></div>
+        <div
+            class="row"
+            [ngClass]="{ 'error-content': errorInterface.isError }"
+            style="margin: 0 auto"
+        >
+            <div
+                class="col-md-2.5"
+                style="margin-left: 14px; margin-top: 14px"
+                *ngFor="let item of Topics.topics"
+                (click)="bestOfferSelected(item)"
+            >
+                <div
+                    class="
+                        ui-card-shadow
+                        ui-card
+                        ui-widget
+                        ui-widget-content
+                        ui-corner-all
+                    "
+                    style="
+                        width: 100%;
+                        border-radius: 0px 0px 28px 28px;
+                        cursor: pointer;
+                        border: hidden;
+                    "
+                >
+                    <div class="ui-card-header ng-star-inserted">
+                        <img
+                            src="Card"
+                            [src]="item.fileDirectory + item.fileName"
+                        />
+                    </div>
+                    <div
+                        class="ui-card-body"
+                        style="
+                            border: 1px solid #bdbdbd;
+                            border-radius: 0px 0px 28px 28px;
+                            border-top: hidden;
+                        "
+                    >
+                        <div class="ui-card-content"></div>
+
+                        <div
+                            class="ui-card-footer ng-star-inserted"
+                            style="position: relative; text-align: center"
+                            [ngStyle]="{
+                                'line-height':
+                                    item.idTopic === topicIdClaroVideo
+                                        ? '34px'
+                                        : ''
+                            }"
+                        >
+                            <img
+                                *ngIf="item.idTopic === topicIdClaroUP"
+                                src="assets/images/claroVideo/Imagen1.png"
+                                style="width: 23px"
+                                alt=""
+                            />
+                            <img
+                                *ngIf="item.idTopic === topicIdClaroVideo"
+                                src="assets/images/claroVideo/Imagen4.png"
+                                style="width: 44px"
+                                alt=""
+                            />
+                            <img
+                                *ngIf="item.idTopic === topicIdClaroIpTv"
+                                src="assets/images/claroIpTv/LogoIptv.png"
+                                style="width: 65px"
+                                alt=""
+                            />
+
+                            <img
+                                *ngIf="item.idTopic === topicIdClaroOtt"
+                                src="assets/images/claroVideo/imagen6.png"
+                                style="width: 65px"
+                                alt=""
+                            />
+
+                            <span
+                                style="
+                                    color: #757575;
+                                    display: inline-block;
+                                    margin-left: 5px;
+                                    justify-items: center;
+                                    padding-top: 9px;
+                                "
+                                >{{ item.name }}</span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+    <!-- </p-scrollPanel> -->
+</div>
+
+<app-personalizar-oferta
+    *ngIf="page === 'PERSONALIZAR'"
+    [origen]="'PRODUCTOS_SERVICIOS'"
+    [item]="itemDetail"
+    [service]="service"
+    [topicId]="topicId"
+    style="
+        width: 100%;
+        max-width: 1024px;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 0px;
+        margin-bottom: 15px;
+    "
+    (loadinpage)="loadinpageClick($event)"
+    (regresarClick)="regresarPersozalizarClick($event)"
+>
+</app-personalizar-oferta>
+
+<div class="row" style="margin-top: 10px; margin-left: 4%">
+    <app-mensaje-info-servicio></app-mensaje-info-servicio>
+</div>

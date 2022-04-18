@@ -1,0 +1,9 @@
+.content-error-message {
+    width: 45%;
+    padding: 0;
+    background: #eedfe2;
+    position: absolute;
+    /* height: 62px; */
+    height: auto;
+    z-index: 99;
+}

@@ -1,0 +1,121 @@
+<p-blockUI [blocked]="aProgressSpinner">
+    <div class="splash-screen">
+        <div class="splash-loader-container">
+            <svg class="splash-loader" width="65px" height="65px" viewBox="0 0 66 66"
+                xmlns="http://www.w3.org/2000/svg">
+                <circle class="splash-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30">
+                </circle>
+            </svg>
+        </div>
+    </div>
+</p-blockUI>
+<section class="section-content" style="width: 100%">
+    <!-- <section class="section-content" [ngStyle]="{'max-width': activarbtnPrevNext?'1240px':''}"> -->
+    <div style="margin: 24px;">
+
+        <div class="row">
+            <header-process style="width: 100%;" [titulo]= "titulo"  [subtitulo]= "'Creación de Claro ID para Claro Video'" ></header-process>
+        </div>
+        <div class="row">
+            <div class="ui-g-10 my-auto">
+
+                <h4 style=" margin-left: 122px;font-weight: 300;font-size: 1.6vw;">
+                    Ahora debes crear un usuario de acceso a cada suscripción de Claro Video para tu cliente …
+                </h4>
+            </div>
+
+            <div class="ui-g-2">
+                <div style="height: 60px; ">
+                    <app-btn-volver-vista style="margin-right: 10%;"></app-btn-volver-vista>
+                    <app-btn-ver-flujo style="margin-right: 10%;" [flujo]="bundle"></app-btn-ver-flujo>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <personal-information-process style="width: 100%;"> </personal-information-process>
+        </div>
+        <!-- <div class>
+            <items-process-bpm [cliente]="cliente" [procesos]="procesos"
+            (siguientepaso)="siguientepaso($event)" (loadinpage)="loadinpage($event)"></items-process-bpm>
+        </div> -->
+
+
+        <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
+            <items-process-bpm [proceso]="proceso" style="width: 100%;" [paso]="bundle.paso"
+                [correoCliente]="bundle.correo" *ngIf="proceso.processInstanceVariables != null"
+                (siguientepaso)="siguientepaso($event)" (loadinpage)="loadinpage($event)"></items-process-bpm>
+        </div>
+        <div class="row">
+
+            <div class="content-popover">
+
+                <button class="button-arrow-right" (click)="atras()">
+                    <i class="ui-icon-arrow-back icon-right"></i>
+                </button>
+                <button class="button-arrow-right" (click)="siguiente()">
+                    <i class="ui-icon-arrow-forward icon-right"></i>
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- 
+<app-claro-video-modal-validaciones [message]="modal.message" (hideModal)="hideModal($event)" [modal]="modal.visible"
+    [type]="modal.type"></app-claro-video-modal-validaciones> -->
+
+<result-bundle (dismissResultModal)="dismissResultModal($event)" [modal]="resultModal"> </result-bundle>
+
+<p-dialog [(visible)]="modalAcepta" [style]="{width: '600px'}">
+    <span style="display: block;  text-align: center; margin-bottom: 16px;">
+        <i class="ui-icon-report-problem" style="color:#f1b606;font-size: 67px;"></i>
+
+    </span>
+    <div style="line-height: 24px; text-align: center; padding: 15px;">
+        <span>
+            En la siguiente etapa activarás la suscripción de Claro Video en AMCO (América Móvil Content Office).
+            Puede que el cliente no haya confirmado aún la creación de su cuenta en el
+            link adjunto al correo emitido por AMCO al cliente final.
+            Debes aceptar el riesgo de que el cliente no sea el dueño original del correo electrónico.
+        </span>
+    </div>
+
+    <div style="line-height: 24px; text-align: center; ">
+
+        <input type="checkbox"  [(ngModel)]="checked" >
+        <label for="acepta">Acepto el riesgo de que el cliente no sea el dueño original del correo
+            electrónico.</label><br>
+    </div>
+
+    <div style="width: 100%;">
+        <button type="button"   [disabled] = "!checked" class="mx-auto" style="width: 100%;height: 40px; color: white; background: #2f4050;" pButton
+            (click)="aceptaRiesgo()" label="Entendido"></button>
+    </div>
+
+</p-dialog>
+
+<p-dialog [(visible)]="modalAdvertencia" style="width: 400px; max-width: 400px">
+    <span style="display: block;  text-align: center; margin-bottom: 16px;">
+        <i class="ui-icon-report-problem" style="color:#f1b606;font-size: 67px;"></i>
+    </span>
+    <div style="line-height: 24px; text-align: center; padding: 15px;">
+        <span>
+            Este es el último paso del proceso.
+            Se procederá a activar Claro Video a tu cliente
+        </span>
+    </div>
+
+
+    <div style="width: 100%;">
+        <button type="button" class="mx-auto" style="width: 50%;     background: #2f4050;" pButton
+            (click)="activarServicio()" label="Aceptar"></button>
+        <button type="button" class="mx-auto" style="width: 50%;     background: #e03232;" pButton
+            (click)="modalAdvertencia=false" label="Cancelar"></button>
+    </div>
+
+</p-dialog>

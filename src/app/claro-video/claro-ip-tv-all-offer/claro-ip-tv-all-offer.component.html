@@ -1,0 +1,125 @@
+<div class="container my-auto">
+    <div class="row mt-3">
+        <div class="col-xs-8 col-lg-6 col-xl-6 ">
+            <div class="row" style="padding-left:25px ; margin-top:23px;">
+                <div class="col-12">
+                    <h4 class="title-page" style="color: gray;">
+                        Selecciona la oferta para tu cliente…
+                    </h4>
+                </div>
+            </div>
+            <div class="row mt-3 mx-auto content-offer"></div>
+            <div class="col-lg-12">
+                <!-- Inicia contenido carusel -->
+                <p-carousel [value]="offers" styleClass="custom-carousel" [numVisible]="2" [numScroll]="1" [responsiveOptions]="responsiveOptions">
+                    <ng-template let-offer pTemplate="item">
+                        <div class="car-details">
+                            <div class="p-grid p-nogutter mx-auto">
+                                <div class="col-12" style="padding: 0px;">
+                                    <img src="assets/images/claroIpTv/ImagenIpTv.png"
+                                         class="mx-auto" style="display: block ; width: 54%; -webkit-clip-path: polygon(0 0, 77% 0, 100% 19%, 100% 100%, 80% 100%, 22% 100%, 0 84%, 0% 20%);
+                                    clip-path: polygon(0 0, 77% 0, 100% 19%, 100% 100%, 80% 100%, 22% 100%, 0 84%, 0% 20%);" />
+                                </div>
+                                <div class="p-col-12 car-data">
+                                    <div class="row mx-auto border-claro" placement="right" [ngbPopover]="ShowEmployeeProfile"
+                                         popoverClass="my-custom-class " popoverTitle="">
+                                        <div class="col-2 icon-imagen">
+                                            <img style=" margin-left: 95px;" src="assets/images/claroIpTv/LogoIptv.png" alt="">
+                                        </div>
+                                        
+                                        <div  class="col-10 my-auto" style="text-align: center;
+                                        font-size: 18px;margin-left: -6px;" ><span (click)="activarOverlay()"> 
+                                            {{ offer.offerName }} - ${{ offer.priceTotal }}</span>
+
+                                        </div>
+                                    </div>
+                                    <div class="car-subtitle">
+                                        <div style="margin: 40px;">
+                                            <button (click)="executeTaskConfirmCustomOffers(offer)"
+                                                    class="btn btn-danger btn-lg btn-block">Activar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </p-carousel>
+                <!-- Fin de carousel -->
+            </div>
+            <app-btn-volver-vista style="position:absolute; left: -37px;
+            bottom: 155px;"></app-btn-volver-vista>
+        </div>
+        <div class="col-xs-12 col-lg-6 col-xl-6 p-0">
+            <div class="back-div">
+                <div class="float-right img-back">
+                    <img src="assets/images/claroIpTv/minOfferIpTv.jpg" style="width: 114%;
+                    height: 100%;
+                    float: right!important;
+                    margin-right: -20%; " alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="activarpopover===true" style="font-size: 14px;
+background-color: #181919c2;
+width: 385px;
+height: 210px;
+position: absolute;
+margin-left: 411px;
+margin-top: -621px;
+border-radius: 53px;
+font-style: initial;
+font-family: 'Roboto';">
+
+    <blockquote >
+        <!-- <p>{{offer.detalle2}}
+            </p> -->
+        <ul >
+            <li style="list-style: none;">
+
+                <div class="" style=" margin-top: -20px!important;
+                        margin-left: -28px!important; text-align: left;">
+
+                    <p  style="font-size: 15px!important;
+                            text-align: left;
+                            margin-left: 33px;
+                            color: #ffffff;
+                            margin-top: 42px;"> <br>  Por sólo $ {{price}}
+                        <br>{{name}} <br><b>Incluye:</b> <br> &nbsp;&nbsp; {{deviceone}} - {{deviceoneCategory}}
+                        <br> &nbsp;&nbsp; {{devicetwo}} - {{devicetwoCategory}}
+                        
+                    </p>
+
+                    <div class="" style="display: block; margin: auto;"  >
+                        <button style="     margin-left: 43px;
+                                margin-top: 0px;
+                                background: #2f4050;
+                                border-color: black;
+                                color: #ffffff!important;
+                                width: 270px;
+                                height: 38px;
+                                border: 2px solid rgb(14, 14, 14);
+                                "
+                                (click)="ocultar()" type="button" class="" >Entendido</button>
+                    </div>
+                </div>
+
+
+            </li>
+
+        </ul>
+
+
+    </blockquote>
+
+</div>
+
+
+
+<app-claro-ip-tv-modal [message]="modal.message" (hideModal)="hideModal()" [modal]="modal.visible" [type]="modal.type"></app-claro-ip-tv-modal>
+
+
+
+
